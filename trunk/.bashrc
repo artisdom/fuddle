@@ -97,6 +97,8 @@ fi
 if [ -f /etc/bash_completion ]; then
     . /etc/bash_completion
 fi
+setterm -blength 0
+#xset b off
 alias sai='sudo apt-get install'
 alias sa='sudo apt-get'
 alias scs='sudo apt-cache search'
@@ -104,4 +106,7 @@ alias gdb='gdb -silent'
 alias la='ls -A'
 alias ll='ls -l'
 alias le='less'
+alias xterm='xterm -fn 7x13 -geometry 170x40+100+50'
 
+export PATH=$HOME/android-sdk-linux_x86-1.5_r1/tools:$PATH
+export ADBHOST=192.168.0.90

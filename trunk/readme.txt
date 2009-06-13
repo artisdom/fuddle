@@ -15,3 +15,4 @@
 
 git clone git@physaris.unfuddle.com:physaris/fuddle.git
 
+svn import . https://fuddle.googlecode.com/svn/trunk/ --username physaris --password  

@@ -10,12 +10,14 @@ set nocompatible
 set tabstop=4
 set shiftwidth=4
 set autoindent
+set cindent
 
 "search
 set ignorecase
 set smartcase
 set incsearch
 set hlsearch
+"colorscheme ron
 
 "autocmd
 if has("autocmd")
