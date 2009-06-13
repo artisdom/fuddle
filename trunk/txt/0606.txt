@@ -1,0 +1,69 @@
+bash
+vim (ctags, taglist, getlatestvimscript, comment.vim)
+gdb tui
+...
+
+--------------------------------------------------------------------------------
+Sat Jun  6 16:08:15 CST 2009
+
+GDB really impress me. Now I know about there things like:
+
+* set searching dir by using >dir /home/shi
+* show dir
+* info (threads, proc, sources ...)
+* gdb -tui
+* show args, set args
+* involke gdb with -silent
+
+
+
+
+
+--------------------------------------------------------------------------------
+All about link
+
+
+*create a static library
+cc -c source to *.o
+ar rcs -o libxxx.a *.o
+
+*create a dynamic library
+cc -c -fPIC source to *.o
+cc -shared -Wl,-soname,libxxx.so.1 -o libxxx.so.1.0.1 *.o
+
+*link against static library
+cc -static -o appname *.c -lxxx
+
+*link against dynamic library
+cc -o appname *.c -lxxx
+
+
+
+--------------------------------------------------------------------------------
+*change gnome-terminal startup size
+gnome-terminal --geometry 100x32+230+140
+
+
+firefox with vimperator
+map <F2>,<F3> to tab switching, it just so handy.
+
+--------------------------------------------------------------------------------
+to play rmvb
+install restrictFormats from ubuntu's website.
+https://help.ubuntu.com/community/RestrictedFormats#Ubuntu%209.04%20(Jaunty%20Jackalope)
+
+--------------------------------------------------------------------------------
+boot ubuntu to text mode
+sudo update-rc.d -f gdm remove
+
+
+/boot/grub/menu.lst
+vga=0x369 to set fbcon 1280x800
+
+if you don't know about vesa mode number, just set vga to some wrong number
+and then grub will list all mode to let you pickup.
+--------------------------------------------------------------------------------
+
+vim can open quickfix window with :copen command, and it's pretty cool!
+
+

@@ -1,0 +1,10 @@
+"2.0 (created: 2009/03/28 23:48:07)
+set guioptions=rbT
+set runtimepath=/home/shi/.vimperator
+
+map <F2> :tabprevious<CR>
+map <F3> :tabnext<CR>
+
+source! ~/.vimperatorrc.local
+
+" vim: set ft=vimperator:
