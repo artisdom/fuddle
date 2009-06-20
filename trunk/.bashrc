@@ -107,6 +107,8 @@ alias la='ls -A'
 alias ll='ls -l'
 alias le='less'
 alias xterm='xterm -fn 7x13 -geometry 170x40+100+50'
+alias gpmstart='sudo gpm -m /dev/misc/psaus -t ps2'
+alias checkoutfuddle='svn checkout https://fuddle.googlecode.com/svn/trunk/ fuddle --username physaris --password xE8Mq4XY6tX2'
 
 export PATH=$HOME/android-sdk-linux_x86-1.5_r1/tools:$PATH
 export ADBHOST=192.168.0.90
