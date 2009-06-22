@@ -1,3 +1,3 @@
-cp .vimrc $HOME/.vimrc -f
-cp .vim $HOME/.vim -rf
+cp .vimrc $1/.vimrc -f
+cp .vim $1 -rf
 
