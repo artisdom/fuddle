@@ -1,0 +1,81 @@
+Ubuntu 9.04 - the Jaunty Jackalope - released in April 2009.
+
+2009-07-03 22:00:26 
+
+installed from a use stick
+
+shi@m211
+================================================================================
+
+  set date&time
+  remove the virtual desktop
+  setup gedit (color, backup, margin)
+  copy terminal & gedit to top panel
+ 
+gksu /usr/bin/software-properties-gtk (choose mirror.rootguide.org)
++ this shit remember the sudoer
+
+sudo apt-get update
+= update 101M packages
+
+sudo apt-get install subversion
+
+svn checkout https://fuddle.googlecode.com/svn/trunk/ fuddle \
+	--username physaris --password xE8Mq4XY6tX2
+
+ag autoremove
+
+sudo vi /etc/group (add me to the sudo group)
+sudo vi /etc/sudoers (uncomment to sudo group NO PASSWD, comment the admin line)
+
+sudo apt-get install ubuntu-restricted-extras
+
+- computer freeze with caps lock blink
+
+wget -O - http://releases.mozilla.org/pub/mozilla.org/firefox/releases/3.5/\
+	linux-i686/en-US/firefox-3.5.tar.bz2 | tar xj -C ~
+
+mkdir $HOME/bin
+cd $HOME/bin
+ln -s $HOME/firefox/firefox
+
+agi vim-full
+. vimnix.sh $HOME
+agi ctags
+
+#check out your display card by 
+lspci -nn |grep VGA
+
+shi@m211:~$ glxinfo |grep vendor
+unknown chip id 0x94c9, can't guess.
+server glx vendor string: SGI
+client glx vendor string: SGI
+OpenGL vendor string: Mesa Project
+
+shi@m211:~$ glxinfo | grep "direct rendering"
+unknown chip id 0x94c9, can't guess.
+direct rendering: Yes
+
+-compiz will make window out of control unless you logout
+
+System>Administration>Hardware Drivers
+
++after I replace the driver with the proprietary one, the desktop effect
+	can be set now. (need reboot?)
+
+hd 2400, wifi	
+
++workspace switcher CTRL+ALT+Arrow_Key
+
+-enabled desktop effect and play video in the same time will crash
+
+-freeze again after wake up
+-hibernate takes more time than shutdown the computer
+
++colorful man page by .bashrc less_termcap
+
++dictionary applet is handy
+
+modify grub menu.lst timeout -> 2 sec
+
+
