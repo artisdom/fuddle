@@ -39,7 +39,9 @@ mkdir $HOME/bin
 cd $HOME/bin
 ln -s $HOME/firefox/firefox
 
-agi vim-full
+ag remove firefox-3.0
+
+agi vim-full ctags
 . vimnix.sh $HOME
 agi ctags
 
@@ -78,4 +80,11 @@ hd 2400, wifi
 
 modify grub menu.lst timeout -> 2 sec
 
+file browser --> preference --> media --> browse media when insert [uncheck this]
+file browser --> preference --> compact view
 
+
+agi scim-chinese scim-qtimm im-switch scim-pinyin
+
+locale |grep LANG
+im-switch -z en_US.UTF-8 -s scim
