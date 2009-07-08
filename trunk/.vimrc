@@ -29,8 +29,6 @@ if has("win32")
 	let $vimrcfile="$VIM/_vimrc"
 	set columns=120
 	set lines=40
-	set guioptions-=m
-	set guioptions-=T
 	colorscheme evening
 	"set guifont=新宋体:h12:cANSI
 	"map ,f :set guifont=新宋体:h12:cANSI<CR>
@@ -39,6 +37,12 @@ else
 	let $vimrcfile="$HOME/.vimrc"
 	let Tlist_Show_One_File=1
 endif
+
+if has("gui")
+	set guioptions-=m
+	set guioptions-=T
+endif
+
 nmap ,s :source $vimrcfile<CR>
 nmap ,e :e $vimrcfile<CR>
 
