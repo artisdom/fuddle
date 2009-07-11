@@ -85,6 +85,13 @@ file browser --> preference --> compact view
 
 
 agi scim-chinese scim-qtimm im-switch scim-pinyin
-
 locale |grep LANG
 im-switch -z en_US.UTF-8 -s scim
+relogin
+
+System --> Preference --> Startup Application [remove useless service]
+
+agi rapidsvn
+
+
+
