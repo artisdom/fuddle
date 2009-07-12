@@ -1,3 +1,4 @@
+deb http://download.virtualbox.org/virtualbox/debian jaunty non-free
 # deb cdrom:[Ubuntu 9.04 _Jaunty Jackalope_ - Release i386 (20090420.1)]/ jaunty main restricted
 # See http://help.ubuntu.com/community/UpgradeNotes for how to upgrade to
 # newer versions of the distribution.
@@ -106,4 +107,4 @@ deb-src http://mirror.lupaworld.com/ubuntu/ jaunty-security universe
 deb http://mirror.lupaworld.com/ubuntu/ jaunty-security multiverse
 deb-src http://mirror.lupaworld.com/ubuntu/ jaunty-security multiverse
 
-deb http://wine.budgetdedicated.com/apt jaunty main
+#deb http://wine.budgetdedicated.com/apt jaunty main

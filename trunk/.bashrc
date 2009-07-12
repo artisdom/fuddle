@@ -121,4 +121,5 @@ alias ll='ls -l'
 alias le='less'
 alias gpmstart='sudo gpm -m /dev/misc/psaus -t ps2'
 alias checkoutfuddle='svn checkout https://fuddle.googlecode.com/svn/trunk/ fuddle --username physaris --password xE8Mq4XY6tX2'
-export PS1="\W \$ "
+
+alias svnmodi="svn status | grep '^ \?' | awk '{print $2}'"
