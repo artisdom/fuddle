@@ -93,5 +93,77 @@ System --> Preference --> Startup Application [remove useless service]
 
 agi rapidsvn
 
+agi tree
+
+ag remove gnome-games
+
+ie4linux version 6 can't run
 
 
+-modify PS1 will effect gnome-terminal, cause it not to update the title bar.
+
++use 'add this launcher to panel' in Application menu will auto align icons
+
+agi kubuntu-desktop
++stunning 
+acs ubuntu-desktop
+
+agi imdb-tools
++imdb-get search transformer
+
++firefox 3.5 easter egg
+about:mozilla
+
+agi aria2
+agi deluge
+
+
+download tor from virtual box xp, by useing u94
+agi libevent-dev
+agi vidalia
+foxyproxy 127.0.0.1:9050
+foxyproxy option --> file --> tor wizard
+
+-bootup flashing
+-logout flashing
+-alipay without digit cert support
+-voice connection like qq talk
+
+disable gedit plugins to make it faster
+
+agi conky
++system moniter
+
+
+hotkeys:
+ctrl + alt + d	show desktop
+ctrl + alt + arrow key switch desktop
+alt + F9 minimize window
+
+right click text file --> property --> open with --> gvim
+system --> preference --> keyboard --> layouts --> layout options 
+--> alt/win --> super is mapped to win key (as a result you can't mod4 + e)
+
+
+firefox:
+set video download helper to Video
+
+agi gparted
+
+deb http://download.virtualbox.org/virtualbox/debian jaunty non-free
+
+wget -q http://download.virtualbox.org/virtualbox/debian/sun_vbox.asc -O- | sudo apt-key add -
+
+sudo apt-get install virtualbox-3.0
+agi dkms
+net adapter using bridge, for uPnP
+
++toshiba hotkey works , that's cool, except the mediaplayer one.
+
+xbmc
+source.lst
+key
+agi xbmc
+agi ttf-wqy-zenhei
+sudo cp /usr/share/fonts/truetype/wqy/wqy-zenhei.ttc /usr/share/xbmc/skin/PM3.HD/fonts/arial.ttf
+set appearance font to arial, region to chinese

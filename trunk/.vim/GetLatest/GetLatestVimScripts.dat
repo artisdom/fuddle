@@ -1,5 +1,6 @@
 ScriptID SourceID Filename
 --------------------------
+2009 9223 autoclose.vim
 642 8136 GetLatestVimScripts.vim
 273 7701 taglist.vim
 23 8319 EnhCommentify.vim
