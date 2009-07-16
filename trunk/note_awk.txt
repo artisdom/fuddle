@@ -1,0 +1,5 @@
+$ sed -e '/^static/{!d a;}' app_photoplayer.c
+
+$ awk 'NR>=2431 ,NR<=2514 {print $2}' app_photoplayer.c
+
+sed '/static.*(.*)[^;]/p' app_photoplayer.c -n | sort > func.c
