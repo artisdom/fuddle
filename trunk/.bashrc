@@ -101,6 +101,10 @@ fi
 if [ -d $HOME/bin ]; then
 	export PATH=$HOME/bin:$PATH
 fi	
+ANDROID_SDK_PATH=$HOME/android-sdk-linux_x86-1.5_r3
+if [ -d ${ANDROID_SDK_PATH} ]; then
+	export PATH=${ANDROID_SDK_PATH}/tools:$PATH
+fi	
 
 export LESS_TERMCAP_mb=$'\E[01;31m'
 export LESS_TERMCAP_md=$'\E[01;31m'
@@ -123,3 +127,5 @@ alias gpmstart='sudo gpm -m /dev/misc/psaus -t ps2'
 alias checkoutfuddle='svn checkout https://fuddle.googlecode.com/svn/trunk/ fuddle --username physaris --password xE8Mq4XY6tX2'
 
 alias svnmodi="svn status | grep '^ \?' | awk '{print $2}'"
+alias svnadd='svn status | grep '^ \??' | awk '{print }' |xargs svn add'
+alias svncmit="svn commit -m ' '"

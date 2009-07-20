@@ -4,6 +4,7 @@ set runtimepath=/home/shi/.vimperator
 
 map <F2> :tabprevious<CR>
 map <F3> :tabnext<CR>
+map <F12> ?next<CR><CR>
 map ,s :source $HOME/.vimperatorrc<CR>
 
 noremap <C-k> <A-d><Tab>
