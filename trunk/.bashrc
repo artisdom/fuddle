@@ -52,7 +52,7 @@ fi
 if [ "$color_prompt" = yes ]; then
     PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='\w\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -129,3 +129,4 @@ alias checkoutfuddle='svn checkout https://fuddle.googlecode.com/svn/trunk/ fudd
 alias svnmodi="svn status | grep '^ \?' | awk '{print $2}'"
 alias svnadd="svn status | grep '^ \??' | awk '{print $2}' |xargs svn add"
 alias svncmit="svn commit -m ' '"
+alias cm="./configure && make"
