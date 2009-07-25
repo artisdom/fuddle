@@ -12,6 +12,10 @@ set shiftwidth=4
 set autoindent
 set cindent
 
+"encoding
+set fencs=utf-8,gbk
+
+
 "search
 set ignorecase
 set smartcase
@@ -64,5 +68,4 @@ map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 "imap <F5> <C-R>=strftime("%Y-%m-%d")<CR>
 imap <F5> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
-
 
