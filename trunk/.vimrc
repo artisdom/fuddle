@@ -31,8 +31,12 @@ endif " has("autocmd")
 "quick edit/source vimrc
 if has("win32")
 	let $vimrcfile="$VIM/_vimrc"
-"    set columns=120
-"    set lines=40
+	set guioptions-=m
+	set guioptions-=T
+    set columns=120
+    set lines=40
+	colorscheme evening
+	set guifont=Courier_New:h9:cANSI
 	"set guifont=新宋体:h12:cANSI
 	"map ,f :set guifont=新宋体:h12:cANSI<CR>
 	"au GUIEnter * :simalt ~x
