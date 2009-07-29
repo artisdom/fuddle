@@ -41,18 +41,18 @@ if has("win32")
 	"map ,f :set guifont=ÐÂËÎÌå:h12:cANSI<CR>
 	"au GUIEnter * :simalt ~x
 else
+	let $vimrcfile="$HOME/.vimrc"
 	if has("gui")
 		set guioptions-=m
 		set guioptions-=T
-		"set columns=100
 		set guifont=WenQuanYi\ Zen\ Hei\ Mono\ Medium
 		"colorscheme evening
 	endif
-	let $vimrcfile="$HOME/.vimrc"
-	let Tlist_Show_One_File=1
 endif
 
 
+let Tlist_Show_One_File=1
+let g:miniBufExplorerMoreThanOne=0
 let g:xml_namespace_transparent=1
 let g:xml_syntax_folding = 1
 "set foldmethod=syntax
