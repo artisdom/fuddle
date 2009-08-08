@@ -52,7 +52,7 @@ endif
 
 
 let Tlist_Show_One_File=1
-let g:miniBufExplorerMoreThanOne=0
+"let g:miniBufExplorerMoreThanOne=1
 let g:xml_namespace_transparent=1
 let g:xml_syntax_folding = 1
 "set foldmethod=syntax
