@@ -1,5 +1,6 @@
 "2.0 (created: 2009/03/28 23:48:07)
 set guioptions=rbT
+set showtabline=1
 set runtimepath=/home/shi/.vimperator
 
 map <F2> :tabprevious<CR>
