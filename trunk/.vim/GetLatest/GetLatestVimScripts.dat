@@ -4,4 +4,6 @@ ScriptID SourceID Filename
 642 8136 GetLatestVimScripts.vim
 273 7701 taglist.vim
 23 8319 EnhCommentify.vim
+159 3640 minibufexpl.vim
+1658 10767 minibufexpl.vim
 642 8136 :AutoInstall: getscript.vim

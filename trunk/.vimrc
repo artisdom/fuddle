@@ -67,7 +67,6 @@ map <F3> :bnext<CR>
 map <F4> :w<CR>
 
 map <F5> :cnext<CR>
-map <F6> :ls<CR>
 
 map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
