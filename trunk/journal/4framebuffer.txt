@@ -1,0 +1,29 @@
+kernel\Documentation\fb
+kernel\Documentation\console
+
+(vga16fb and vesafb)
+(vgacon, dummy at boot time)
+
+1.add fbcon support
+Device Drivers->Graphics Support->Support for framebuffer devices->Framebuffer Console Support
+
+
+2.display penguin
+Logo Configuration->Boot up logo
+
+
+3. layers
+console ---> VGA driver ---> hardware
+console ---> fbcon ---> fbdev drivers ---> hardware
+
+4. sysfs
+/sys/class/graphics/fbcon
+
+echo 1 > sys/class/vtconsole/vtcon1/bind - attach framebuffer console to
+                                           console layer
+echo 0 > sys/class/vtconsole/vtcon1/bind - detach framebuffer console from
+                                           console layer
+
+5. tools
+con2fbmap
+vbetool - for save/restore console

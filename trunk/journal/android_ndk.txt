@@ -1,0 +1,17 @@
+
+ modify build/host-setup.sh
+	. build/core/ndk-common.sh
+
+
+cp GNUmakefile Makefile
+
+
+
+APP=hello-jni make
+
+-------------------------------------------------
+android list targets
+
+android create project --target 2 --path ./myProject --activity MyActivity --package com.example.myproject
+
+

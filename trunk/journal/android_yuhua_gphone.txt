@@ -1,0 +1,97 @@
+
+apt-get install bison sun-java6-jdk flex gperf
+
+
+
+make
+
+
+-qemu make error 
++Makefile.android:
+	 ifeq ($(HOST_OS)-$(HOST_ARCH),linux-x86)
+	-  MY_CFLAGS += -Wa,--32
+	+  MY_CFLAGS += -Wa,--32 -D_GNU_SOURCE
+	 endif
+
+
+2097152
+
+2G swap
+
+dd if=/dev/zero of=/swapfile bs=1024 count=2097152
+mkswap /swapfile
+swapon /swapfile
+
+
+
+-------------------------------------------------
+
+modify include path by refer the bionic advicce
+modify libwin32/include/windows.h	commented __llseek define
+modify Arch.rules add -D__linux__ in CFLAGS&CPPFLAGS fix compile error
+
+lack of external/alsa-lib and hardware/alsa-sound
+
+cd external
+git clone git://android.git.kernel.org/platform/external/alsa-lib.git
+
+cd hardware
+git clone git://android.git.kernel.org/platform/hardware/alsa_sound.git
+
+
+frameworks/base/include/utils/Errors.h:47
+	#ifdef __linux__
+	#undef NO_ERROR
+	#endif
+to avoid this compile error
+
+
+modify sdk_src/Makefile and replace external dependency libs with armv5 version
+
+build external/zlib ,need to modify Makefile to include bionic lib headers
+CC=/home/cidana/mydroid/prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/bin/arm-eabi-gcc ./configure
+
+no shared lib generated
+/home/cidana/mydroid/prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/bin/../lib/gcc/arm-eabi/4.2.1/../../../../arm-eabi/bin/ld: 
+crt0.o: No such file: No such file or directory
+
+
+external/alsa-lib
+modify Android.mk delete BOARD_USE_ALSA ...
+make libasound
+out/target/product/generic/obj/STATIC_LIBRARIES/libasound_intermediates/libasound.a
+
+
+hardware/alsa-sound
+modify Android.mk delete BOARD_USE_ALSA ...
+make libaudio
+
+
+libcidana_playback_sdk
+libippcore
+libippvcmerged
+libXML
+
+mkdir -p out/target/product/generic/obj/STATIC_LIBRARIES/libcidana_playback_sdk_intermediates
+mkdir -p out/target/product/generic/obj/STATIC_LIBRARIES/libXML_intermediates
+
+libXML be careful the capital
+
+/system/lib readonly
+can't access ALSA device
+open output stream error
+
+
+bus error
+GraphicsContext.cpp
+	240x320
+main.my.cpp
+	240x320
+
+
+
+VIDEO_ONLY 
+
+
+设置->应用程序->开发->USB调试
+

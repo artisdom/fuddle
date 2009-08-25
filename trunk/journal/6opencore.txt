@@ -1,0 +1,15 @@
+eee_701/system/lib/libopencore_2way.so
+eee_701/system/lib/libopencore_author.so
+eee_701/system/lib/libopencore_common.so
+eee_701/system/lib/libopencore_downloadreg.so
+eee_701/system/lib/libopencore_download.so
+eee_701/system/lib/libopencore_mp4localreg.so
+eee_701/system/lib/libopencore_mp4local.so
+eee_701/system/lib/libopencore_net_support.so
+eee_701/system/lib/libopencore_player.so
+eee_701/system/lib/libopencore_rtspreg.so
+eee_701/system/lib/libopencore_rtsp.so
+
+
+source setup.sh /mnt/hgfs/hostshare/opencore
+

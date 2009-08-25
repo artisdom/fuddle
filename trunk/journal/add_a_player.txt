@@ -1,0 +1,44 @@
+MediaPlayerInterface.h
+MediaPlayerService.cpp
+
+static sp<MediaPlayerBase> createPlayer(player_type playerType, void* cookie,
+        notify_callback_f notifyFunc)
+{
+    sp<MediaPlayerBase> p;
+    switch (playerType) {
+#ifndef NO_OPENCORE
+        case PV_PLAYER:
+            LOGV(" create PVPlayer");
+            p = new PVPlayer();
+            break;
+#endif
+        case SONIVOX_PLAYER:
+            LOGV(" create MidiFile");
+            p = new MidiFile();
+            break;
+        case VORBIS_PLAYER:
+            LOGV(" create VorbisPlayer");
+            p = new VorbisPlayer();
+            break;
+    }
+    if (p != NULL) {
+        if (p->initCheck() == NO_ERROR) {
+            p->setNotifyCallback(cookie, notifyFunc);
+        } else {
+            p.clear();
+        }
+    }
+    if (p == NULL) {
+        LOGE("Failed to create player object");
+    }
+    return p;
+}
+
+
+
+
+
+
+
+
+Z:\myroid\frameworks\base\media\libmediaplayerservice\VorbisPlayer.cpp

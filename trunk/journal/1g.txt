@@ -1,0 +1,2781 @@
+2009-8-25
+-------------------------------------------------
+bug fixed: isurface black screen 
+VideoRenderLinux.cpp:381
+	must setViewport after closed, because of init in setViewport
+
+android link lib
+LOCAL_LDLIBS
+
+2009-8-24
+-------------------------------------------------
+
+Babbage Ver B,
+with android image running on,
+android patch version R4.1 (from imx-android-r4.1.tar.gz)
+
+But we got some problem here.
+
+1. can't establish an adb connection via usb (adb shell)
+windows:
+can't install usb driver, open device manager there is a yellow question mark
+on Android device
+android-sdk-windows-1.5_r1\usb_driver\x86
+
+linux(ubuntu):
+add /etc/udev/rules.d/51-android.rules
+
+
+all this base on this environment.
+Android --> Setting --> Application --> development --> Usb debug on
+
+2. can't establish an adb connection via network (adb shell)
+set ADBHOST=192.168.0.26
+adb shell
+error: device not found
+
+3. when we play a mp3 file, seem like we only got mono sound now.
+
+
+cpu usage are the same, surface flinger or isurface.
+
+for file in `adb shell ls /data/app`; do echo "/data/app/${file}" ; done
+
+
+
+2009-8-21
+-------------------------------------------------
+
+new num
+
+ifconfig eth0 192.168.0.59 netmask 255.255.255.0 up
+
+
+PM: Syncing filesystems ... done.
+Freezing user space processes ... (elapsed 0.00 seconds) done.
+Freezing remaining freezable tasks ... (elapsed 0.00 seconds) done.
+Suspending console(s) (use no_console_suspend to debug)
+
+<SOLVE>screen sleep press ESC to wake it up
+
+
+fis load kernel
+exec -c "init=/init console=ttymxc0 root=/dev/mmcblk0p2 rootfstype=ext3 rw ip=dhcp mem=448M video=mxcfb:1024x768-16M@60"
+
+setprop net.dns1 192.168.0.250
+
+mmcblk0: error -84 transferring data
+end_request: I/O error, dev mmcblk0, sector 1973608
+
+
+mmcblk0: error -84 transferring data
+end_request: I/O error, dev mmcblk0, sector 1973606
+EXT3-fs: Can't read superblock on 2nd try.
+
+<SOLVE> SD card down, use new one
+
+
+Processor       : ARMv7 Processor rev 1 (v7l)
+BogoMIPS        : 159.90
+Features        : swp half thumb fastmult vfp edsp 
+CPU implementer : 0x41
+CPU architecture: 7
+CPU variant     : 0x2
+CPU part        : 0xc08
+CPU revision    : 1
+
+Hardware        : Freescale MX51 Babbage Board
+Revision        : 51120
+Serial          : 0000000000000000
+
+
+RedBoot> fis list
+... Read from 0x1fee0000-0x1feff000 at 0x00040000: .
+Name              FLASH addr  Mem addr    Length      Entry point
+RedBoot           0x00000000  0x00000000  0x00040000  0x00000000
+FIS directory     0x00040000  0x00040000  0x0001F000  0x00000000
+RedBoot config    0x0005F000  0x0005F000  0x00001000  0x00000000
+kernel            0x00300000  0x00100000  0x00500000  0x00100000
+
+RedBoot> help
+Setup/Display clock
+Syntax:
+   clock [<core clock in MHz> :<DDR clock in MHz>] 
+
+   Examples:
+   [clock]         -> Show various clocks
+   [clock 665]     -> Core=665  
+   [clock 800:133]  -> Core=800  DDR=133 
+   [clock :166]   -> Core=no change  DDR=166 
+
+L2 cache
+   L2 [ON | OFF]
+Manage aliases kept in FLASH memory
+   alias name [value]
+Set/Query the system console baud rate
+   baudrate [-b <rate>]
+Manage machine caches
+   cache [ON | OFF]
+Display/switch console channel
+   channel [-1|<channel number>]
+Compute a 32bit checksum [POSIX algorithm] for a range of memory
+   cksum -b <location> -l <length>
+Display (hex dump) a range of memory
+   dump -b <location> [-l <length>] [-s] [-1|-2|-4]
+Execute an image - with MMU off
+   exec [-w timeout] [-b <load addr> [-l <length>]]
+        [-r <ramdisk addr> [-s <ramdisk length>]]
+        [-c "kernel command line"] [-t <target> ] [<entry_point>]
+Manage FLASH images
+   fis {cmds}
+Manage configuration kept in FLASH memory
+   fconfig [-i] [-l] [-n] [-f] [-d] | [-d] nickname [value]
+blow some fuses
+   fuse_blow <bank> <row> <value>
+read some fuses
+   fuse_read <bank> <row>
+Execute code at a location
+   go [-w <timeout>] [-c] [-n] [entry]
+Help about help?
+   help [<topic>]
+Display command history
+   history 
+Set/change IP addresses
+   ip_address [-b] [-l <local_ip_address>[/<mask_len>]] [-h <server_address>]
+Load a file
+   load [-r] [-v] [-z to swap endianness on 16 bit] [-d] [-h <host>] [-p <TCP port>][-m <varies>] [-c <channel_number>] 
+        [-b <base_address>] <file_name>
+Compare two blocks of memory
+   mcmp -s <location> -d <location> -l <length> [-1|-2|-4]
+Copy memory from one address to another
+   mcopy -s <location> -d <location> -l <length> [-1|-2|-4]
+Fill a block of memory with a pattern
+   mfill -b <location> -l <length> -p <pattern> [-1|-2|-4]
+Read/Write MMC/SD card
+   sdhc <ram-addr> <flash-addr> <len-bytes> <r/w>
+Network connectivity test
+   ping [-v] [-n <count>] [-l <length>] [-t <timeout>] [-r <rate>]
+        [-i <IP_addr>] -h <IP_addr>
+Read/Write internal PMIC register
+   pmic <reg num> [value to be written]
+Reset the system
+   reset 
+Read/Write/Erase SPI NOR flash
+   spiflash <ram-addr> <flash-addr> <len-bytes> <r/w/e>
+Display RedBoot version information
+   version 
+Display (hex dump) a range of memory
+   x -b <location> [-l <length>] [-s] [-1|-2|-4]
+Enable one flash media for Redboot
+   factive [MMC|SPI]
+Update Redboot with currently running image
+   romupdate 
+Run an image at a location with MMU off
+   run [<virtual addr>]
+Set FEC MAC address in Fuse registers
+   set_fecmac [0x##:0x##:0x##:0x##:0x##:0x##]
+
+2009-8-20
+-------------------------------------------------
+MediaPlayer.java
+MediaPlayerActivity.java
+cidana_media_Mediaplayer.cpp
+CI_SDK_Typedef.h
+	ISURFACE
+E/SurfaceFlinger(  580): LayerBuffer::BufferSource::postBuffer() invalid buffer (offset=7340133, size=345600, heap-size=90112
+I/CI_MediaPlayer_jni(  841): >>>> pPlayer_Isurface=0x191558 (id=1)
+>>>> isurface=0x191558 
+E/SurfaceFlinger(  580): LayerBuffer::BufferSource::postBuffer() invalid buffer (offset=0, size=345600, heap-size=90112
+
+logfile_close made a crash ?  ??
+
+i.mx 51
+http://www.freescale.com/go/208588093
+Username: ricky.fei@cidana.com
+Password: m4Khns 
+
+babbage
+
+
+app_process use uses 32-bits capbilities
+binder transition failed
+acpi preparing to enter system sleep state S5
+
+
+https://www.freescale.com/cgi/doc/210101820/Android_R3_Release.gz
+https://www.freescale.com/cgi/doc/211176674/imx-android-r4.1.tar.gz
+
+2009-8-19
+-------------------------------------------------
+TI EVB try telnet, but still need adb 
+
+export ADBHOST=192.168.0.72
+export ANDROID_PRODUCT_OUT=`pwd`/out/target/product/eee_701
+
+
+qemu compile error, edit Makefile.android
+ifeq ($(HOST_OS)-$(HOST_ARCH),linux-x86)
+  MY_CFLAGS += -Wa,--32 -D_GNU_SOURCE
+endif
+
+
+external
+	CI_JPlayer
+	CI_MPlayer
+	cidana_media_jni
+	cidanaplayer
+	ansuf
+	andemo
+
+frameworks\base\media\libmediaplayerservice
+
+
+arm compile , audio render wired problem, define ANDROID_ARM
+
+
+2009-8-18
+-------------------------------------------------
+adb install -r out/target/product/generic/obj/APPS/CI_JPlayer_240_intermediates/package.apk
+
+can't uninstall
+
+c++
+cidana_media_jni
+
+java
+media.cidana
+
+com.cidana.jplayer
+
+
+1. 
+cidana\media\MediaPlayer.java
+
+2.
+
+- audio latency problem ? --> check out this file.
+android_audio_output.cpp
+
+E/SurfaceFlinger(  580): LayerBuffer::BufferSource::postBuffer() invalid buffer (offset=0, size=614400, heap-size=307200
+
+BUF_COUNT = 4,8
+
+320*240=76800
+
+* 4
+* 8
+
+
+
+2009-8-17
+-------------------------------------------------
+test yuhua apk --> OK
+try TI network --> NG
+cgmobile screen rotate, try new video render
+
+
+adb shell telnet 192.168.0.59
+
+ifconfig eth0 192.168.0.59 netmask 255.255.255.0 up
+
+
+chroot /omap3evm /system/bin/setprop net.dns1 192.168.0.1
+
+could not set property
+
+? no need to asign a percific ip addr ?
+
+set ADB_HOST=192.168.0.81
+
+
+PROJ_NAME=JniTest
+USR_NAME=cidana
+android create project --target 2 --package com.twm --activity JniTest --path $HOME/workspace/$PROJ_NAME
+keytool -genkey -v -keystore $USR_NAME.keystore -alias $USR_NAME -keyalg RSA -validity 10000
+jarsigner -verbose -keystore $HOME/$USR_NAME.keystore $PROJ_NAME-unsigned.apk $USR_NAME
+
+USR_NAME=cidana
+keytool -genkey -v -keystore $USR_NAME.keystore -alias $USR_NAME -keyalg RSA -validity 10000
+
+PROJ_NAME=JniTest
+USR_NAME=cidana
+jarsigner -verbose -keystore $HOME/$USR_NAME.keystore bin/$PROJ_NAME-unsigned.apk $USR_NAME
+
+
+JHFLAGS=-classpath $HOME/workspace/JniTest/bin
+
+
+local include path
+LOCAL_C_INCLUDES
+
+2009-8-14
+-------------------------------------------------
+TI android EVB
+
+trun on the switch next to DC power, then power on (there are 3 buttons)
+
+
+PlaybackEngine.cpp
+Open
+	m_bShowFirstFrame
+	RECT  defaultRect = {0, 40, 240, 180+40};
+	vidrnd->Set(EMC_PROPSET_VIDRND, EMC_PROPID_VIDRND_RECTDST, 0, 0, (LPVOID)&defaultRect, (DWORD)sizeof(RECT));
+Run
+	m_bScreenInit
+
+VideoRenderLinux.cpp
+set EMC_PROPID_VIDRND_RECTDST
+	r_screen = *reinterpret_cast<RECT *>(pInstanceData);
+
+
+
+AndroidVideoDevice.cpp
+Open
+
+SetViewport
+
+
+EGLDisplaySurface.cpp
+	mapFrameBuffer()
+	open/map real framebuffer device
+microedition ?
+
+
+rotate done ?
+
+2009-8-12
+-------------------------------------------------
+CPlaybackEngine::Run EMC_PROPID_VIDRND_RECTDST m_rDst NotRectEmpty
+CVideoRenderer::Set
+CVideoRenderer::Set has not pInstanceData
+printrect  r.top 0, r.left 0, r.right 240, r.bottom 180
+printrect  r.top 0, r.left 0, r.right 320, r.bottom 240
+[INFO]	GetGraphicsProperties
+[INFO]	Get
+[INFO]	SetViewport
+CAndroidVideoDevice::SetViewport 0,0,320,240
+w  320, depth 16
+[INFO]	GetGraphicsProperties
+
+
+240x400
+320x480
+
+remove gdstrect
+VideoRenderLinux.cpp
+	clean set EMC_PROPID_VIDRND_ROTATION
+
+vr cleaned
+
+0,0,320,240
+0,40,240,220
+same behave now
+
+dp.cpp
+#define DEBUG_INFO
+#define LOG2FILE
+
+CI_SDK_Playback.cpp
+void logfile_open(void)
+{
+	logfile = fopen(LOG_FILENAME, "w");
+	printf("log file created\n");
+	fprintf(logfile,"log file created\n");
+	fflush(logfile);
+}
+
+void logfile_close(void)
+{
+	if(logfile){
+		fclose(logfile);
+		logfile=NULL;
+	}
+}
+
+
+sudo apt-get install nfs-kernel-server nfs-common portmap
+
+
+
+sdcard automount
+cp development/data/etc/vold.conf generic/system/etc/
+
+
+2009-8-11
+-------------------------------------------------
+
+migrate to CI_ImgPrcOneFrame
+
+move is ok, scale not ok
+printrect  r.top 0, r.left 0, r.right 320, r.bottom 240
+printrect  r.top 0, r.left 0, r.right 320, r.bottom 240
+printrect  r.top 0, r.left 0, r.right 320, r.bottom 240
+
+printrect  r.top 0, r.left 0, r.right 320, r.bottom 240
+printrect  r.top 0, r.left 0, r.right 800, r.bottom 600
+printrect  r.top 0, r.left 0, r.right 320, r.bottom 240
+
+printrect  r.top 100, r.left 100, r.right 420, r.bottom 340
+srcSize_width 320, srcSize_height 240
+srcStep[0] = 384 ,srcStep[1] = 176, srcStep[2] = 176
+dstSize_width 320, dstSize_height 240
+dstStep[0] = 640 
+
+printrect  r.top 0, r.left 0, r.right 320, r.bottom 240
+printrect  r.top 0, r.left 0, r.right 320, r.bottom 240
+printrect  r.top 0, r.left 0, r.right 320, r.bottom 240
+printrect  r.top 0, r.left 0, r.right 320, r.bottom 240
+printrect  r.top 0, r.left 0, r.right 800, r.bottom 600
+printrect  r.top 0, r.left 0, r.right 320, r.bottom 240
+printrect  r.top 0, r.left 0, r.right 640, r.bottom 480
+srcSize_width 320, srcSize_height 240
+srcStep[0] = 384 ,srcStep[1] = 176, srcStep[2] = 176
+dstSize_width 320, dstSize_height 240
+dstStep[0] = 640 
+
+
+scale ok, move not ok
+
+
+cp out/target/product/generic/symbols/system/lib/libcidana_media_jni.so out/target/product/generic/obj/lib/libcidana_media_jni.so
+
+mount -o rw -t vfat /dev/block/mmcblk0 /sdcard
+
+
+permission trick does not work on yuhua's phone, but on dellmini and emulator
+
+
+2009-8-10
+-------------------------------------------------
+for android_video_device::setViewport
+
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libcidana_playback_sdk_intermediates/libcidana_playback_sdk.a:(.eh_frame+0x12): undefined reference to `__gxx_personality_v0'
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libcidana_playback_sdk_intermediates/libcidana_playback_sdk.a:(.eh_frame+0x292): undefined reference to `__gxx_personality_v0'
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libcidana_playback_sdk_intermediates/libcidana_playback_sdk.a:(.eh_frame+0x496): undefined reference to `__gxx_personality_v0'
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libcidana_playback_sdk_intermediates/libcidana_playback_sdk.a:(.eh_frame+0x879): undefined reference to `__gxx_personality_v0'
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libcidana_playback_sdk_intermediates/libcidana_playback_sdk.a:(.eh_frame+0xa39): undefined reference to `__gxx_personality_v0'
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libcidana_playback_sdk_intermediates/libcidana_playback_sdk.a:(.eh_frame+0xbc2): more undefined references to `__gxx_personality_v0' follow
+/home/cidana/dellmini/mydroid/prebuilt/linux-x86/toolchain/i686-unknown-linux-gnu-4.2.1/bin/../lib/gcc/i686-unknown-linux-gnu/4.2.1/libgcc_eh.a(unwind-dw2-fde-glibc.o): In function `_Unwind_Find_FDE':
+/home/dmitriyz/src-lcl/android2/toolchain/android-toolchain/gcc-4.2.1/gcc/unwind-dw2-fde-glibc.c:420: undefined reference to `dl_iterate_phdr'
+
+enable optimize option in cmmb sdk config file
+
+80070492
+
+
+crash ? 
+figure out which vr, ar first
+
+
+export ADBHOST=192.168.0.90
+export ANDROID_PRODUCT_OUT=`pwd`/out/target/product/eee_701
+
+export ANDROID_PRODUCT_OUT=`pwd`/out/target/product/generic
+
+
+
+CVideoRenderer::YUVto565
+CAndroidVideoDevice::Open
+CAndroidVideoDevice::SetViewport
+
+
+2009-8-7
+-------------------------------------------------
+compile sdk with toolchain
+convert to jni lib
+make java ui
+pack to apk
+
+
+
+dellmini
+video different size
+video set position
+need to modify overall permission checking
+application take care of the event of incoming call
+
+
+android arm (emulator)
+
+* test ansuf --> works
+* test anat --> works
+
+
+* 使用的toolchain是不是android sourcetree/prebuilt 下面的，具体是哪个版本
+* 板子上面跑的android版本是cupcake?有没有对里面的代码做很大的改动，尤其是
+  和audio/video render相关的。
+  比如(audioflinger, audiointerface, libaudio, alsa-lib, surfaceflinger)
+* app是否打算支持phone方向旋转的感应(涉及到视频旋转)，
+  或者全屏播放(涉及到不保持aspect ratio的缩放)
+* app在播放视频的时候，如果电话进来，目前你们spec定义的行为是怎么样的
+  比如，调低媒体音量切至后台或者完全关闭(涉及到audio render的处理)
+...
+
+
+因为是样机，没有正式产品的标签。
+样机名称应该是叫SIMPLO-KIZ00 4C sample，
+Date: 2008.W26
+
+CPU Atom N270 1.60Ghz
+RAM 1G/800Mhz samsung
+SSD 8G Intel DD900000U0L
+LCD 8.9"
+Battery 2200mAh
+Wlan atheros XB63
+
+
+2.6.31-rc3
+
+root     2069  1     808   392   c026de2d 8000f696 S /system/bin/sh
+
+root     2070  1     3348  188   ffffffff 08051ccc S /sbin/adbd
+root     2073  1     912   428   c01713cf 8010fbdc S /system/bin/vold
+root     2078  1     868   348   c0391b98 8010f696 S /system/bin/installd
+
+root     2076  1     300868 12596 c01713cf 8010fbdc S zygote
+
+system   2071  1     852   312   c0292807 8010fa46 S /system/bin/servicemanager
+media    2077  1     25620 8744  ffffffff 8020fa46 S /system/bin/mediaserver
+system   2087  2076  536704 32608 ffffffff 8010fa46 S system_server
+
+radio    2121  2076  450736 15600 ffffffff 80110d9e S com.android.phone
+app_2    2126  2076  464764 25644 ffffffff 80110d9e S android.process.acore
+app_10   2143  2076  448016 13344 ffffffff 80110d9e S com.android.mms
+app_4    2164  2076  443144 16040 ffffffff 80110d9e S com.android.calendar
+app_0    2173  2076  445256 15484 ffffffff 80110d9e S android.process.media
+app_9    2186  2076  439572 13188 ffffffff 80110d9e S com.android.alarmclock
+app_2    2202  2076  442736 13428 ffffffff 80110d9e S com.android.inputmethod.latin
+
+
+
+ProcessState.cpp
+	open_driver --> /dev/binder
+
+export ADBHOST=192.168.0.90
+export ANDROID_PRODUCT_OUT=`pwd`/out/target/product/eee_701
+
+
+provide our interface , and sample code.
+integrate with their ui
+
+
+2009-8-5
+-------------------------------------------------
+curl http://android.git.kernel.org/repo >~/bin/repo
+
+build/buildspec.mk.default
+
+go to audio_sink
+
+
+2009-8-4
+-------------------------------------------------
+
+
+SurfaceFlinger::onTransact
+
+signed with the platform certificate
+
+jarsigner -verify -verbose -certs *.apk
+
+
+crash problem, again ?
+
+HRESULT CAudioTrack::Flush(DWORD dwFlags)
+check released pointer pls
+	if(!m_audioBuffer)
+		return S_OK;
+
+
+
+android_surface_output.cpp
+
+looking for vendor ?
+
+build/target/board/generic/Boardconfig.mk ?
+
+
+
+kernel/drivers/misc/binder.c
+
+stroids
+
+2009-8-3
+-------------------------------------------------
+AndroidRuntime.cpp
+redirectStdFds
+dup2
+
+
+2009-7-31
+-------------------------------------------------
+
+tested with xi'an demo player (base on android mediaplayer, not the JNI one),
+
+ CAudioRender::Pump() res 80000008
+ CAudioRender::Pump() EOF
+ending audio renderer thread (dwRet=0)
+(0), delta = 38
+[VideoDecoderH264]      1
+ CVideoRenderer::Pump() EOF
+
+[CAlsaDevice] m_dwBlocksInBuffer 11, m_BlockSize 8192, m_dwFrameSize 4096
+[CAlsaDevice] audioBufferSize 94208
+[CAlsaDevice] DeviceInit
+CAlsaDevice::DeviceInit audioBufferSize 94208
+m_nDelayTime 2334000
+
+
+audiosink and audiotrack have a unchange latency()
+
+AudioTrack->mCblk->framesAvailable
+
+* surface access permission
+* after pause and resume , video and audio will a little forward from the resume point.
+
+use m_nDelayTime = mAudioTrack->latency()*1000;
+and audioStarted set correct.
+
+
+
+2009-7-30
+-------------------------------------------------
+crash problem is not registered a callback
+CI_Player_RegisterPlayerCallback
+
+LOG2FILE
+
+remove debug info from window manager
+WindowManagerService.java
+    static final boolean DEBUG_INPUT = false;
+and comment log.i in function findTargetWindow
+
+
+TODO:
+* current cmmb sdk(this copy works on android) 
+  is neither using video render nor audio render
+* sdk seg fault problem
+* video scaling and position
+
+
+* surface access permission
+* audio is a little fast than video 
+-->fixed 	m_nDelayTime = mAudioTrack->latency()*1000;
+* mediaplayerdemo is wired about load big video file,
+  may sometimes couldn't play
+
+* player should be controled
+* currently 
+  audio --> AudioTrack
+  video --> surface flinger client
+
+* fill all method of cidana player
+* getCurrentPosition, clip duration, 
+  the slide of player get to the end before the movie ends
+* pause, resume
+  pause is a little slow.
+  after resume movie plays a little while than stop, and there was no sound.
+* stop works
+
+
+dellmini screen size 800x600
+
+
+V/AudioTrack( 2077): afLatency 372
+V/AudioTrack( 2077): mLatency 2334, mFrameCount 94208, mSampleRate 48000
+
+I/AudioHardwareALSA( 2077): Initialized ALSA PLAYBACK device AndroidPlayback
+D/AudioHardwareALSA( 2077): Set PLAYBACK PCM format to S16_LE (Signed 16 bit Little Endian)
+D/AudioHardwareALSA( 2077): Using 2 channels for PLAYBACK.
+D/AudioHardwareALSA( 2077): Set PLAYBACK sample rate to 44100 HZ
+D/AudioHardwareALSA( 2077): Buffer size: 16384
+D/AudioHardwareALSA( 2077): Latency: 371519
+
+adb install -r out/target/product/eee_701/obj/APPS/CI_MPlayer_intermediates/package.apk
+
+add mfs files
+filterMediaFile
+
+
+don't want to make system image
+comment build/core/Makefile:301~1168	by using ifeq (0,1) ... endif
+
+
+2009-7-29
+-------------------------------------------------
+
+alias adl='adb kill-server && adb logcat'
+
+# pwd
+/data/mymedia
+# ls
+1.mp4
+1.amr
+taylor_swift_fifteen.mp3
+harry.mp4
+taylor swift - breathe.mp3
+nick.mp3
+gdbserver_x86
+CMMB_Demo.mfs
+Program1_0509.mfs
+2.mfs
+
+
+
+android.media.MediaPlayer
+frameworks\base\media\java\android\media\MediaPlayer.java
+
+libmedia_jni
+frameworks\base\media\jni\android_media_MediaPlayer.cpp
+
+
+libmedia
+frameworks\base\media\libmedia\IMediaPlayer.cpp
+frameworks\base\media\libmedia\mediaplayer.cpp
+
+
+
+2009-7-28
+-------------------------------------------------
+
+1. crash problem
+2. integrate audio track
+3. integrate surface
+
+
+AlsaDevice --> audio track
+AndroidAudioDevice --> audio sink
+
+
+
+add chmod 0777 /dev/graphics/fb0
+init.rc
+
+
+
+srcSize_width 320, srcSize_height 240, dstSize_width 320, dstSize_height 240
+srcStep 384,176,176, dstStep 1600
+
+set dstStep to twice video width to make display right
+
+if it's half screen , just set dststep double.
+
+
+W/ServiceManager( 2087): Permission failure: android.permission.ACCESS_SURFACE_FLINGER from uid=10013 pid=2513
+E/SurfaceFlinger( 2087): Permission Denial: can't access SurfaceFlinger pid=2513, uid=10013
+
+checkCallingPermission
+status_t LayerBuffer::SurfaceBuffer::onTransact(
+
+IServiceManager.cpp
+bool checkCallingPermission(const String16& permission)
+{
+//    return checkCallingPermission(permission, NULL, NULL);
+    return true;
+}
+
+AndroidManifest.xml
+	<uses-permission android:name="android.permission.ACCESS_SURFACE_FLINGER" />
+Android.mk
+	LOCAL_CERTIFICATE := platform
+
+
+FireGL and Radeon for X
+xrandr
+xinerama
+Mesa
+
+
+2009-7-27
+-------------------------------------------------
+stub code for cidana player
+
+V/MediaPlayerService( 2078): Client(2) constructor
+V/MediaPlayerService( 2078): Create new client(2) from pid 2215, url=/data/bin/2.mfs, connId=2
+V/MediaPlayerService( 2078): setDataSource(/data/bin/2.mfs)
+V/MediaPlayerService( 2078): getPlayerType(const char* url)
+V/MediaPlayerService( 2078): player type = 4
+V/MediaPlayerService( 2078):  create CidanaPlayer
+V/CidanaPlayer( 2078): constructor
+V/CidanaPlayer( 2078): onFirstRef
+V/MediaPlayerService( 2078):  setDataSource
+V/CidanaPlayer( 2078): setDataSource url=/data/bin/2.mfs, fd=-1
+V/CidanaPlayer( 2078): setDataSource end
+V/MediaPlayerService( 2078): [2] setAudioStreamType(3)
+V/MediaPlayerService( 2078): [2] prepareAsync
+V/CidanaPlayer( 2078): prepareAsync
+V/MediaPlayerService( 2078): [2] notify (0x805a190, 1, 0, 0)
+V/MediaPlayerService( 2078): [2] setLooping(0)
+V/CidanaPlayer( 2078): setLooping
+V/MediaPlayerService( 2078): [2] setVolume(1.000000, 1.000000)
+V/AudioSink( 2078): setVolume(1.000000, 1.000000)
+V/MediaPlayerService( 2078): [2] start
+V/CidanaPlayer( 2078): setLooping
+V/CidanaPlayer( 2078): start
+V/CidanaPlayer( 2078):   wakeup render thread
+
+yy4jp<C-A>
+
+
+[PlaybackEngine] ------------Open----------- 0
+[PlaybackEngine] ------------Open----------- 2
+filename == NULL || filename[0] == 0
+[PlaybackEngine] ------------Close-----------
+m_pEngine->Open error filename /data/bin/2.mfs
+
+
+DemuxCMMB.cpp
+
+FillAVInfo
+
+adb kill-server
+adb shell chmod 777 /dev/graphics/fb0
+
+
+2009-7-24
+-------------------------------------------------
+set ADBHOST=192.168.0.90
+
+8000000	32000064
+
+Floating point exception
+
+sudo apt-get install git-core gnupg sun-java5-jdk flex bison gperf libsdl1.2-dev \
+libesd0-dev libwxgtk2.6-dev build-essential zip curl libncurses5-dev zlib1g-dev
+
+adb install out/target/product/eee_701/obj/APPS/MediaPlayerDemo_intermediates/package.apk
+
+
+adb push eee_701/system/lib/libcidanaplayer.so /system/lib/libcidanaplayer.so
+adb push eee_701/system/lib/libmediaplayerservice.so /system/lib/libmediaplayerservice.so
+adb push eee_701/system/lib/libmedia.so /system/lib/libmedia.so
+
+mv /system/lib/libmediaplayerservice.so /data/backup/
+mv /system/lib/libmedia.so /data/backup/
+
+
+
+
+
+CI_SDK_Playback.cpp
+908
+	case CI_CFG_ANDROID_AUDIOSINK:
+		{
+			pPlaybackSDK->m_pAudioContext->Set(EMC_PROPSET_AUDRND, EMC_PROPID_AUDRND_ANDROID_AUDIOSINK,0,0, pValue, 0);
+		}
+		break;		
+CI_SDK_Typedef.h
+
+AndroidAudioDevice.cpp
+AndroidAudioDevice.h
+
+
+
+2009-7-23
+-------------------------------------------------
+vorbis works
+cidanaplayer with random sound ok
+java app, play video/audio
+
+MediaPlayerService.cpp
+	FILE_EXTS, add mfs filetype
+
+
+
+cmmb sdk
+1. disable android sound
+2. add android_audio_device for audio_generic
+3. andemo -> sound is not continue
+
+definitions.mk
+
+to avoid soslim strip your execute, just define this before your build_exec
+LOCAL_STRIP_MODULE = false
+
+AudioOutput is private
+modify them to public, audio output has no sound, write 2 times, 8 times no data
+
+
+
+const sp<IAudioFlinger>& AudioSystem::get_audio_flinger()
+
+try audio track
+
+2009-7-22
+-------------------------------------------------
+
+
+hardware/alsa_sound
+framework/base/libs/audioflinger
+external/cidanaplayer
+framework/base/media/libmediaplayerservice
+framework/base/include/media
+package/apps/MediaPlayerDemo
+
+
+
+
+MediaPlayer::setDataSource(int fd, int64_t offset, int64_t length)
+	MediaPlayerService::create(pid_t pid, const sp<IMediaPlayerClient>& client, int fd, int64_t offset, int64_t length)
+		MediaPlayerService::Client::setDataSource(int fd, int64_t offset, int64_t length)
+	MediaPlayer::setDataSource(const sp<IMediaPlayer>& player)
+
+2009-7-21
+-------------------------------------------------
+-sdcard /home/cidana/mydroid/256M.img
+
+adb shell mount -o remount rw /system
+
+
+
+2009-7-20
+-------------------------------------------------
+android create avd -n avd15 -t 2 -s HVGA-L
+export ANDROID_PRODUCT_OUT=$HOME/mydroid/out/target/product/eee_701
+export ANDROID_PRODUCT_OUT=$HOME/mydroid/out/target/product/generic
+unset ANDROID_PRODUCT_OUT
+OUT_DIR
+
+out/host/linux-x86/bin/emulator
+
+mydroid$ . build/envsetup.sh 
+mydroid$ lunch 1
+
+============================================
+TARGET_PRODUCT=generic
+TARGET_BUILD_VARIANT=eng
+TARGET_SIMULATOR=false
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=arm
+HOST_ARCH=x86
+HOST_OS=linux
+HOST_BUILD_TYPE=release
+BUILD_ID=
+============================================
+
+./out/host/<your-machine-type>/bin/emulator
+mmm packages/apps/Email
+$ adb remount
+$ adb sync
+ONE_SHOT_MAKEFILE="frameworks/base/Android.mk" make framework
+
+ONE_SHOT_MAKEFILE="external/anlibaudio/Android.mk" make la
+
+
+AudioFlinger -> /dev/eac -> kernel (mach-goldfish/audio.c) 
+-> emulator (external/qemu/goldfish_audio.c -> QEMU audio sub-system 
+-> system-specific audio  backend) -> system sound API
+
+
+
+mount -o rw -t vfat /dev/block/mmcblk0 /sdcard
+
+
+frameworks/base/include/media/MediaPlayerInterface.h
+frameworks/base/media/libmediaplayerservice/
+external/cidanaplayer
+
+
+target Strip: libcidanaplayer (out/target/product/generic/obj/lib/libcidanaplayer.so)
+external/elfcopy/elfcopy.c(1097): gelf_update_phdr(): invalid data
+make: *** [out/target/product/generic/obj/lib/libcidanaplayer.so] Error 1
+make: *** Deleting file `out/target/product/generic/obj/lib/libcidanaplayer.so'
+
+grep: build/envsetup.sh:    export ANDROID_EABI_TOOLCHAIN=$prebuiltdir/toolchain/arm-eabi-4.2.1/bin
+build/core/envsetup.mk:	ABP:=$(ABP):$(PWD)/prebuilt/$(HOST_PREBUILT_TAG)/toolchain/arm-eabi-4.2.1/bin
+build/core/combo/linux-arm.mk:	prebuilt/$(HOST_PREBUILT_TAG)/toolchain/arm-eabi-4.2.1/bin/arm-eabi-
+
+cp out/target/product/generic/symbols/system/lib/libcidanaplayer.so out/target/product/generic/obj/lib/libcidanaplayer.so
+
+
+2009-7-17
+-------------------------------------------------
+dlopen RTLD_NOW|RTLD_GLOBAL
+
+Makefile.rules
+CPPFLAGS += -fno-rtti
+
+-/home/gavinwang/myroid/external/alsa-lib/include/alsa/pcm.h:228:2: error: #error "Unknown endian"
+vi /home/gavinwang/myroid/bionic/libc/include/sys/endian.h +265
+vi /home/gavinwang/myroid/external/alsa-lib/include/alsa/pcm.h +229
+
+//for compile use little endian
+//#error "Unknown endian"
+	/** Signed 16 bit CPU endian */
+	SND_PCM_FORMAT_S16 = SND_PCM_FORMAT_S16_LE,
+	/** Unsigned 16 bit CPU endian */
+	SND_PCM_FORMAT_U16 = SND_PCM_FORMAT_U16_LE,
+	/** Signed 24 bit CPU endian */
+	SND_PCM_FORMAT_S24 = SND_PCM_FORMAT_S24_LE,
+	/** Unsigned 24 bit CPU endian */
+	SND_PCM_FORMAT_U24 = SND_PCM_FORMAT_U24_LE,
+	/** Signed 32 bit CPU endian */
+	SND_PCM_FORMAT_S32 = SND_PCM_FORMAT_S32_LE,
+	/** Unsigned 32 bit CPU endian */
+	SND_PCM_FORMAT_U32 = SND_PCM_FORMAT_U32_LE,
+	/** Float 32 bit CPU endian */
+	SND_PCM_FORMAT_FLOAT = SND_PCM_FORMAT_FLOAT_LE,
+	/** Float 64 bit CPU endian */
+	SND_PCM_FORMAT_FLOAT64 = SND_PCM_FORMAT_FLOAT64_LE,
+	/** IEC-958 CPU Endian */
+	SND_PCM_FORMAT_IEC958_SUBFRAME = SND_PCM_FORMAT_IEC958_SUBFRAME_LE
+
+
+libutilities
+	AndroidAudioDevice.h
+	AndroidAudioDevice.cpp
+
+
+
+-NO_ERROR
+AndroidAudioDevice.h
+#define _WIN32
+
+ln -s out/target/product/eee_701/
+
+mydroid$ vi vendor/asus/eee_701/BoardConfig.mk 
+mydroid$ cat external/alsa-lib/Android.mk 
+mydroid$ ./mkmk_android.sh libasound
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libasound_intermediates/libasound.a
+
+
+
+cp sdk/cidana_playback_sdk.a ~/cidana_libs
+cp demos/*.a ~/cidana_libs
+
+cp /home/gavinwang/hostshare/_android_dellmini/andemo0625/ external/andemo -r
+mkdir -p eee_701/obj/STATIC_LIBRARIES/libcidana_playback_sdk_intermediates
+mkdir -p eee_701/obj/STATIC_LIBRARIES/libippcore_intermediates
+mkdir -p eee_701/obj/STATIC_LIBRARIES/libippvcmerged_intermediates
+mkdir -p eee_701/obj/STATIC_LIBRARIES/libXML_intermediates
+cp ~/cidana_libs/cidana_playback_sdk.a eee_701/obj/STATIC_LIBRARIES/libcidana_playback_sdk_intermediates/libcidana_playback_sdk.a
+cp ~/cidana_libs/libippcore.a eee_701/obj/STATIC_LIBRARIES/libippcore_intermediates
+cp ~/cidana_libs/libippvcmerged.a eee_701/obj/STATIC_LIBRARIES/libippvcmerged_intermediates
+cp ~/cidana_libs/LibXML.a eee_701/obj/STATIC_LIBRARIES/libXML_intermediates/libXML.a
+./mkmk_android.sh andemo
+
+
+make: *** No rule to make target `NOTICE-TARGET-STATIC_LIBRARIES-libcidana_playback_sdk', needed by `out/target/product/eee_701/system/bin/andemo'.  Stop.
+move our libs to the tail
+cp these libs one by one
+
+cd eee_701/obj/STATIC_LIBRARIES/
+
+mv libcidana_playback_sdk_intermediates libippcore_intermediates libippvcmerged_intermediates libXML_intermediates ~/imd
+
+
+vi external/zlib/Android.mk
+build static lib
+./mkmk_android.sh libz
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libz_intermediates/libz.a
+
+
+backup libaudio/libaudioflinger:orig
+
+./mkmk_android.sh libaudio
+
+target thumb C++: libaudiointerface <= frameworks/base/libs/audioflinger/AudioHardwareGeneric.cpp
+target thumb C++: libaudiointerface <= frameworks/base/libs/audioflinger/AudioHardwareStub.cpp
+target thumb C++: libaudiointerface <= frameworks/base/libs/audioflinger/AudioDumpInterface.cpp
+target thumb C++: libaudiointerface <= frameworks/base/libs/audioflinger/AudioHardwareInterface.cpp
+frameworks/base/libs/audioflinger/AudioHardwareGeneric.cpp: In member function 'virtual ssize_t android::AudioStreamInGeneric::read(void*, ssize_t)':
+frameworks/base/libs/audioflinger/AudioHardwareGeneric.cpp:279: warning: format '%d' expects type 'int', but argument 5 has type 'ssize_t'
+target StaticLib: libaudiointerface (out/target/product/eee_701/obj/STATIC_LIBRARIES/libaudiointerface_intermediates/libaudiointerface.a)
+target SharedLib: libaudio (out/target/product/eee_701/obj/SHARED_LIBRARIES/libaudio_intermediates/LINKED/libaudio.so)
+target Non-prelinked: libaudio (out/target/product/eee_701/symbols/system/lib/libaudio.so)
+target Unstripped: libaudio (out/target/product/eee_701/obj/lib/libaudio.so)
+Install: out/target/product/eee_701/system/lib/libaudio.so
+
+
+./mkmk_android.sh libaudioflinger
+
+target arm C++: libaudioflinger <= frameworks/base/libs/audioflinger/AudioMixer.cpp
+target arm C++: libaudioflinger <= frameworks/base/libs/audioflinger/AudioResampler.cpp
+target arm C++: libaudioflinger <= frameworks/base/libs/audioflinger/AudioResamplerSinc.cpp
+target arm C++: libaudioflinger <= frameworks/base/libs/audioflinger/AudioResamplerCubic.cpp
+frameworks/base/libs/audioflinger/AudioResamplerCubic.cpp:25:1: warning: "LOG_TAG" redefined
+In file included from frameworks/base/libs/audioflinger/AudioResamplerCubic.cpp:20:
+system/core/include/cutils/log.h:68:1: warning: this is the location of the previous definition
+target thumb C++: libaudioflinger <= frameworks/base/libs/audioflinger/AudioFlinger.cpp
+frameworks/base/libs/audioflinger/AudioMixer.cpp: In static member function 'static void android::AudioMixer::process__TwoTracks16BitsStereoNoResampling(android::AudioMixer::state_t*, void*)':
+frameworks/base/libs/audioflinger/AudioMixer.cpp:834: warning: 'in0' may be used uninitialized in this function
+frameworks/base/libs/audioflinger/AudioMixer.cpp:839: warning: 'in1' may be used uninitialized in this function
+frameworks/base/libs/audioflinger/AudioFlinger.cpp: In member function 'void* android::AudioFlinger::MixerThread::TrackBase::getBuffer(uint32_t, uint32_t) const':
+frameworks/base/libs/audioflinger/AudioFlinger.cpp:1717: warning: suggest parentheses around && within ||
+target SharedLib: libaudioflinger (out/target/product/eee_701/obj/SHARED_LIBRARIES/libaudioflinger_intermediates/LINKED/libaudioflinger.so)
+target Non-prelinked: libaudioflinger (out/target/product/eee_701/symbols/system/lib/libaudioflinger.so)
+target Unstripped: libaudioflinger (out/target/product/eee_701/obj/lib/libaudioflinger.so)
+Install: out/target/product/eee_701/system/lib/libaudioflinger.so
+
+mkdir -p /data/backup /data/bin
+adb push out/target/product/eee_701/obj/EXECUTABLES/andemo_intermediates/LINKED/andemo /data/bin
+adb push ~/hostshare/stream/Test\ Mode2\ bitstream\ .mfs /data/bin/2.mfs
+
+
+chmod 0777 andemo
+./andemo 
+	seg fault
+
+use crash fixed one
+
+windows.h
+	EnterCriticalSection
+	//assert
+
+
+2009-7-16
+-------------------------------------------------
+intro android
+
+
+
+2009-7-15
+-------------------------------------------------
+release st demo
+set ADBHOST=192.168.0.90
+adb kill-server
+adb shell
+
+
+
+2009-7-14
+-------------------------------------------------
+
+amixer cset numid=16 3
+amixer cset numid=1 50
+chmod 777 /dev/graphics/fb0
+
+cp /home/cidana/hostshare/libaudio_from_cuilong/libaudio.so out/target/product/generic/obj/lib/libaudio.so
+cp /home/cidana/hostshare/libaudio_from_cuilong/libaudio.so out/target/product/generic/symbols/system/lib/libaudio.so
+cp /home/cidana/hostshare/libaudio_from_cuilong/libaudio.so out/target/product/generic/obj/SHARED_LIBRARIES/libaudio_intermediates/LINKED/libaudio.so
+cp /home/cidana/hostshare/libaudio_from_cuilong/libaudio.so out/target/product/generic/system/lib/libaudio.so
+
+
+rm \
+out/target/product/generic/obj/lib/libaudio.so \
+out/target/product/generic/symbols/system/lib/libaudio.so \
+out/target/product/generic/obj/SHARED_LIBRARIES/libaudio_intermediates/LINKED/libaudio.so
+out/target/product/generic/system/lib/libaudio.so
+
+
+
+cp /home/cidana/hostshare/yuhua/libc.so generic/system/lib/libc.so
+cp /home/cidana/hostshare/yuhua/libc.so generic/obj/SHARED_LIBRARIES/libc_intermediates/LINKED/libc.so
+cp /home/cidana/hostshare/yuhua/libc.so generic/obj/lib/libc.so
+cp /home/cidana/hostshare/yuhua/libc.so generic/symbols/system/lib/libc.so
+
+
+find generic/ -name libc.so -print | xargs ls -l
+find generic/ -name libaudio.so -print | xargs ls -l
+
+
+cp /home/cidana/hostshare/yuhua/liblog.so generic/system/lib/liblog.so
+cp /home/cidana/hostshare/yuhua/liblog.so generic/obj/SHARED_LIBRARIES/liblog_intermediates/LINKED/liblog.so
+cp /home/cidana/hostshare/yuhua/liblog.so generic/obj/lib/liblog.so
+cp /home/cidana/hostshare/yuhua/liblog.so generic/symbols/system/lib/liblog.so
+
+
+2009-7-10
+-------------------------------------------------
+dell vm disk added
+rebuild libxml for dellmini
+update yuhua phone firmware
+
+make libaudioflinger
+
+Install: out/target/product/generic/system/lib/libpixelflinger.so
+Install: out/target/product/generic/system/lib/libui.so
+Install: out/target/product/generic/system/lib/libmedia.so
+Install: out/target/product/generic/system/lib/libaudioflinger.so
+
+./gdbserver_x86 192.168.0.90:2345 ./andemo
+
+./gdbserver_x86 192.168.0.90:2345 /system/bin/andemo
+
+target remote 192.168.0.90:2345 
+
+gdb out/target/product/eee_701/obj/EXECUTABLES/andemo_intermediates/LINKED/andemo -tui
+dir /home/cidana/hostshare/_android_dellmini/PlaybackSDK_android/SMIT.SDK/Embedded/embedded_sdk/release/TDMB_PMP_SDK/src
+after set your break points, type conti to let target app run
+
+
+
+
+gdbs 192.168.0.78:2345 
+target remote 192.168.0.108:2345 
+remove libaudio , can't bootup
+
+still have crash problem
+
+
+
+add cidana player
+
+external/cidanaplayer/
+	add mk
+	add cpp
+--> libcidanaplayer.so
+
+
+
+framework/libmediaplayservice/
+	add h
+	modify mk
+--> libmediaplayservice.so
+
+
+
+2009-7-9
+-------------------------------------------------
+x2 coming
+
+replace libaudio.so, libaudioflinger.so, and no sound
+
+aumix can't open mixer
+
+uselibaudio(la), write ok but no sound
+
+amixer scontents
+amixer set Master 100%
+
+
+
+2009-7-8
+-------------------------------------------------
+
+echo "TARGET_ARCH=x86 TARGET_PRODUCT=eee_701 DISABLE_DEXPREOPT=true make -j2 installer_img" > amake.sh
+
+mv vendor/asus/eee_701/Android.mk vendor/asus/eee_701/AndroidBoard.mk
+
+
+make: *** No rule to make target `vendor/google/frameworks/maps/com.google.android.maps.xml', 
+needed by `out/target/product/eee_701/system/etc/permissions/com.google.android.maps.xml'.  Stop.
+
+eee_701.mk
+$(call inherit-product, $(SRC_TARGET_DIR)/product/generic.mk)
+
+
+Copy:  -> 
+dirname: missing operand
+Try `dirname --help' for more information.
+mkdir: missing operand
+
+
+
+adb install CI_CMMB_320.apk
+mount -t ext2 /dev/block/mmcblk0p1 /sdcard
+cp mfs --> /sdcard
+chmod 777 /dev/graphics/fb0
+play
+
+adb logcat
+
+config files
+
+default.prop
+#
+# ADDITIONAL_DEFAULT_PROPERTIES
+#
+ro.secure=0
+ro.allow.mock.location=1
+ro.debuggable=1
+persist.service.adb.enable=1
+sudo grub-install --root-directory=/media/disk --no-floppy /dev/sdb1
+sudo grub-install --root-directory=/media/disk-1 --no-floppy /dev/sdb1
+sudo grub-install --root-directory=/media/disk-1 --no-floppy /dev/sdc1
+sudo grub-install --root-directory=/flash --no-floppy /dev/sdc1
+sudo grub-install --root-directory=/flash --no-floppy /dev/sdb1
+sudo cp vmlinuz /flash/boot/
+sudo cp grub/menu.lst /flash/boot/grub/
+
+
+
+sudo cp -ra backup_andr_sd/* /media/disk-1
+sudo rm -r /media/disk-1/boot/
+sudo grub-install --root-directory=/media/disk-1 --no-floppy /dev/sdc1
+sudo cp backup_andr_sd/boot/vmlinuz /media/disk-1/boot/
+sudo cp backup_andr_sd/boot/grub/menu.lst /media/disk-1/boot/grub/
+sudo vi /media/disk-1/boot/grub/menu.lst
+
+2009-7-7
+-------------------------------------------------
+andemo rotate
+sdk rotate
+rotate 180 has problem
+
+
+
+
+MediaPlayerInterface.h
+enum player_type {
+    PV_PLAYER = 1,
+    SONIVOX_PLAYER = 2,
+    VORBIS_PLAYER = 3
+};
+
+AudioSystem.h
+    enum stream_type {
+        DEFAULT         =-1,
+        VOICE_CALL      = 0,
+        SYSTEM          = 1,
+        RING            = 2,
+        MUSIC           = 3,
+        ALARM           = 4,
+        NOTIFICATION    = 5,
+        BLUETOOTH_SCO   = 6,
+        ENFORCED_AUDIBLE = 7, // Sounds that cannot be muted by user and must be routed to speaker
+        NUM_STREAM_TYPES
+    };
+
+
+VorbisPlayer::render()
+
+
+
+cmmb sdk build 
+need build_cmmb for libxml headers
+need codec dir too
+
+Linking shared Library /mnt/hgfs/hostshare/_android_yuhua/PlaybackSDK_android/SMIT.SDK/Embedded/embedded_sdk/release/TDMB_PMP_SDK/build_linux_ubuntu_x86/sdk_linux/sdk/libcidana_playback_sdk.so...
+/home/cidana/mydroid/prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/bin/../lib/gcc/arm-eabi/4.2.1/../../../../arm-eabi/bin/ld: crt0.o: No such file: No such file or directory
+
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/crtn.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/crtbegin.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/thumb/crtn.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/thumb/crtbegin.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/thumb/interwork/crtn.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/thumb/interwork/crtbegin.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/thumb/interwork/crtend.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/thumb/interwork/crti.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/thumb/crtend.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/thumb/crti.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/interwork/crtn.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/interwork/crtbegin.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/interwork/crtend.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/interwork/crti.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/crtend.o
+prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/crti.o
+
+
+mydroid/prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/bin/arm-eabi-gcc -c -fno-builtin crt0.s -o crt0.o
+
+/home/cidana/mydroid/prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/bin/../lib/gcc/arm-eabi/4.2.1/../../../../arm-eabi/bin/ld: 
+/home/cidana/mydroid/prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/bin/../lib/gcc/arm-eabi/4.2.1/crt0.o: 
+.preinit_array section is not allowed in DSO
+
+delete .preinit_array section in crt0.s
+
+ok
+
+
+2009-7-6
+-------------------------------------------------
+Y:\mydroid\frameworks\base\libs\audioflinger\AudioHardwareInterface.cpp
+
+there is only one file need to be modified
+
+make libhardware_legacy
+
+
+mount -o remount rw /system
+mount -t ext2 /dev/block/mmcblk0p1 /data/mnt
+umount /data/mnt
+
+rm /system/lib/libhardware_legacy.so
+rm /system/lib/libaudioflinger.so
+
+cp /data/mnt/libhardware_legacy.so /system/lib/
+cp /data/mnt/libaudioflinger.so /system/lib/
+cp /data/mnt/mediaserver /system/bin
+
+cp /data/backup/mediaserver /system/bin
+
+/system/bin/mediaserver
+
+
+bionic/linker/linker.c:621| ERROR: OOPS:    71 prelinked library 'libhardware_legacy.so' mapped at 0x40000000, not at 0xa9c00000
+bionic/linker/linker.c:1517| ERROR:    71 could not load 'libhardware_legacy.so'
+bionic/linker/linker.c:1577| ERROR: failed to link libaudioflinger.so
+bionic/linker/linker.c:1517| ERROR:    71 could not load 'libaudioflinger.so'
+bionic/linker/linker.c:1577| ERROR: failed to link /system/bin/mediaserver
+bionic/linker/linker.c:1675| ERROR: CANNOT LINK EXECUTABLE '/system/bin/mediaser
+
+
+cui long
+
+hi, 有个问题需要你那里支持一下。
+我这里已经把cmmb playback sdk跑起来了，目前的demo是只有视频没有声音，
+没有声音的原因是android 的 mediaserver占用了ALSA设备， 我们之前在
+dell mini上的办法是替换libaudioflinger.so，让android打开一个stub设备，
+sdk打开ALSA设备，但我这里build好的libaudioflinger.so 替换后
+mediaserver无法启动， 因为load 这个动态库的时候会出错，
+
+我截了一段信息是这样的：
+bionic/linker/linker.c:621| ERROR: OOPS:    71 prelinked library 'libhardware_legacy.so' mapped at 0x40000000, not at 0xa9c00000
+bionic/linker/linker.c:1517| ERROR:    71 could not load 'libhardware_legacy.so'
+bionic/linker/linker.c:1577| ERROR: failed to link libaudioflinger.so
+bionic/linker/linker.c:1517| ERROR:    71 could not load 'libaudioflinger.so'
+bionic/linker/linker.c:1577| ERROR: failed to link /system/bin/mediaserver
+bionic/linker/linker.c:1675| ERROR: CANNOT LINK EXECUTABLE '/system/bin/mediaser
+
+如果把mediaserver, libaudioflinger.so, libhardware_legacy.so 都用我这边的替换，也不行。
+bionic/linker/linker.c:1076| ERROR:  1322 cannot locate '(null)'...
+bionic/linker/linker.c:1577| ERROR: failed to link libaudioflinger.so
+bionic/linker/linker.c:1517| ERROR:  1322 could not load 'libaudioflinger.so'
+bionic/linker/linker.c:1577| ERROR: failed to link /system/bin/mediaserver
+bionic/linker/linker.c:1675| ERROR: CANNOT LINK EXECUTABLE '/system/bin/mediaserver'
+
+你可不可以，帮我们在你的环境下build一下libaudioflinger.so, libhardware_legacy.so发过来，
+好让我们的cmmb demo可以有声音出来。
+
+需要改动的文件是：
+mydroid\frameworks\base\libs\audioflinger\AudioHardwareInterface.cpp
+
+改动只有一处，在110行，你diff一下附件就能看到改动
+
+
+
+model number
+yh_x2
+
+firmware version
+1.5
+
+kernel version
+2.6.25
+
+build number
+eng.yh.20090305.181251
+
+
+
+
+
+
+Y:\mydroid\frameworks\base\cmds\servicemanager
+
+main_mediaserver.cpp
+AudioFlinger::instantiate()
+
+AudioFlinger.cpp
+AudioFlinger::AudioFlinger()
+
+
+AudioHardwareInterface.cpp
+AudioHardwareInterface::create()
+
+
+AudioHardwareALSA.cpp
+android::AudioHardwareInterface *createAudioHardware(void) {
+	return new android::AudioHardwareALSA();
+}
+
+
+base/media/libmedia/audiosystem
+
+
+AudioSystem.h
+
+
+
+undefined reference to `__cxa_end_cleanup'
+undefined reference to `__gxx_personality_v0'
+OPTIMIZE                 = Y
+DEBUG                    = N
+
+2009-7-3
+-------------------------------------------------
+sdk init error , try time bomb
+
+
+
+2009-7-1
+-------------------------------------------------
+ndk 
+
+gphone andemo done
+rotate done
+
+gphone
+porting done, add rotation feature
+porting document done
+command line demo done
+support xi'an
+
+mini
+dell mini document update(make booting sdcard/deploy android application )
+support taiwan
+
+TI
+archmind will need two weeks for preparing support us
+
+
+contact yuhua for open root privilege on gphone or replace the firmware
+
+we can modify the audio libs
+
+
+2009-6-30
+-------------------------------------------------
+mydroid-1.5.tar
+
+
+2009-6-29
+-------------------------------------------------
+make ARCH=arm CROSS_COMPILE=/usr/local/x-tools/arm-stm-linux-gnueabi/arm-stm-linux-gnueabi- evb2062_defconfig
+
+
+2009-6-26
+-------------------------------------------------
+android doc
+Makefile.rules: -fno-rtti moved from optimized flag to cppflag
+
+
+system\core\init
+
+
+021-23073376
+
+TI 3505 EVM
+
+需要提供：
+在3505 EVM上可以work的android source tree，tool chain。
+关于如何制作这张sd卡中rootfs image的文档。
+
+
+问题：
+1.用SD卡上这个镜像，接上网口能否联通网络，如不能如何联通，如何设置起始ip地址
+2.这块板有wifi吗
+
+
+
+
+2009-6-25
+-------------------------------------------------
+crash problem
+it's alsadevice.cpp
+in alsa->stop{   flush()  memset freed memory }
+
+
+attr
+VECTOR idx++
+
+
+C++ compiling ../../../../src/Libwin32/linux/linuxrwqueue.cpp ...
+C++ compiling ../../../../src/Libwin32/linux/linuxtimer.cpp ...
+
+sync this? open 1 then open 2 crash in libc
+
+
+
+PlaybackEngine.cpp
+
+win32.cpp
+	int mainthread_init(void){CLinuxThread_mainthread_init();}
+	void mainthread_fini(void){CLinuxThread_mainthread_fini();}
+winbase.h
+	int mainthread_init(void);
+	void mainthread_fini(void);
+
+linuxsync2.cpp
+	#include "linuxtimer.h"
+	int CLinuxThread_mainthread_init(void)
+	{
+		CLinuxTimer_init();
+		mainthread = new CLinuxThread;
+		if(mainthread)
+			return 0;
+		else
+			return -1;
+	}
+
+	void CLinuxThread_mainthread_fini(void)
+	{
+		CLinuxTimer_fini();
+		if(mainthread)
+		{
+			delete mainthread;
+			mainthread=NULL;
+		}
+	}
+
+linuxsync2.h
+	int CLinuxThread_mainthread_init(void);
+	void CLinuxThread_mainthread_fini(void);
+
+
+
+2009-6-24
+-------------------------------------------------
+codinate 118,35,684,452
+
+
+118,35,566,417
+
+
+CRASH
+libwin32/linux/win32.cpp, 
+GlobalMemoryStatus?
+USE_VECTOR
+
+
+AUDIO
+libaudiofinger.so
+	frameworks/base/libs/audioflinger
+
+libaudio.so
+	hardware/alsa_sound
+
+VIDEO
+libplayer/videorenderlinux.cpp
+libutility/graphiccontext.cpp
+ExternalDependency/imageprocess
+
+
+no sound?
+check if opensound/alsa config is correct
+
+
+2009-6-22
+-------------------------------------------------
+st_demo_20090622
+
+
+
+2009-6-19
+-------------------------------------------------
+decoder cpu usage
+
+mknod /dev/fb0 c 29 0
+mknod /dev/input/event0 c 13 64
+
+mkdir -p /dev/snd
+mknod /dev/snd/controlC0 c 116 0
+mknod /dev/snd/pcmC0D0p c 116 16
+mknod /dev/snd/pcmC0D0c c 116 24
+
+mount /dev/mmc0p1 /mnt
+
+&& cd /mnt && ./cidana_sample
+
+cd / && umount /mnt
+
+sudo rm /media/disk/cidana_sample \
+&& sudo cp bin/cidana_sample /media/disk/
+
+
+sudo umount /media/disk/
+
+
+2009-6-18
+-------------------------------------------------
+
+
+AudioInfo.samplesperframe	2048
+t.wma	4096
+48kpro	6144
+
+
+ASF_DMX
+WMA_ADEC
+
+builds/libwmapro
+hostshare/libasfpro
+
+2009-6-17
+-------------------------------------------------
+CPlaybackEngine::GetStatistics()
+
+
+1.win32.cpp
+2.remove noresize code
+3.add imageprocess
+
+
+
+ST
+
+\\Fileserver\RD\Engineer\ThirdParty\ST\STCodec
+
+alsa-lib
+./configure --host=/usr/local/x-tools/arm-stm-linux-gnueabi/bin/arm-stm-linux-gnueabi- \
+--prefix=/usr --without-libdl --enable-static
+
+.a --> src/.libs
+
+
+2009-6-12
+-------------------------------------------------
+utils/Error.h
+
+hardware/libhardware_legacy/
+
+\libutility
+
+Makefile - android hardware include 
+
+andemo Makefile add libaudio
+
+
+
+vendor/asus/eee_701/BoardConfig.mk
+
+export ALSA_CONFIG_PATH=/system/usr/share/alsa
+
+snd_pcm_nonblock
+setHardwareResample
+
+default sample rate 44100 --> 48000
+
+samba
+
+2009-6-11
+-------------------------------------------------
+
+root     2076  1     808   368   c026de2d 8000f696 S /system/bin/sh
+root     2077  1     3352  188   ffffffff 08051ccc S /sbin/adbd
+system   2079  1     852   312   c0292807 8010fa46 S /system/bin/servicemanager
+root     2081  1     912   428   c01713cf 8010fbdc S /system/bin/vold
+root     2083  1     300876 12588 c01713cf 8010fbdc S zygote
+media    2084  1     20720 5540  ffffffff 8020fa46 S /system/bin/mediaserver
+root     2086  1     868   344   c0391b98 8010f696 S /system/bin/installd
+system   2094  2083  533260 29388 ffffffff 8010fa46 S system_server
+radio    2128  2083  451752 15252 ffffffff 80110d9e S com.android.phone
+app_2    2133  2083  464672 25004 ffffffff 80110d9e S android.process.acore
+app_10   2154  2083  448020 13336 ffffffff 80110d9e S com.android.mms
+app_0    2172  2083  446276 15464 ffffffff 80110d9e S android.process.media
+app_4    2185  2083  444176 16036 ffffffff 80110d9e S com.android.calendar
+app_9    2200  2083  440612 13112 ffffffff 80110d9e S com.android.alarmclock
+root     2213  2077  808   392   c0129ebb 80010ac3 S /system/bin/sh
+
+Main_mediaserver.cpp (frameworks\base\media\mediaserver):    AudioFlinger::instantiate();
+System_init.cpp (frameworks\base\cmds\system_server\library):        AudioFlinger::instantiate();
+
+vi frameworks/base/media/mediaserver/main_mediaserver.cpp \
+frameworks/base/cmds/system_server/library/system_init.cpp
+
+out/target/product/eee_701/system/lib/libsystem_server.so
+out/target/product/eee_701/system/bin/mediaserver
+
+
+libsystem_server
+mediaserver
+
+
+//create a stub hw to rob real device from android
+AudioHardwareInterface.cpp
+	create
+        hw = new AudioHardwareStub();
+
+
+2009-6-10
+-------------------------------------------------
+init.rc not with permission of 0644 will cause boot error
+
+aumix
+./configure \
+  --without-ncurses \
+  --without-gpm \
+  --without-gtk \
+  --disable-gtktest \
+  --without-gtk1 \
+  --disable-gtk1test \
+  --disable-nls
+
+alsa-util
+./configure \
+	--disable-nls \
+	--disable-largefile
+
+
+-------------------------------------------------
+~/hostshare/gfxSDL/build/linux_x86$ cat /proc/asound/devices 
+  0: [ 0]   : control
+  1:        : sequencer
+  8: [ 0- 0]: raw midi
+ 16: [ 0- 0]: digital audio playback
+ 17: [ 0- 1]: digital audio playback
+ 24: [ 0- 0]: digital audio capture
+ 33:        : timer
+~/hostshare/gfxSDL/build/linux_x86$ ls -l /dev/snd/
+total 0
+crw-rw----+ 1 root audio 116,  0 2009-06-09 16:14 controlC0
+crw-rw----+ 1 root audio 116,  8 2009-06-09 16:14 midiC0D0
+crw-rw----+ 1 root audio 116, 24 2009-06-10 11:40 pcmC0D0c
+crw-rw----+ 1 root audio 116, 16 2009-06-10 11:40 pcmC0D0p
+crw-rw----+ 1 root audio 116, 17 2009-06-09 16:14 pcmC0D1p
+crw-rw----+ 1 root audio 116,  1 2009-06-09 16:14 seq
+crw-rw----+ 1 root audio 116, 33 2009-06-09 16:14 timer
+
+
+-------------------------------------------------
+# cat devices
+cat devices
+  2:        : timer
+  3: [ 0- 4]: digital audio capture
+  4: [ 0- 0]: digital audio playback
+  5: [ 0- 0]: digital audio capture
+  6: [ 0]   : control
+
+# ls -l /dev/snd/
+crwxrwxrwx root     audio     14,   0 2009-06-10 05:45 mixer
+crwxrwxrwx root     audio    116,   6 2009-06-10 05:45 controlC0
+crw------- root     root      14,   4 2009-06-10 05:45 audio
+crw------- root     root      14,   3 2009-06-10 05:45 dsp
+crwxrwxrwx root     audio    116,   5 2009-06-10 05:45 pcmC0D0c
+crwxrwxrwx root     audio    116,   4 2009-06-10 05:45 pcmC0D0p
+crw------- root     audio    116,   3 2009-06-10 05:45 pcmC0D4c
+crwxrwxrwx root     audio    116,   2 2009-06-10 05:45 timer
+
+# ls /sys/class/sound -l
+timer
+pcmC0D4c
+pcmC0D0p
+pcmC0D0c
+dsp
+audio
+controlC0
+mixer
+
+
+~/myroid$ du -sh *
+11M	bionic
+2.2M	bootable
+6.0M	build
+81M	dalvik
+38M	development
+0	eee_701
+621M	external
+120M	frameworks
+920K	hardware
+436M	kernel
+8.0K	libc.txt
+4.0K	Makefile
+4.0K	mkmk_android.sh
+6.0G	out
+33M	packages
+404M	prebuilt
+16M	system
+2.6M	vendor
+
+2009-6-9
+-------------------------------------------------
+
+-alsa app version problem
+export ALSA_CONFIG_PATH=/system/usr/share/alsa
+
+
+target:
+/system/etc/asound.conf
+/system/usr/share/alsa/*
+
+
+host:
+/usr/share/alsa/*
+
+#ifdef _BIG_ENDIAN
+	who defined this ?
+
+AlsaDevice.cpp
+BitStreamBase.cpp
+DemuxCMMB.cpp
+OpenSoundDevice.cpp
+
+INCLUDE THESE TWO THAT SHOULD BE ENOUGH
+bionic/kernel/common
+bionic/kernel/arch-x86
+
+
+
+1. how to compile the playback sdk
+2. how to add a native command line app to android
+2. quick fix routine (modify/compile/run/debug)
+2. bionic/libc/docs/OVERVIEW.txt
+3. problems which we still have (TODOs)
+	* no sound
+	* stop segment faults
+
+
+
+
+
+arch-arm/include/endian.h:#define _BYTE_ORDER _BIG_ENDIAN
+arch-arm/include/endian.h:#define _BYTE_ORDER _LITTLE_ENDIAN
+arch-arm/include/machine/_types.h:#define _BYTE_ORDER _BIG_ENDIAN
+arch-arm/include/machine/_types.h:#define _BYTE_ORDER _LITTLE_ENDIAN
+arch-x86/include/endian.h:#ifndef _I386_ENDIAN_H_
+arch-x86/include/endian.h:#define _I386_ENDIAN_H_
+arch-x86/include/endian.h:#define _BYTE_ORDER _LITTLE_ENDIAN
+arch-x86/include/endian.h:#endif /* _I386_ENDIAN_H_ */
+bionic/ldexp.c:#if BYTE_ORDER == BIG_ENDIAN
+bionic/ldexp.c:#if BYTE_ORDER == LITTLE_ENDIAN
+bionic/sha1.c:#if BYTE_ORDER == LITTLE_ENDIAN
+bionic/md5.c:#if defined(WORDS_BIGENDIAN)
+bionic/md5.c:#if defined(WORDS_BIGENDIAN)
+include/endian.h:#ifndef _ENDIAN_H_
+include/endian.h:#define _ENDIAN_H_
+include/endian.h:#endif /* _ENDIAN_H_ */
+include/sys/endian.h:#ifndef _SYS_ENDIAN_H_
+include/sys/endian.h:#define _SYS_ENDIAN_H_
+include/sys/endian.h:#define _LITTLE_ENDIAN	1234
+include/sys/endian.h:#define _BIG_ENDIAN	4321
+include/sys/endian.h:#define _PDP_ENDIAN	3412
+include/sys/endian.h:#define LITTLE_ENDIAN	_LITTLE_ENDIAN
+include/sys/endian.h:#define BIG_ENDIAN	_BIG_ENDIAN
+include/sys/endian.h:#define PDP_ENDIAN	_PDP_ENDIAN
+include/sys/endian.h:#if _BYTE_ORDER == _LITTLE_ENDIAN
+include/sys/endian.h:#define __LITTLE_ENDIAN_BITFIELD
+include/sys/endian.h:#if _BYTE_ORDER == _BIG_ENDIAN
+include/sys/endian.h:#define __BIG_ENDIAN_BITFIELD
+include/sys/endian.h:#ifndef  __LITTLE_ENDIAN
+include/sys/endian.h:#define  __LITTLE_ENDIAN    _LITTLE_ENDIAN
+include/sys/endian.h:#ifndef  __BIG_ENDIAN
+include/sys/endian.h:#define  __BIG_ENDIAN       _BIG_ENDIAN
+include/sys/endian.h:#endif /* _SYS_ENDIAN_H_ */
+include/netinet/ip.h:#if BYTE_ORDER == LITTLE_ENDIAN
+include/netinet/ip.h:#if BYTE_ORDER == BIG_ENDIAN
+include/netinet/ip.h:#if _BYTE_ORDER == _LITTLE_ENDIAN
+include/netinet/ip.h:#if _BYTE_ORDER == _BIG_ENDIAN
+include/netinet/ip.h:#if defined(__LITTLE_ENDIAN_BITFIELD)
+include/netinet/ip.h:#elif defined (__BIG_ENDIAN_BITFIELD)
+kernel/tools/defaults.py:    "__CHECK_ENDIAN__": kCppUndefinedMacro,
+kernel/common/linux/mtd/cfi_endian.h:#define CFI_HOST_ENDIAN
+kernel/common/linux/mtd/cfi_endian.h:#ifdef CFI_LITTLE_ENDIAN
+kernel/common/linux/mtd/cfi_endian.h:#elif defined (CFI_BIG_ENDIAN)
+kernel/common/linux/mtd/cfi_endian.h:#elif defined (CFI_HOST_ENDIAN)
+kernel/common/linux/mtd/map.h:#ifdef __LITTLE_ENDIAN
+kernel/common/linux/ip.h:#ifdef __LITTLE_ENDIAN_BITFIELD
+kernel/common/linux/ip.h:#elif defined (__BIG_ENDIAN_BITFIELD)
+kernel/common/linux/aio_abi.h:#ifdef __LITTLE_ENDIAN
+kernel/common/linux/aio_abi.h:#elif defined(__BIG_ENDIAN)
+kernel/common/linux/tcp.h:#ifdef __LITTLE_ENDIAN_BITFIELD
+kernel/common/linux/tcp.h:#elif defined(__BIG_ENDIAN_BITFIELD)
+kernel/common/linux/patchkey.h:#define __BYTE_ORDER __LITTLE_ENDIAN
+kernel/common/linux/patchkey.h:#if __BYTE_ORDER == __BIG_ENDIAN
+kernel/common/linux/patchkey.h:#elif __BYTE_ORDER == __LITTLE_ENDIAN
+kernel/common/linux/soundcard.h:#define __BYTE_ORDER __LITTLE_ENDIAN
+kernel/common/linux/soundcard.h:#if __BYTE_ORDER == __BIG_ENDIAN
+kernel/common/linux/soundcard.h:#elif __BYTE_ORDER == __LITTLE_ENDIAN
+kernel/common/linux/ktime.h:#ifdef __BIG_ENDIAN
+kernel/common/linux/byteorder/big_endian.h:#ifndef _LINUX_BYTEORDER_BIG_ENDIAN_H
+kernel/common/linux/byteorder/big_endian.h:#define _LINUX_BYTEORDER_BIG_ENDIAN_H
+kernel/common/linux/byteorder/big_endian.h:#ifndef __BIG_ENDIAN
+kernel/common/linux/byteorder/big_endian.h:#define __BIG_ENDIAN 4321
+kernel/common/linux/byteorder/big_endian.h:#ifndef __BIG_ENDIAN_BITFIELD
+kernel/common/linux/byteorder/big_endian.h:#define __BIG_ENDIAN_BITFIELD
+kernel/common/linux/byteorder/little_endian.h:#ifndef _LINUX_BYTEORDER_LITTLE_ENDIAN_H
+kernel/common/linux/byteorder/little_endian.h:#define _LINUX_BYTEORDER_LITTLE_ENDIAN_H
+kernel/common/linux/byteorder/little_endian.h:#ifndef __LITTLE_ENDIAN
+kernel/common/linux/byteorder/little_endian.h:#define __LITTLE_ENDIAN 1234
+kernel/common/linux/byteorder/little_endian.h:#ifndef __LITTLE_ENDIAN_BITFIELD
+kernel/common/linux/byteorder/little_endian.h:#define __LITTLE_ENDIAN_BITFIELD
+kernel/common/linux/patchkey.h~:#define __BYTE_ORDER __LITTLE_ENDIAN
+kernel/common/linux/patchkey.h~:#if __BYTE_ORDER == __BIG_ENDIAN
+kernel/common/linux/patchkey.h~:#elif __BYTE_ORDER == __LITTLE_ENDIAN
+kernel/common/linux/dccp.h:#ifdef __LITTLE_ENDIAN_BITFIELD
+kernel/common/linux/dccp.h:#elif defined(__BIG_ENDIAN_BITFIELD)
+kernel/common/linux/dccp.h:#ifdef __LITTLE_ENDIAN_BITFIELD
+kernel/common/linux/dccp.h:#elif defined(__BIG_ENDIAN_BITFIELD)
+kernel/common/linux/raid/md_p.h:#ifdef __BIG_ENDIAN
+kernel/common/linux/if_hippi.h:#ifdef __BIG_ENDIAN_BITFIELD
+kernel/common/linux/if_hippi.h:#elif defined(__LITTLE_ENDIAN_BITFIELD)
+kernel/common/linux/if_hippi.h:#ifdef __BIG_ENDIAN_BITFIELD
+kernel/common/linux/if_hippi.h:#elif defined(__LITTLE_ENDIAN_BITFIELD)
+kernel/common/linux/cdrom.h:#ifdef __BIG_ENDIAN_BITFIELD
+kernel/common/linux/cdrom.h:#elif defined(__LITTLE_ENDIAN_BITFIELD)
+kernel/common/linux/cdrom.h:#ifdef __BIG_ENDIAN_BITFIELD
+kernel/common/linux/cdrom.h:#elif defined(__LITTLE_ENDIAN_BITFIELD)
+kernel/common/linux/cdrom.h:#ifdef __BIG_ENDIAN_BITFIELD
+kernel/common/linux/cdrom.h:#elif defined(__LITTLE_ENDIAN_BITFIELD)
+kernel/common/linux/cdrom.h:#ifdef __BIG_ENDIAN_BITFIELD
+kernel/common/linux/cdrom.h:#elif defined(__LITTLE_ENDIAN_BITFIELD)
+kernel/common/linux/cdrom.h:#ifdef __BIG_ENDIAN_BITFIELD
+kernel/common/linux/cdrom.h:#elif defined(__LITTLE_ENDIAN_BITFIELD)
+kernel/common/linux/cdrom.h:#ifdef __BIG_ENDIAN_BITFIELD
+kernel/common/linux/cdrom.h:#elif defined(__LITTLE_ENDIAN_BITFIELD)
+kernel/common/linux/cdrom.h:#ifdef __BIG_ENDIAN_BITFIELD
+kernel/common/linux/cdrom.h:#elif defined(__LITTLE_ENDIAN_BITFIELD)
+kernel/common/linux/cdrom.h:#ifdef __BIG_ENDIAN_BITFIELD
+kernel/common/linux/cdrom.h:#elif defined(__LITTLE_ENDIAN_BITFIELD)
+kernel/common/linux/cdrom.h:#ifdef __BIG_ENDIAN_BITFIELD
+kernel/common/linux/cdrom.h:#elif defined(__LITTLE_ENDIAN_BITFIELD)
+kernel/common/linux/prctl.h:#define PR_GET_ENDIAN 19
+kernel/common/linux/prctl.h:#define PR_SET_ENDIAN 20
+kernel/common/linux/prctl.h:#define PR_ENDIAN_BIG 0
+kernel/common/linux/prctl.h:#define PR_ENDIAN_LITTLE 1  
+kernel/common/linux/prctl.h:#define PR_ENDIAN_PPC_LITTLE 2  
+kernel/common/linux/soundcard.h~:#define __BYTE_ORDER __LITTLE_ENDIAN
+kernel/common/linux/soundcard.h~:#if __BYTE_ORDER == __BIG_ENDIAN
+kernel/common/linux/soundcard.h~:#elif __BYTE_ORDER == __LITTLE_ENDIAN
+kernel/common/asm-generic/bitops/le.h:#ifdef __LITTLE_ENDIAN
+kernel/common/asm-generic/bitops/le.h:#elif defined(__BIG_ENDIAN)
+private/arpa_nameser_compat.h:#define	LITTLE_ENDIAN	1234	/* least-significant byte first (vax, pc) */
+private/arpa_nameser_compat.h:#define	BIG_ENDIAN	4321	/* most-significant byte first (IBM, net) */
+private/arpa_nameser_compat.h:#define	PDP_ENDIAN	3412	/* LSB first in word, MSW first in long (pdp)*/
+private/arpa_nameser_compat.h:#define BYTE_ORDER	LITTLE_ENDIAN
+private/arpa_nameser_compat.h:#define BYTE_ORDER	BIG_ENDIAN
+private/arpa_nameser_compat.h:    (BYTE_ORDER != BIG_ENDIAN && BYTE_ORDER != LITTLE_ENDIAN && \
+private/arpa_nameser_compat.h:    BYTE_ORDER != PDP_ENDIAN)
+private/arpa_nameser_compat.h:#if BYTE_ORDER == BIG_ENDIAN
+private/arpa_nameser_compat.h:#if BYTE_ORDER == LITTLE_ENDIAN || BYTE_ORDER == PDP_ENDIAN
+stdlib/strtod.c: * #define IEEE_LITTLE_ENDIAN for IEEE-arithmetic machines where the least
+stdlib/strtod.c: * #define IEEE_BIG_ENDIAN for IEEE-arithmetic machines where the most
+stdlib/strtod.c:#if BYTE_ORDER == BIG_ENDIAN
+stdlib/strtod.c:#define IEEE_BIG_ENDIAN
+stdlib/strtod.c:#define IEEE_LITTLE_ENDIAN
+stdlib/strtod.c:#define IEEE_BIG_ENDIAN
+stdlib/strtod.c:#if defined(IEEE_LITTLE_ENDIAN) + defined(IEEE_BIG_ENDIAN) + defined(VAX) + \
+stdlib/strtod.c:Exactly one of IEEE_LITTLE_ENDIAN IEEE_BIG_ENDIAN, VAX, or
+stdlib/strtod.c:#ifdef IEEE_LITTLE_ENDIAN
+stdlib/strtod.c:#if defined(IEEE_LITTLE_ENDIAN) + defined(VAX) + defined(__arm__)
+stdlib/strtod.c:#if defined(IEEE_LITTLE_ENDIAN) + defined(IEEE_BIG_ENDIAN)
+
+
+
+2009-6-8
+-------------------------------------------------
+cmmb_command 
+	screen width, height
+2009-6-4
+-------------------------------------------------
+crash maybe caused by ivitime?
+
+c800
+fc00
+	static int n=0;
+	if(n<3)
+	{
+		printf("[CCMMBDemux]%d Skip %d Bytes of Padding Stuff!! \n", n++, nPaddingLen);
+	}
+
+
+2009-6-3
+-------------------------------------------------
+andemo
+	libcidana_playback_sdk libippcore libippvcmerged libXML
+
+
+sdk_lib/libplayer/Makefile:CPPFLAGS += -DUSE_SDL
+sdk_lib/libutility/Makefile:CPPFLAGS += -DUSE_SDL
+sdk_lib/libutility/Makefile:	$(DIR_OBJ)/GraphicsContextSDL.o \
+
+
+sdk_lib/libplayer/Makefile:CFLAGS += -D_VIDEO_ONLY
+sdk_lib/libplayer/Makefile:CPPFLAGS += -D_VIDEO_ONLY
+	yuv2rgb_c.o
+
+yuv2rgb_c.h
+yuv2rgb_c.c
+VideoRenderLinux.cpp
+	SCREEN WIDTH
+GraphicsContext.h
+GraphicsContext.cpp
+	SCREEN WIDTH, DEVICE_NAME
+main.cpp
+
+OpenSoundDevice.cpp
+	DEVICE_NAME
+
+
+AACpluslib
+
+sdk_lib/libcmmbdemux/Makefile:INCLUDEDIRS += -I$(EXTERNAL_LIB_DIR)/zlib
+sdk_src/Makefile:	$(EXTERNAL_LIB_DIR)/zlib/libz.a \
+
+uncompress31
+
+
+grep -E "(SDL|VIDEO_ONLY)" * -r
+
+
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libXML_intermediates/libXML.a(parserInternals.o): In function `xmlCheckVersion':
+../../../src/LibXML/parserInternals.c:81: undefined reference to `stderr'
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libXML_intermediates/libXML.a(tree.o): In function `xmlBufferDump':
+../../../src/LibXML/tree.c:6831: undefined reference to `stdout'
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libXML_intermediates/libXML.a(xmlIO.o): In function `__xmlIOErr':
+../../../src/LibXML/xmlIO.c:265: undefined reference to `__errno_location'
+../../../src/LibXML/xmlIO.c:267: undefined reference to `__errno_location'
+../../../src/LibXML/xmlIO.c:270: undefined reference to `__errno_location'
+../../../src/LibXML/xmlIO.c:273: undefined reference to `__errno_location'
+../../../src/LibXML/xmlIO.c:276: undefined reference to `__errno_location'
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libXML_intermediates/libXML.a(xmlIO.o):../../../src/LibXML/xmlIO.c:279: more undefined references to `__errno_location' follow
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libXML_intermediates/libXML.a(xmlIO.o): In function `xmlCheckFilename':
+../../../src/LibXML/xmlIO.c:738: undefined reference to `stat64'
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libXML_intermediates/libXML.a(xmlIO.o): In function `xmlFileOpen_real':
+../../../src/LibXML/xmlIO.c:843: undefined reference to `stdin'
+../../../src/LibXML/xmlIO.c:877: undefined reference to `fopen64'
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libXML_intermediates/libXML.a(xmlIO.o): In function `xmlFileOpenW':
+../../../src/LibXML/xmlIO.c:925: undefined reference to `stdout'
+../../../src/LibXML/xmlIO.c:950: undefined reference to `fopen64'
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libXML_intermediates/libXML.a(xmlIO.o): In function `xmlFileClose':
+../../../src/LibXML/xmlIO.c:1020: undefined reference to `stdout'
+../../../src/LibXML/xmlIO.c:1020: undefined reference to `stderr'
+../../../src/LibXML/xmlIO.c:1026: undefined reference to `stdin'
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libXML_intermediates/libXML.a(xmlmemory.o): In function `xmlMemDisplay':
+../../../src/LibXML/xmlmemory.c:652: undefined reference to `fopen64'
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libXML_intermediates/libXML.a(catalog.o): In function `xmlLoadFileContent':
+../../../src/LibXML/catalog.c:973: undefined reference to `stat64'
+../../../src/LibXML/catalog.c:978: undefined reference to `open64'
+out/target/product/eee_701/obj/STATIC_LIBRARIES/libXML_intermediates/libXML.a(error.o): In function `xmlGenericErrorDefaultFunc':
+../../../src/LibXML/error.c:75: undefined reference to `stderr'
+collect2: ld returned 1 exit status
+make: *** [out/target/product/eee_701/obj/EXECUTABLES/andemo_intermediates/LINKED/andemo] Error 1
+~/myroid$ cp /home/gavinwang/SDL-1.2.13/Makefile /home/gavinwang/hostshare
+
+
+
+
+libxml.h	64 -> 32
+
+2009-6-2
+-------------------------------------------------
+1. libutility makefile -> framebuffer
+2. libplayer makefile -> debuginfo
+3. config DEBUG -> Y
+
+http://www.fs-driver.org/download.html
+
+[DemuxCMMB] CMMB Demux Opened.
+[CCMMBDemux] input 102400 bytes into demux buffer!
+[DemuxOne] CMMB object not found, skip 102400 bytes
+[DemuxOne] process 102400 this time, total processed 102400 bytes, 0 bytes in bu
+ffer
+[PlaybackEngine] Demux Open Success.
+[VideoDecoderH264] H264 Decoder Opened.
+[PlaybackEngine] Video Decoder Open Success.
+[VideoRender] Video Render Opened.
+[PlaybackEngine] Video Render Open Success.
+[AudioDecoderAAC] AAC Decoder Opened.
+[PlaybackEngine] Audio Decoder Open Success.
+[AudioRender] Audio Render Opened.
+[PlaybackEngine] Audio Render Open Success.
+**********CI Mobile Player*********
+
+
+[CCMMBDemux] input 51200 bytes into demux buffer!
+[DemuxOne] CMMB object not found, skip 51200 bytes
+[DemuxOne] process 51200 this time, total processed 4096000 bytes, 0 bytes in bu
+ffer
+
+2009-6-1
+-------------------------------------------------
+__dso_handle: undefined
+
+you can't define a static object from a class, like
+
+static ClassA obja;
+
+
+Binary file /home/gavinwang/myroid/prebuilt/linux-x86/toolchain/i686-unknown-linux-gnu-4.2.1/lib/gcc/i686-unknown-linux-gnu/4.2.1/crtbegin.o matches
+Binary file /home/gavinwang/myroid/prebuilt/linux-x86/toolchain/i686-unknown-linux-gnu-4.2.1/lib/gcc/i686-unknown-linux-gnu/4.2.1/crtbeginS.o matches
+Binary file /home/gavinwang/myroid/prebuilt/linux-x86/toolchain/i686-unknown-linux-gnu-4.2.1/lib/gcc/i686-unknown-linux-gnu/4.2.1/crtbeginT.o matches
+Binary file /home/gavinwang/myroid/prebuilt/linux-x86/toolchain/i686-unknown-linux-gnu-4.2.1/lib/libgcc_s.so.1 matches
+Binary file /home/gavinwang/myroid/prebuilt/linux-x86/toolchain/i686-unknown-linux-gnu-4.2.1/lib/libgcc_s.so matches
+
+
+
+ALSA lib external/alsa-lib/src/dlmisc.c:126:(snd_dlsym_verify) 
+unable to verify version for symbol snd_config_hook_load
+
+
+snd_htimestamp_t
+
+2009-5-31
+-------------------------------------------------
+sdk_lib/libplayer/Makefile:CPPFLAGS += -D_CMMB_SDK
+
+adb shell
+adb kill-server
+
+#include <stdlib.h>
+//#include <string.h>
+
+
+
+/home/gavinwang/myroid/prebuilt/linux-x86/toolchain/i686-unknown-linux-gnu-4.2.1/bin/i686-unknown-linux-gnu-g++
+
+SLIBPATH=/home/gavinwang/myroid/out/target/product/eee_701/static_libs
+
+/home/gavinwang/myroid/prebuilt/linux-x86/toolchain/i686-unknown-linux-gnu-4.2.1/bin/i686-unknown-linux-gnu-g++ -o abc main.o -L/home/gavinwang/myroid/out/target/product/eee_701/static_libs
+
+g++ -o abc main.cpp ../sdk/libcidana_playback_sdk.so -lasound -L. -lXML ./libipp*
+
+
+1
+	-I${ANPATH}/bionic/libc/include/ \
+
+ machine/_types.h: No such file or directory
+	-I${ANPATH}/bionic/libc/arch-x86/include \
+
+ asm/page.h: No such file or directory
+	-I${ANPATH}/bionic/libc/kernel/arch-x86 \
+
+linux/compiler.h: No such file or directory
+	-I${ANPATH}/bionic/libc/kernel/common \
+
+error: missing binary operator before token "("
+	-I${ANPATH}/bionic/libm/include \
+
+/usr/include/alsa/global.h:137: error: redefinition of ‘struct timeval’
+	-I${ANPATH}/external/alsa-lib/include
+
+/usr/lib/gcc/i486-linux-gnu/4.3.2/include/stddef.h:214: error: duplicate ‘unsigned’
+/usr/lib/gcc/i486-linux-gnu/4.3.2/include/stddef.h:214: error: two or more data types in declaration specifier
+bionic/libc/kernel/common/linux
+
+/home/gavinwang/myroid/external/alsa-lib/include/alsa/global.h:137: error: redefinition of ‘struct timeval’
+#define _POSIX_C_SOURCE
+
+#define __BYTE_ORDER __LITTLE_ENDIAN
+
+                 from ../../../../src/LibUtility/AlsaDevice.cpp:7:
+/home/gavinwang/myroid/bionic/libc/kernel/common/linux/patchkey.h:27:2: error: #error "could not determine byte order"
+In file included from ../../../../src/LibUtility/AlsaDevice.cpp:7:
+/home/gavinwang/myroid/bionic/libc/kernel/common/linux/soundcard.h:152:2: error: #error "could not determine byte order"
+In file included from /home/gavinwang/myroid/external/alsa-lib/include/alsa/asoundlib.h:49,
+                 from ../../../../src/LibUtility/AlsaDevice.h:5,
+                 from ../../../../src/LibUtility/AlsaDevice.cpp:13:
+/home/gavinwang/myroid/external/alsa-lib/include/alsa/pcm.h:228:2: error: #error "Unknown endian"
+
+find . -name *.a -exec mv '{}' static_libs \;
+
+ANPATH=/home/gavinwang/myroid
+INCLUDEDIRS += -I$(TOP)/include -I. \
+			   -I${ANPATH}/bionic/libc/include/ \
+			   -I${ANPATH}/bionic/libc/arch-x86/include \
+			   -I${ANPATH}/bionic/libc/kernel/arch-x86 \
+			   -I${ANPATH}/bionic/libc/kernel/common \
+			   -I${ANPATH}/bionic/libm/include \
+			   -I${ANPATH}/external/alsa-lib/include \
+
+
+__si_class_type_info
+__vmi_class_type_info
+-fno-rtti
+
+
+2009-5-26
+-------------------------------------------------
+delete console=0 in /boot/grub/menu.lst to access console
+
+mkdir -p out/target/product/eee_701/obj/STATIC_LIBRARIES/libSDL_intermediates
+mkdir -p out/target/product/eee_701/obj/STATIC_LIBRARIES/libSDLmain_intermediates
+
+cp libSDL.a /home/gavinwang/myroid/out/target/product/eee_701/obj/STATIC_LIBRARIES/libSDL_intermediates/
+cp out/lib/libSDLmain.a /home/gavinwang/myroid/out/target/product/eee_701/obj/STATIC_LIBRARIES/libSDLmain_intermediates/
+
+./configure --prefix=/home/gavinwang/sdl-1.2.12-android-20080919/out  --disable-shared --disable-rpath \
+--disable-diskaudio --disable-video-directfb --disable-video-svga \
+--disable-video-fbcon --disable-video-aalib --disable-cdrom --disable-joystick \
+--disable-timer --disable-file --disable-nas --disable-arts --disable-pulseaudio \
+--disable-video-x11 --disable-esd --disable-threads --disable-audio
+
+
+
+
+--disable-libc
+
+
+1. 你先要知道android这个本子的ip，比如说它的ip是192.168.1.100；
+2 . 然后在其它机子比如window上set一个叫ADBHOST的环境变量为192.168.1.100；
+3. 设好以后就可以通过adb shell命令登录到android上了，下来就可以使用了，
+退出adb shell 用exit命令；关闭一个adb连接使用adb kill-server命令
+
+192.168.0.90
+
+
+
+../../../../src/LibUtility/GraphicsContext.cpp: In function ‘IGraphicsContext* CreateGraphicsContext()’:
+../../../../src/LibUtility/GraphicsContext.cpp:377: error: cannot allocate an object of abstract type ‘CGraphicsContext’
+../../../../src/LibUtility/GraphicsContext.h:7: note:   because the following virtual functions are pure within ‘CGraphicsContext’:
+../../../../src/LibPlayer/Playercore.h:426: note: 	virtual HRESULT IGraphicsContext::BeginDraw(void**, bool)
+../../../../src/LibPlayer/Playercore.h:427: note: 	virtual HRESULT IGraphicsContext::BeginDraw(void**, void**, void**, int*, RECT*, RECT*, int)
+../../../../src/LibPlayer/Playercore.h:429: note: 	virtual HRESULT IGraphicsContext::EndDraw(bool)
+../../../../src/LibPlayer/Playercore.h:432: note: 	virtual HRESULT IGraphicsContext::SetViewport(RECT*, RECT*)
+
+../../../../src/LibPlayer/Playercore.h:438: note: 	virtual HRESULT IGraphicsContext::VideoWndChanged(void*)
+../../../../src/LibPlayer/Playercore.h:439: note: 	virtual HRESULT IGraphicsContext::SetVideoAspectRatio(long int)
+../../../../src/LibPlayer/Playercore.h:440: note: 	virtual HRESULT IGraphicsContext::ShowVideo(bool)
+../../../../src/LibPlayer/Playercore.h:441: note: 	virtual HRESULT IGraphicsContext::SetVideoProperty(VIDEOPROPERTY_ITEM)
+../../../../src/LibPlayer/Playercore.h:442: note: 	virtual HRESULT IGraphicsContext::GetVideoProperty(VIDEOPROPERTY_ITEM*)
+
+
+	STDMETHODIMP NonDelegatingQueryInterface(REFIID riid, void* *ppvObj);
+	STDMETHODIMP QuerySupported(REFGUID guidPropSet, unsigned long dwPropID, unsigned long *pTypeSupport);
+	STDMETHODIMP Get(REFGUID guidPropSet, unsigned long dwPropID, void* pInstanceData, unsigned long cbInstanceData, void* pPropData, unsigned long cbPropData, unsigned long *pcbReturned);
+	STDMETHODIMP Set(REFGUID guidPropSet, unsigned long dwPropID, void* pInstanceData, unsigned long cbInstanceData, void* pPropData, unsigned long cbPropData);
+	STDMETHODIMP Open(GFX_OPEN_OPTIONS *pOptions, unsigned long dwSize);
+	STDMETHODIMP Close();
+	STDMETHODIMP BeginDraw(void ** pFrameBuffer);
+	STDMETHODIMP EndDraw();
+	STDMETHODIMP GetDisplayProperties();
+	STDMETHODIMP GetDefaultKeys(int iOptions);
+	STDMETHODIMP SetFocus(BOOL bFocusOn);
+	STDMETHODIMP SetViewport(RECT *rtView );
+	STDMETHODIMP GetGuiKey( unsigned long dwIn, unsigned long * pOut );
+	STDMETHODIMP GetGraphicsProperties( GraphicsProperties * pGraphicsProperties );
+
+
+2009-5-25
+
+libsdl-gfx1.2-4
+sudo apt-get remove  libsdl-image1.2 libsdl-image1.2-dev \
+libsdl1.2-dev libsdl1.2debian libsdl1.2debian-alsa
+
+sudo apt-get install libsdl1.2-dev libsdl1.2debian
+
+
+valgrind
+
+2009-5-22
+
+undefined symbol: __stack_chk_fail_local
+define a char array in cpp function will cause this ugly error.
+
+integrate sdl with qt4
+shm
+
+2009-5-21
+-------------------------------------------------
+OSCL:operation system compatibility library
+PVMF:multimedia framework
+
+
+testoverlay
+testoverlay2
+
+
+2009-5-20
+-------------------------------------------------
+make bootable sd
+ciplayer source code?
+document
+where is playbackengine lib
+
+
+1. 将要编译的source code 放到"~/myroid/external/"下，可任意创建一个文件夹，其makefile可参考external目录下其它模块的Android.mk;
+2. 编译时，必须在"~/myroid/"目录下，用./mkmk_android.sh + 模块名（其在makefile里的LOCAL_MODULE被指定）；如：./mkmk_android.sh liballin_media_jni;
+3. 对一个模块想要重新编译，输入："./mkmk_android.sh clean-模块名" clean后，再使用2 step进行编译；
+
+
+t_sinpro
+t_sinlib
+libtestbuild/libyyy: cause rebuild host libs(libc,m,stdc++,..)
+
+target SharedLib: libm (out/target/product/generic/obj/SHARED_LIBRARIES/libm_intermediates/LINKED/libm.so)
+target Prelink: libm (out/target/product/generic/symbols/system/lib/libm.so)
+target Strip: libm (out/target/product/generic/obj/lib/libm.so)
+target SharedLib: libtestbuild (out/target/product/generic/obj/SHARED_LIBRARIES/libtestbuild_intermediates/LINKED/libtestbuild.so)
+/home/gavinwang/myroid/prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/bin/../lib/gcc/arm-eabi/4.2.1/../../../../arm-eabi/bin/ld: BFD 2.17 assertion fail ../../../toolchain/android-toolchain/binutils-2.17/bfd/elf32-arm.c:2428
+/home/gavinwang/myroid/prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/bin/../lib/gcc/arm-eabi/4.2.1/../../../../arm-eabi/bin/ld: BFD 2.17 assertion fail ../../../toolchain/android-toolchain/binutils-2.17/bfd/elf32-arm.c:2428
+/home/gavinwang/myroid/prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/bin/../lib/gcc/arm-eabi/4.2.1/../../../../arm-eabi/bin/ld: BFD 2.17 assertion fail ../../../toolchain/android-toolchain/binutils-2.17/bfd/elf32-arm.c:2428
+target Prelink: libtestbuild (out/target/product/generic/symbols/system/lib/libtestbuild.so)
+build/tools/apriori/prelinkmap.c(137): library 'libtestbuild.so' not in prelink map
+make: *** [out/target/product/generic/symbols/system/lib/libtestbuild.so] Error 1
+
+
+
+
+prepare these stuff first
+* a sd card 1G or more
+* machine with linux installed ubuntu prefered
+* sd card rootfs packed in backup_andr_sd.tgz
+* android demos with cmmb playback capbility in CI_Player.rar
+
+steps you should follow
+1. partitation this sd card -> one primary partitation
+2. format this sd card -> ext2
+3. extract stuff in backup_andr_sd.tgz to someplace
+4. cp these files to sd card
+5. remove the /boot directory in sd card
+6. invoke this commmand (if your sd card is sdb1)
+	sudo grub-install --root-directory=/media/sdb1 --no-floppy /dev/sdb1
+7. cp backup_andr_sd/boot/vmlinuz to sdcard/boot/
+8. cp backup_andr_sd/boot/grub/menu.lst to sdcard/boot/grub
+9. now you have a bootable android sd card
+10. then follow the readme.txt in demo package CI_Player.rar
+
+
+
+
+make bootable sd card:
+1.cp backup to sd card
+2.rm /boot
+3.sudo grub-install --root-directory=/media/flash --no-floppy /dev/sdb1
+4.cp backup/boot/vmlinuz backup/boot/grub/menu.lst to sd card
+
+git clone git://android.git.kernel.org/platform/external/opencore.git
+
+
+    cd <opencore>/build_config/opencore_dynamic
+    source setup.sh <opencore>
+    make -j
+
+tools_v2/build/make/g++.mk:FLAG_COMPILE_WARNINGS_AS_ERRORS := -Werror
+~/opencore/build_config/opencore_dynamic/build/bin/linux
+export LD_LIBRARY_PATH+=
+
+2009-5-19
+-------------------------------------------------
+rename D:\Qt\2009.01\qt\translations1 to avoid ugly translation
+
+android, eclipse on ubuntu804
+
+1.eclipse.org/eclipse-rcp
+2.adt
+
+android create avd --target 1 --name myavd
+
+android create project \
+    --package com.android.helloandroid \
+    --activity HelloAndroid \ 
+    --target 1 \
+    --path <path-for-your-project>/HelloAndroid \
+    --mode activity
+
+mkdiskimage -4 /dev/sdz 0 64 32
+mkdiskimage -4 /dev/sdb 0 128 32
+mkdiskimage -F -4 /dev/sdz 0 255 63
+
+
+fdisk /dev/sdb
+mkfs.ext3 -b 4096 /dev/sdb1
+
+the `firmware' stage, 
+the `bootloader' stage, 
+the `kernel' stage, and 
+the `init' stage.
+
+
+vmware-vdiskmanager -r d:\vm\android1\Ubuntu.vmdk -t 0 d:\a.vmdk
+
+
+2009-5-15
+-------------------------------------------------
+* read kernel documents(fbcon, console)
+
+
+
+%
+editplus collection good
+
+
+
+-------------------------------------------------
+Autologin is a tool that lets you bypass the login screens on a unix system.
+It needs to be installed and configured by root (it is definitely not a cracking tool ;) ).
+Possible uses include providing a simple end-user system as well as creating a one-purpose 
+(e.g. web browsing) station that returns to where it's supposed to be after a reboot or power outage without any intervention.
+
+New more clean solution
+
+Edit /etc/inittab and add --autologin root to all the mingetty lines of the inittab, so your inittab would look something like this:
+
+1:2345:respawn:/sbin/mingetty --autologin root tty1
+2:2345:respawn:/sbin/mingetty --autologin root tty2
+3:2345:respawn:/sbin/mingetty --autologin root tty3
+4:2345:respawn:/sbin/mingetty --autologin root tty4
+5:2345:respawn:/sbin/mingetty --autologin root tty5
+6:2345:respawn:/sbin/mingetty --autologin root tty6
+
+Reboot the system and your done.
+The system autologins into the root account.
+-----------------+-------------------------------------
+
+
+
+
+Color depth      | 640x480  800x600  1024x768 1280x1024
+-----------------+-------------------------------------
+256        (8bit)|  769      771       773      775
+32000     (15bit)|  784      787       790      793
+65000     (16bit)|  785      788       791      794
+16.7 Mill.(24bit)|  786      789       792      795
+
+
+
+是关于mp3文件的id3 v2解析，tag是utf-16时没有判断大小端的情况，所以解析出来的结果是乱码
+
+
+milli
+micro
+nano
+pico
+femto
+atto
+
+
+
+53128007069B9ZH
+
+尺寸不是16倍数的视频文件打开会报v4l2 error.
+
+绿色奇迹无法打开，idx_type=0
+jolin, idx_type=0
+
+AVI_ParseHeader
+n = frame number ?
+
+
+===================================================
+
+
+
+./ci_sample_shared: symbol lookup error: /mfoneroot/lib/libci_playback_sdk.so: undefined symbol: _Z2DPPKcz
+make clean; make
+
+
+D:\hostshare\Release_Branch_For_Access_NEO_Playback\Embedded\embedded_sdk\release\TDMB_PMP_SDK\
+build\linux_playback_sdk_Access_NEO\sdk_lib\libwin32\Makefile
+
+-DACCESS_DRM
+
+
+11:23 2009-4-23
+camera录下来的声音效果很差
+
+
+
+
+录60秒的视频
+手机屏幕上显示的到47~49秒左右
+然后在手机上回放的时候视频变成了57秒左右
+
+43	55
+45	57
+
+
+===================================================
+16:53 2009-4-22
+<E***>(mgui):qbus_call favorite->videoserver timeout
+
+你指的消息超时是指这个信息吗
+
+如果是的话，我这里可以稳定重现，之需要查看一些无法取得视频信息的文件的信息就会导致以后
+的操作都是timeout
+
+
+===================================================
+/disk/card.1/Video
+
+a	11
+b	232
+c	533
+d	807
+e	30
+
+
+avi
+h264
+
+
+3gp
+mp4
+
+
+有没有试过其他的视频格式，支持哪些格式？
+消息超时是说什么消息
+out of memory的信息是在那里看到的
+
+
+
+
+newell.chen
+
+你好，我这里想重现一下你看到的bug，有些几个问题跟你确认一下。
+4个bug一个一个解决吧，这里是关于第4个“大文件初始化和内存问题 优先级 高”
+
+我这里的环境和看到的现象是这样的。
+
+===================================================
+软件版本：
+NEO-ARM-V1.6.0-20090417：
+
+测试数据：
+11M,30M,232M,533M的avi
+
+步骤：
+1.把avi文件放在存储卡的video目录下面
+2.开机，这里要等很长时间（6分钟左右）
+3.菜单->我的收藏->存储卡->选择avi文件播放
+4.然后这边的现象是大的avi文件（200M以上，泰坦尼克）和小的avi文件（100M以下）都是可以播放的，
+但播放几个不同的文件之后会出现一个问题：原先能放的文件再次播放时会提示“文件无法播放”。
+===================================================
+你可以稍微描述一下你那里是如何看到这个bug的吗？
+
+
+另外，如何确认这边烧录的软件版本，比如NEO-ARM-V1.6.0-20090417，
+想确定一下跟你那里的软件环境是一样的。
+
+
+
+
+
+
+
+===================================================
+18:56 2009-4-21
+1.启动时间很长6分钟，必须要连上com口把系统里面的audioserver进程杀掉稍后才会进入手机待机画面
+2.可以播放小文件avi，有些小的avi播放时没有画面（hotel california），
+播放大的文件（绿色奇迹232M）会出现无法播放的提示，然后再去播放小文件，机器freeze
+3.（泰坦尼克558M）可以放，但是在播放两个文件以后，其他文件都不能播放了，而且再播放其他文件
+会freeze
+
+
+
+dynamic library load
+
+
+All about link
+
+
+*create a static library
+cc -c source to *.o
+ar rcs -o libxxx.a *.o
+
+*create a dynamic library
+cc -c -fPIC source to *.o
+cc -shared -Wl,-soname,libxxx.so.1 -o libxxx.so.1.0.1 *.o
+
+*link against static library
+cc -static -o appname *.c -lxxx
+
+*link against dynamic library
+cc -o appname *.c -lxxx
+
+
+
+1680x1050
+===================================================
+\\fileserver\RD\ThirdParty\Novarobo\Access_ToolChain
+
+lrz - download file from device
+srz - send file to device
+
+in: pcm
+out: amr
+
+killall audioserver
+/mfoneroot/lib
+/mnt/cidana
+
+
+haier neo
+mode 1:只有按键消息会打印
+mode 2:各种消息都会打印，进入此模式方法=call + vol down + power
+
+1.增大buffer到256, AudioEncoderAMR.cpp:21, 没效果
+2.dump pcm, pcm不能播放,用rec_sample_shared 转换也不行提示invalid input
+3.提升audio record thread
+-BaseAudioEncoder.cpp:47 没效果
+
+
+机器从冷启动到看到电话待机画面需要的时间很长，有时候需要3分钟以上。
+这时需要killall audioserver把系统中的服务手动关闭，才会进去。
+
+
+
+
+amr, 20ms per frame, 8k sample per second, 160sample per frame, 50frames per second
+IUV means interlance
+
+
+
+Tv = totalFrames/fps
+Ta = totalFrames*MSperFrame
+
+
+CI_Recorder_Initialize
+-CreateRecorderEngine
+
+CRecorderEngine::Open
+-CreateAudioEncoder
+--CreateAMREncoder
+
+
+
+===================================================
+cidana$888
+http://cidana.com/controlpanel
+http://svn-server:81/svn
+http://jira
+http://jira.sh.cidana.com
+http://bamboo:8085
+http://bamboo2:8085
+chengwei.shi@cidana.com
+pop3	130.94.234.18
+===================================================
+http://dist.trolltech.com/developer/download/qt-win-eval-4.5.0-vs2005.exe
+
+Name: physaris shi
+Company name: none
+License Key: BGKX-RM5-R4M-2CX-VA6N-FT987-6E55
+
+
+===================================================
+maxthon2
+
+sougou input method
+
+xplorer2
+FFFEFFFEF925C60101FE0DFEFF0AAF14FFFEFFFE14491EFEFF
+FEFFFEFFFE1E0C28FEFFFEFFFEFFFE28CC32FEFFFEFFFEFFFE
+3205FFFEFFFEFFFEFFFE00FE01FE02FE03FE04FE05FE06FE07
+FE08FEFFFEFFFEFFFEFFFEFFFEFFFEFFFEFFFEFFFEFFFEFFFE
+
+winrar
+
+office 2003
+
+foxit reader
+
+flashget
+
+===================================================
+vs 2005
+	-visual assist
+	-patch
+
+source insight
+
+VMware Workstation 6.5.0.118166
+D0NF9-2RH6N-N0PDT-4WC5L
+
+
+fedora 10
+enable root logon x, /etc/pam.d/gdm: root, quiet
+
+
+
+
+
+physaris1.2345@blogger.com
+
+-------------------------------------------------
+si - hotkey
+alt + ]		jump match{}
+alt + L		jump to symbol window
+
+ctrl + o	jump to file list window
+
+
+
+Ethernet adapter Local Area Connection:
+
+        Connection-specific DNS Suffix  . : cidana.com
+        IP Address. . . . . . . . . . . . : 192.168.0.58
+        Subnet Mask . . . . . . . . . . . : 255.255.255.0
+        Default Gateway . . . . . . . . . : 192.168.0.2
+
+eth2      Link encap:Ethernet  HWaddr 00:0c:29:7b:14:83  
+          inet addr:192.168.112.128  Bcast:192.168.112.255  Mask:255.255.255.0
+          inet6 addr: fe80::20c:29ff:fe7b:1483/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:192064 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:108093 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:221063474 (210.8 MB)  TX bytes:5977107 (5.7 MB)
+          Interrupt:16 Base address:0x2024 
+
+wireless
+cidanawlan

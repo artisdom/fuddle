@@ -1,0 +1,18 @@
+prepare these stuff first
+* a sd card 1G or more
+* machine with linux installed ubuntu prefered
+* sd card rootfs packed in backup_andr_sd.tgz
+* android demos with cmmb playback capbility in CI_Player.rar
+
+steps you should follow
+1. partitation this sd card -> one primary partitation
+2. format this sd card -> ext2
+3. extract stuff in backup_andr_sd.tgz to someplace
+4. cp these files to sd card
+5. remove the /boot directory in sd card
+6. invoke this commmand (if your sd card is sdb1)
+	sudo grub-install --root-directory=/media/flash --no-floppy /dev/sdb1
+7. cp backup_andr_sd/boot/vmlinuz to sdcard/boot/
+8. cp backup_andr_sd/boot/grub/menu.lst to sdcard/boot/grub
+9. now you have a bootable android sd card
+10. then follow the readme.txt in demo package CI_Player.rar
