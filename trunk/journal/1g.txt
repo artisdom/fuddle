@@ -7,6 +7,8 @@ VideoRenderLinux.cpp:381
 android link lib
 LOCAL_LDLIBS
 
+gitorcz
+
 2009-8-24
 -------------------------------------------------
 
@@ -35,19 +37,13 @@ adb shell
 error: device not found
 
 3. when we play a mp3 file, seem like we only got mono sound now.
-
-
 cpu usage are the same, surface flinger or isurface.
-
 for file in `adb shell ls /data/app`; do echo "/data/app/${file}" ; done
 
 
 
 2009-8-21
 -------------------------------------------------
-
-new num
-
 ifconfig eth0 192.168.0.59 netmask 255.255.255.0 up
 
 
