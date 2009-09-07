@@ -1,0 +1,623 @@
+kernel$ make ARCH=arm CROSS_COMPILE=arm-eabi-
+make -C /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l 
+make[1]: Entering directory `/home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l'
+perl scripts/make_config_compat.pl /lib/modules/2.6.24-22-generic/build ./.myconfig ./config-compat.h
+creating symbolic links...
+Kernel build directory is /lib/modules/2.6.24-22-generic/build
+CONFIG_DVB_CORE is m
+make -C /lib/modules/2.6.24-22-generic/build SUBDIRS=/home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l  modules
+make[2]: Entering directory `/usr/src/linux-headers-2.6.24-22-generic'
+  CC [M]  /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.o
+In file included from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:22:
+include/linux/kernel.h:137: warning: 'regparm' attribute directive ignored
+include/linux/kernel.h:179: warning: 'regparm' attribute directive ignored
+include/linux/kernel.h:181: warning: 'regparm' attribute directive ignored
+In file included from include/asm/system.h:2,
+                 from include/asm/msr.h:177,
+                 from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/system_32.h:14: warning: 'regparm' attribute directive ignored
+In file included from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/msr.h:184:1: warning: "rdmsr" redefined
+In file included from include/asm/system_32.h:171,
+                 from include/asm/system.h:2,
+                 from include/asm/msr.h:177,
+                 from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/paravirt.h:570:1: warning: this is the location of the previous definition
+In file included from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/msr.h:190:1: warning: "rdmsrl" redefined
+In file included from include/asm/system_32.h:171,
+                 from include/asm/system.h:2,
+                 from include/asm/msr.h:177,
+                 from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/paravirt.h:581:1: warning: this is the location of the previous definition
+In file included from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/msr.h:197:1: warning: "wrmsr" redefined
+In file included from include/asm/system_32.h:171,
+                 from include/asm/system.h:2,
+                 from include/asm/msr.h:177,
+                 from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/paravirt.h:577:1: warning: this is the location of the previous definition
+In file included from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/msr.h:202:1: warning: "wrmsrl" redefined
+In file included from include/asm/system_32.h:171,
+                 from include/asm/system.h:2,
+                 from include/asm/msr.h:177,
+                 from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/paravirt.h:586:1: warning: this is the location of the previous definition
+In file included from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/msr.h:207:1: warning: "rdtscl" redefined
+In file included from include/asm/system_32.h:171,
+                 from include/asm/system.h:2,
+                 from include/asm/msr.h:177,
+                 from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/paravirt.h:603:1: warning: this is the location of the previous definition
+In file included from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/msr.h:213:1: warning: "rdtscll" redefined
+In file included from include/asm/system_32.h:171,
+                 from include/asm/system.h:2,
+                 from include/asm/msr.h:177,
+                 from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/paravirt.h:608:1: warning: this is the location of the previous definition
+In file included from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/msr.h: In function 'native_read_tsc':
+include/asm/msr.h:234: warning: left shift count >= width of type
+In file included from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/msr.h:240:1: warning: "rdpmc" redefined
+In file included from include/asm/system_32.h:171,
+                 from include/asm/system.h:2,
+                 from include/asm/msr.h:177,
+                 from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/paravirt.h:623:1: warning: this is the location of the previous definition
+In file included from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/msr.h:316:1: warning: "wrmsr_safe" redefined
+In file included from include/asm/system_32.h:171,
+                 from include/asm/system.h:2,
+                 from include/asm/msr.h:177,
+                 from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/paravirt.h:587:1: warning: this is the location of the previous definition
+In file included from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/msr.h:332:1: warning: "rdmsr_safe" redefined
+In file included from include/asm/system_32.h:171,
+                 from include/asm/system.h:2,
+                 from include/asm/msr.h:177,
+                 from include/asm/processor_32.h:17,
+                 from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/paravirt.h:590:1: warning: this is the location of the previous definition
+In file included from include/asm/processor.h:2,
+                 from include/linux/prefetch.h:14,
+                 from include/linux/list.h:8,
+                 from include/linux/module.h:9,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/processor_32.h: At top level:
+include/asm/processor_32.h:608: error: conflicting types for 'cpuid'
+include/asm/msr.h:248: error: previous definition of 'cpuid' was here
+include/asm/processor_32.h:618: error: conflicting types for 'cpuid_count'
+include/asm/msr.h:260: error: previous definition of 'cpuid_count' was here
+include/asm/processor_32.h:628: error: redefinition of 'cpuid_eax'
+include/asm/msr.h:273: error: previous definition of 'cpuid_eax' was here
+include/asm/processor_32.h:635: error: redefinition of 'cpuid_ebx'
+include/asm/msr.h:283: error: previous definition of 'cpuid_ebx' was here
+include/asm/processor_32.h:642: error: redefinition of 'cpuid_ecx'
+include/asm/msr.h:293: error: previous definition of 'cpuid_ecx' was here
+include/asm/processor_32.h:649: error: redefinition of 'cpuid_edx'
+include/asm/msr.h:303: error: previous definition of 'cpuid_edx' was here
+In file included from include/asm/thread_info.h:2,
+                 from include/linux/thread_info.h:34,
+                 from include/linux/preempt.h:9,
+                 from include/linux/spinlock.h:49,
+                 from include/linux/seqlock.h:29,
+                 from include/linux/time.h:8,
+                 from include/linux/stat.h:60,
+                 from include/linux/module.h:10,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/thread_info_32.h:88: error: invalid register name for 'current_stack_pointer'
+In file included from include/linux/seqlock.h:29,
+                 from include/linux/time.h:8,
+                 from include/linux/stat.h:60,
+                 from include/linux/module.h:10,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/linux/spinlock.h:81: warning: 'regparm' attribute directive ignored
+In file included from include/linux/spinlock.h:133,
+                 from include/linux/seqlock.h:29,
+                 from include/linux/time.h:8,
+                 from include/linux/stat.h:60,
+                 from include/linux/module.h:10,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/linux/spinlock_api_smp.h:22: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:24: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:25: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:26: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:27: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:28: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:29: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:30: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:31: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:32: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:34: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:36: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:38: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:40: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:41: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:42: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:43: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:44: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:45: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:46: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:47: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:48: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:49: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:50: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:51: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:52: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:53: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:55: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:57: warning: 'regparm' attribute directive ignored
+include/linux/spinlock_api_smp.h:59: warning: 'regparm' attribute directive ignored
+In file included from include/asm/mpspec.h:2,
+                 from include/asm/smp_32.h:15,
+                 from include/asm/smp.h:2,
+                 from include/linux/smp.h:19,
+                 from include/asm/desc_32.h:10,
+                 from include/asm/desc.h:2,
+                 from include/asm/elf.h:80,
+                 from include/linux/elf.h:6,
+                 from include/linux/module.h:14,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/mpspec_32.h:6:25: error: mach_mpspec.h: No such file or directory
+In file included from include/asm/mpspec.h:2,
+                 from include/asm/smp_32.h:15,
+                 from include/asm/smp.h:2,
+                 from include/linux/smp.h:19,
+                 from include/asm/desc_32.h:10,
+                 from include/asm/desc.h:2,
+                 from include/asm/elf.h:80,
+                 from include/linux/elf.h:6,
+                 from include/linux/module.h:14,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/mpspec_32.h:8: error: 'MAX_MP_BUSSES' undeclared here (not in a function)
+include/asm/mpspec_32.h:22: error: 'MAX_IRQ_SOURCES' undeclared here (not in a function)
+In file included from include/asm/apic.h:2,
+                 from include/asm/smp_32.h:16,
+                 from include/asm/smp.h:2,
+                 from include/linux/smp.h:19,
+                 from include/asm/desc_32.h:10,
+                 from include/asm/desc.h:2,
+                 from include/asm/elf.h:80,
+                 from include/linux/elf.h:6,
+                 from include/linux/module.h:14,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/apic_32.h:53: warning: 'regparm' attribute directive ignored
+include/asm/apic_32.h:59: warning: 'regparm' attribute directive ignored
+include/asm/apic_32.h:64: warning: 'regparm' attribute directive ignored
+In file included from include/asm/smp.h:2,
+                 from include/linux/smp.h:19,
+                 from include/asm/desc_32.h:10,
+                 from include/asm/desc.h:2,
+                 from include/asm/elf.h:80,
+                 from include/linux/elf.h:6,
+                 from include/linux/module.h:14,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/smp_32.h:157:26: error: mach_apicdef.h: No such file or directory
+In file included from include/asm/smp.h:2,
+                 from include/linux/smp.h:19,
+                 from include/asm/desc_32.h:10,
+                 from include/asm/desc.h:2,
+                 from include/asm/elf.h:80,
+                 from include/linux/elf.h:6,
+                 from include/linux/module.h:14,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/smp_32.h: In function 'hard_smp_processor_id':
+include/asm/smp_32.h:161: error: implicit declaration of function 'GET_APIC_ID'
+In file included from include/linux/mmzone.h:9,
+                 from include/linux/gfp.h:4,
+                 from include/linux/slab.h:14,
+                 from include/linux/percpu.h:5,
+                 from include/asm/desc_32.h:11,
+                 from include/asm/desc.h:2,
+                 from include/asm/elf.h:80,
+                 from include/linux/elf.h:6,
+                 from include/linux/module.h:14,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/linux/wait.h: At top level:
+include/linux/wait.h:120: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:121: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:122: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:144: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:145: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:146: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:147: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:148: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:149: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:150: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:151: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:152: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:153: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:398: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:400: warning: 'regparm' attribute directive ignored
+include/linux/wait.h:402: warning: 'regparm' attribute directive ignored
+In file included from include/linux/notifier.h:13,
+                 from include/linux/memory_hotplug.h:6,
+                 from include/linux/mmzone.h:569,
+                 from include/linux/gfp.h:4,
+                 from include/linux/slab.h:14,
+                 from include/linux/percpu.h:5,
+                 from include/asm/desc_32.h:11,
+                 from include/asm/desc.h:2,
+                 from include/asm/elf.h:80,
+                 from include/linux/elf.h:6,
+                 from include/linux/module.h:14,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/linux/mutex.h:116: warning: 'regparm' attribute directive ignored
+include/linux/mutex.h:132: warning: 'regparm' attribute directive ignored
+include/linux/mutex.h:133: warning: 'regparm' attribute directive ignored
+include/linux/mutex.h:143: warning: 'regparm' attribute directive ignored
+include/linux/mutex.h:144: warning: 'regparm' attribute directive ignored
+In file included from include/linux/rwsem.h:24,
+                 from include/linux/notifier.h:14,
+                 from include/linux/memory_hotplug.h:6,
+                 from include/linux/mmzone.h:569,
+                 from include/linux/gfp.h:4,
+                 from include/linux/slab.h:14,
+                 from include/linux/percpu.h:5,
+                 from include/asm/desc_32.h:11,
+                 from include/asm/desc.h:2,
+                 from include/asm/elf.h:80,
+                 from include/linux/elf.h:6,
+                 from include/linux/module.h:14,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/rwsem.h:47: warning: 'regparm' attribute directive ignored
+include/asm/rwsem.h:48: warning: 'regparm' attribute directive ignored
+include/asm/rwsem.h:49: warning: 'regparm' attribute directive ignored
+include/asm/rwsem.h:50: warning: 'regparm' attribute directive ignored
+In file included from include/linux/slab.h:14,
+                 from include/linux/percpu.h:5,
+                 from include/asm/desc_32.h:11,
+                 from include/asm/desc.h:2,
+                 from include/asm/elf.h:80,
+                 from include/linux/elf.h:6,
+                 from include/linux/module.h:14,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/linux/gfp.h:176: warning: 'regparm' attribute directive ignored
+include/linux/gfp.h:212: warning: 'regparm' attribute directive ignored
+include/linux/gfp.h:213: warning: 'regparm' attribute directive ignored
+include/linux/gfp.h:221: warning: 'regparm' attribute directive ignored
+include/linux/gfp.h:222: warning: 'regparm' attribute directive ignored
+include/linux/gfp.h:223: warning: 'regparm' attribute directive ignored
+include/linux/gfp.h:224: warning: 'regparm' attribute directive ignored
+In file included from include/asm/timex.h:6,
+                 from include/linux/timex.h:188,
+                 from include/linux/jiffies.h:8,
+                 from include/linux/ktime.h:25,
+                 from include/linux/timer.h:5,
+                 from include/linux/workqueue.h:8,
+                 from include/linux/slub_def.h:11,
+                 from include/linux/slab.h:118,
+                 from include/linux/percpu.h:5,
+                 from include/asm/desc_32.h:11,
+                 from include/asm/desc.h:2,
+                 from include/asm/elf.h:80,
+                 from include/linux/elf.h:6,
+                 from include/linux/module.h:14,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/tsc.h: In function 'get_cycles':
+include/asm/tsc.h:30: warning: left shift count >= width of type
+In file included from include/linux/workqueue.h:8,
+                 from include/linux/slub_def.h:11,
+                 from include/linux/slab.h:118,
+                 from include/linux/percpu.h:5,
+                 from include/asm/desc_32.h:11,
+                 from include/asm/desc.h:2,
+                 from include/asm/elf.h:80,
+                 from include/linux/elf.h:6,
+                 from include/linux/module.h:14,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/linux/timer.h: At top level:
+include/linux/timer.h:38: warning: 'regparm' attribute directive ignored
+include/linux/timer.h:39: warning: 'regparm' attribute directive ignored
+In file included from include/linux/slub_def.h:11,
+                 from include/linux/slab.h:118,
+                 from include/linux/percpu.h:5,
+                 from include/asm/desc_32.h:11,
+                 from include/asm/desc.h:2,
+                 from include/asm/elf.h:80,
+                 from include/linux/elf.h:6,
+                 from include/linux/module.h:14,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/linux/workqueue.h:181: warning: 'regparm' attribute directive ignored
+include/linux/workqueue.h:182: warning: 'regparm' attribute directive ignored
+include/linux/workqueue.h:187: warning: 'regparm' attribute directive ignored
+include/linux/workqueue.h:190: warning: 'regparm' attribute directive ignored
+include/linux/workqueue.h:191: warning: 'regparm' attribute directive ignored
+In file included from include/asm/semaphore.h:2,
+                 from include/linux/device.h:23,
+                 from include/linux/dma-mapping.h:4,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:26:
+include/asm/semaphore_32.h:86: warning: 'regparm' attribute directive ignored
+include/asm/semaphore_32.h:87: warning: 'regparm' attribute directive ignored
+include/asm/semaphore_32.h:88: warning: 'regparm' attribute directive ignored
+include/asm/semaphore_32.h:89: warning: 'regparm' attribute directive ignored
+In file included from include/linux/dcache.h:10,
+                 from include/linux/fs.h:276,
+                 from include/linux/security.h:25,
+                 from include/linux/mm.h:15,
+                 from include/asm/dma-mapping_32.h:4,
+                 from include/asm/dma-mapping.h:2,
+                 from include/linux/dma-mapping.h:52,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:26:
+include/linux/rcupdate.h:305: warning: 'regparm' attribute directive ignored
+include/linux/rcupdate.h:307: warning: 'regparm' attribute directive ignored
+In file included from include/linux/fs.h:277,
+                 from include/linux/security.h:25,
+                 from include/linux/mm.h:15,
+                 from include/asm/dma-mapping_32.h:4,
+                 from include/asm/dma-mapping.h:2,
+                 from include/linux/dma-mapping.h:52,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:26:
+include/linux/namei.h:65: warning: 'regparm' attribute directive ignored
+include/linux/namei.h:66: warning: 'regparm' attribute directive ignored
+include/linux/namei.h:71: warning: 'regparm' attribute directive ignored
+In file included from include/linux/fs.h:285,
+                 from include/linux/security.h:25,
+                 from include/linux/mm.h:15,
+                 from include/asm/dma-mapping_32.h:4,
+                 from include/asm/dma-mapping.h:2,
+                 from include/linux/dma-mapping.h:52,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:26:
+include/linux/pid.h:82: warning: 'regparm' attribute directive ignored
+include/linux/pid.h:83: warning: 'regparm' attribute directive ignored
+include/linux/pid.h:84: warning: 'regparm' attribute directive ignored
+include/linux/pid.h:93: warning: 'regparm' attribute directive ignored
+include/linux/pid.h:95: warning: 'regparm' attribute directive ignored
+include/linux/pid.h:96: warning: 'regparm' attribute directive ignored
+include/linux/pid.h:112: warning: 'regparm' attribute directive ignored
+include/linux/pid.h:123: warning: 'regparm' attribute directive ignored
+In file included from include/linux/security.h:32,
+                 from include/linux/mm.h:15,
+                 from include/asm/dma-mapping_32.h:4,
+                 from include/asm/dma-mapping.h:2,
+                 from include/linux/dma-mapping.h:52,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:26:
+include/linux/sched.h:294: warning: 'regparm' attribute directive ignored
+include/linux/sched.h:297: warning: 'regparm' attribute directive ignored
+In file included from include/linux/sched.h:307,
+                 from include/linux/security.h:32,
+                 from include/linux/mm.h:15,
+                 from include/asm/dma-mapping_32.h:4,
+                 from include/asm/dma-mapping.h:2,
+                 from include/linux/dma-mapping.h:52,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:26:
+include/linux/aio.h:209: warning: 'regparm' attribute directive ignored
+include/linux/aio.h:210: warning: 'regparm' attribute directive ignored
+include/linux/aio.h:211: warning: 'regparm' attribute directive ignored
+include/linux/aio.h:212: warning: 'regparm' attribute directive ignored
+include/linux/aio.h:213: warning: 'regparm' attribute directive ignored
+include/linux/aio.h:215: warning: 'regparm' attribute directive ignored
+include/linux/aio.h:217: warning: 'regparm' attribute directive ignored
+include/linux/aio.h:222: warning: 'regparm' attribute directive ignored
+In file included from include/linux/security.h:32,
+                 from include/linux/mm.h:15,
+                 from include/asm/dma-mapping_32.h:4,
+                 from include/asm/dma-mapping.h:2,
+                 from include/linux/dma-mapping.h:52,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:26:
+include/linux/sched.h:1572: warning: 'regparm' attribute directive ignored
+include/linux/sched.h:1573: warning: 'regparm' attribute directive ignored
+include/linux/sched.h:1574: warning: 'regparm' attribute directive ignored
+include/linux/sched.h:1667: warning: 'regparm' attribute directive ignored
+In file included from include/asm/dma-mapping_32.h:4,
+                 from include/asm/dma-mapping.h:2,
+                 from include/linux/dma-mapping.h:52,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:26:
+include/linux/mm.h:754: warning: 'regparm' attribute directive ignored
+include/linux/mm.h:797: warning: 'regparm' attribute directive ignored
+In file included from include/asm/io_32.h:47,
+                 from include/asm/io.h:2,
+                 from include/linux/scatterlist.h:8,
+                 from include/asm/dma-mapping_32.h:5,
+                 from include/asm/dma-mapping.h:2,
+                 from include/linux/dma-mapping.h:52,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:26:
+include/asm-generic/iomap.h:28: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:29: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:30: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:31: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:32: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:34: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:35: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:36: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:37: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:38: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:51: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:52: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:53: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:55: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:56: warning: 'regparm' attribute directive ignored
+include/asm-generic/iomap.h:57: warning: 'regparm' attribute directive ignored
+In file included from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/dvbdev.h:30,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/dmxdev.h:38,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.h:36,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:34:
+include/linux/smp_lock.h:9: warning: 'regparm' attribute directive ignored
+include/linux/smp_lock.h:10: warning: 'regparm' attribute directive ignored
+include/linux/smp_lock.h:39: warning: 'regparm' attribute directive ignored
+include/linux/smp_lock.h:40: warning: 'regparm' attribute directive ignored
+In file included from include/asm/irq.h:2,
+                 from include/linux/irq.h:23,
+                 from include/asm/hardirq_32.h:5,
+                 from include/asm/hardirq.h:2,
+                 from include/linux/hardirq.h:7,
+                 from include/linux/interrupt.h:11,
+                 from include/linux/usb.h:15,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/sms-cards.h:23,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:36:
+include/asm/irq_32.h:15:25: error: irq_vectors.h: No such file or directory
+In file included from include/asm/irq.h:2,
+                 from include/linux/irq.h:23,
+                 from include/asm/hardirq_32.h:5,
+                 from include/asm/hardirq.h:2,
+                 from include/linux/hardirq.h:7,
+                 from include/linux/interrupt.h:11,
+                 from include/linux/usb.h:15,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/sms-cards.h:23,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:36:
+include/asm/irq_32.h:49: error: 'NR_VECTORS' undeclared here (not in a function)
+In file included from include/asm/hardirq_32.h:5,
+                 from include/asm/hardirq.h:2,
+                 from include/linux/hardirq.h:7,
+                 from include/linux/interrupt.h:11,
+                 from include/linux/usb.h:15,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/sms-cards.h:23,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:36:
+include/linux/irq.h:29: warning: 'regparm' attribute directive ignored
+include/linux/irq.h:180: error: 'NR_IRQS' undeclared here (not in a function)
+In file included from include/asm/hw_irq.h:2,
+                 from include/linux/irq.h:193,
+                 from include/asm/hardirq_32.h:5,
+                 from include/asm/hardirq.h:2,
+                 from include/linux/hardirq.h:7,
+                 from include/linux/interrupt.h:11,
+                 from include/linux/usb.h:15,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/sms-cards.h:23,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:36:
+include/asm/hw_irq_32.h:32: warning: 'regparm' attribute directive ignored
+include/asm/hw_irq_32.h:33: warning: 'regparm' attribute directive ignored
+include/asm/hw_irq_32.h:34: warning: 'regparm' attribute directive ignored
+include/asm/hw_irq_32.h:38: warning: 'regparm' attribute directive ignored
+include/asm/hw_irq_32.h:39: warning: 'regparm' attribute directive ignored
+include/asm/hw_irq_32.h:40: warning: 'regparm' attribute directive ignored
+include/asm/hw_irq_32.h:41: warning: 'regparm' attribute directive ignored
+include/asm/hw_irq_32.h:50: warning: 'regparm' attribute directive ignored
+In file included from include/asm/hardirq_32.h:5,
+                 from include/asm/hardirq.h:2,
+                 from include/linux/hardirq.h:7,
+                 from include/linux/interrupt.h:11,
+                 from include/linux/usb.h:15,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/sms-cards.h:23,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:36:
+include/linux/irq.h:279: warning: 'regparm' attribute directive ignored
+include/linux/irq.h:280: warning: 'regparm' attribute directive ignored
+include/linux/irq.h:281: warning: 'regparm' attribute directive ignored
+include/linux/irq.h:282: warning: 'regparm' attribute directive ignored
+include/linux/irq.h:283: warning: 'regparm' attribute directive ignored
+include/linux/irq.h:284: warning: 'regparm' attribute directive ignored
+include/linux/irq.h:291: warning: 'regparm' attribute directive ignored
+In file included from include/linux/interrupt.h:11,
+                 from include/linux/usb.h:15,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/sms-cards.h:23,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:36:
+include/linux/hardirq.h:40:27: warning: "NR_IRQS" is not defined
+In file included from include/linux/usb.h:15,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/sms-cards.h:23,
+                 from /home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:36:
+include/linux/interrupt.h:271: warning: 'regparm' attribute directive ignored
+include/linux/interrupt.h:275: warning: 'regparm' attribute directive ignored
+include/linux/interrupt.h:276: warning: 'regparm' attribute directive ignored
+include/linux/interrupt.h:343: warning: 'regparm' attribute directive ignored
+include/linux/interrupt.h:351: warning: 'regparm' attribute directive ignored
+/home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c: In function 'smscore_load_firmware_from_file':
+/home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.c:613: warning: format '%zd' expects type 'signed size_t', but argument 4 has type 'size_t'
+make[3]: *** [/home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l/smscoreapi.o] Error 1
+make[2]: *** [_module_/home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l] Error 2
+make[2]: Leaving directory `/usr/src/linux-headers-2.6.24-22-generic'
+make[1]: *** [default] Error 2
+make[1]: Leaving directory `/home/cidana/arm/sms_driver_V1.5.20_for_Linux/sms_driver_src/SmsHostLib/Platforms/Linux/kernel/v4l'
+make: *** [all] Error 2

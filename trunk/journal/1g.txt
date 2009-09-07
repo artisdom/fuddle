@@ -1,3 +1,108 @@
+2009-9-4
+-------------------------------------------------
+
+OBJS = $(OBJ_DIR)/GfxAndroid.o \
+	$(OBJ_DIR)/AlphaBlending.o \
+    $(OBJ_DIR)/LibVideoMixer.o \
+    $(OBJ_DIR)/GfxVideoWindow.o \
+    $(OBJ_DIR)/GfxPrepare.o \
+    $(OBJ_DIR)/GfxPresentOvl.o
+
+gfxAndroid_allstuff build done
+cmmb sdk headers updated
+merge code to trunk ?
+
+2009-9-3
+-------------------------------------------------
+
+mydroid$ adb shell cat /sdcard/log.txt
+log file created
+[PlaybackEngine] ------------Close-----------
+[PlaybackEngine] ------------Close-----------
+CGxBridge_Overlay::Open() 
+CGxBridge_Overlay::OpenDisplay() 
+[GB_OL][  229] m_lVideoRenderMode = 0, sInit.dwSurfType = 0x00000018
+[PlaybackEngine] ------------Open-----------
+[DemuxCMMB] CMMB Demux Opened.
+
+
+mydroid$ adb shell cat /sdcard/logvrp.txt
+log file created
+
+aggregation composition
+
+2009-9-2
+-------------------------------------------------
+define ARCH as ARM will compile a lot of ASM stuff, and they are trying to 
+link with ipp xxx. /opt/...
+
+just use native one do not define as ARM
+
+bool CBitStreamBase::verify_header(void) /*const*/
+HRESULT CCBDemuxCMMB::SetPlaybackPos(DWORD dwPos)
+
+#ifdef ANDROID
+#undef _BIG_ENDIAN
+#endif
+
+
+CI_CFG_ANDROID_ISURFACE,
+
+sync headers to avoid wired problem
+
+
+2009-9-1
+-------------------------------------------------
+TODO:
+use ubuntu as a template
+
+HybridAnalysis
+	ExternalDependency/AudioLibs/AACplusdec/HEAACDecLib.a
+
+dlopen
+target thumb C: libdl <= bionic/libdl/libdl.c
+target StaticLib: libdl (out/target/product/eee_701/obj/STATIC_LIBRARIES/libdl_intermediates/libdl.a)
+mydroid$ cp out/target/product/eee_701/obj/STATIC_LIBRARIES/libdl_intermediates/libdl.a /home/cidana/hostshare
+mydroid$ echo `pwd`/out/target/product/eee_701/obj/STATIC_LIBRARIES/libdl_intermediates/libdl.a
+/home/cidana/dellmini/mydroid/out/target/product/eee_701/obj/STATIC_LIBRARIES/libdl_intermediates/libdl.a
+
+
+
+undefined reference to `vtable for __cxxabiv1::__class_type_info'
+undefined reference to `vtable for __cxxabiv1::__vmi_class_type_info'
+undefined reference to `vtable for __cxxabiv1::__si_class_type_info'
+undefined reference to `vtable for __cxxabiv1::__class_type_info'
+undefined reference to `__gxx_personality_v0'
+
+
+linux-kernel-devel fakeroot build-essential build-dep linux-image-$(uname -r)
+
+
+export PATH=~/arm/mydroid/prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/bin/:$PATH
+make ARCH=arm CROSS_COMPILE=arm-eabi-
+
+
+2009-8-31
+-------------------------------------------------
+Makefile
+	include config
+	include Makefile.rules
+		include Arch.rules
+
+IPParser.cpp
+#include <stdlib.h>
+
+../../../../src/LibPlayer/AudioRender.cpp:1659: error: conflicts with new declaration with 'C' linkage
+../../../../src/LibPlayer/AudioRender.cpp: At global scope:
+../../../../src/LibPlayer/AudioRender.cpp:1662: error: expected `}' at end of input
+../../../../src/LibPlayer/AudioRender.cpp:1662: error: expected `}' at end of input
+AudioRender.cpp
+
+../../../../src/LibUtility/AndroidAudioTrack.cpp:622: error: cannot allocate an object of abstract type 'CAudioTrack'
+../../../../src/LibUtility/AndroidAudioTrack.h:26: note:   because the following virtual functions are pure within 'CAudioTrack':
+
+
+
 2009-8-25
 -------------------------------------------------
 bug fixed: isurface black screen 
