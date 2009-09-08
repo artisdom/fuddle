@@ -1,0 +1,3 @@
+date, sum, stock num, price, stock num
+
+2009-9-8, 98071, 000767, 5.218, 18700

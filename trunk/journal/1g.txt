@@ -1,3 +1,12 @@
+2009-9-7
+-------------------------------------------------
+heap alloc ?
+lock fail
+no present
+
+
+
+
 2009-9-4
 -------------------------------------------------
 
@@ -30,6 +39,7 @@ mydroid$ adb shell cat /sdcard/logvrp.txt
 log file created
 
 aggregation composition
+
 
 2009-9-2
 -------------------------------------------------
