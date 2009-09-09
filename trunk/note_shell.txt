@@ -1,5 +1,11 @@
+sed/awk
 $ sed -e '/^static/{!d a;}' app_photoplayer.c
-
 $ awk 'NR>=2431 ,NR<=2514 {print $2}' app_photoplayer.c
-
 sed '/static.*(.*)[^;]/p' app_photoplayer.c -n | sort > func.c
+
+
+
+
+cut
+NAME=`echo "$FILE" | cut -d'.' -f1`
+EXTENSION=`echo "$FILE" | cut -d'.' -f2`
