@@ -5,3 +5,4 @@ date, sum, stock num, stock name, price, stock num
 
 2009-9-10, 98654, 600184, ÐÂ»ª¹â, 22.104, 2500
 
+2009-9-11, 99010, sold, 22.56

@@ -1,3 +1,12 @@
+2009-9-11
+-------------------------------------------------
+adb uninstall com.cidana.jplayer
+
+(maxthon only) portable/backup fill form data, bookmark, configuration
+(firefox only) keyboard way to surfing
+easy to download flv ...
+easy to use proxy
+
 2009-9-8
 -------------------------------------------------
 display ok, restart java app hanging fixed
