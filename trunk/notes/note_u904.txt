@@ -32,8 +32,7 @@ sudo apt-get install ubuntu-restricted-extras
 
 - computer freeze with caps lock blink
 
-wget -O - http://releases.mozilla.org/pub/mozilla.org/firefox/releases/lastest/\
-	linux-i686/en-US/firefox-3.5.2.tar.bz2 | tar xj -C ~
+wget -O - http://releases.mozilla.org/pub/mozilla.org/firefox/releases/latest/linux-i686/en-US/firefox-3.5.3.tar.bz2 | tar xj -C ~
 
 mkdir $HOME/bin
 cd $HOME/bin
