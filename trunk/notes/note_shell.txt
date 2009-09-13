@@ -9,3 +9,14 @@ sed '/static.*(.*)[^;]/p' app_photoplayer.c -n | sort > func.c
 cut
 NAME=`echo "$FILE" | cut -d'.' -f1`
 EXTENSION=`echo "$FILE" | cut -d'.' -f2`
+
+
+
+======================================================================
+sed, search a line, comment a line, copy a line, replace a line
+
+find and print
+sudo sed -n '/^%admin/{p}' sudoers
+
+find and substitude in place
+sudo sed -i 's/^%admin/#%admin/' sudoers

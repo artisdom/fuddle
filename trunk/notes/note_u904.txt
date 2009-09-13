@@ -317,3 +317,40 @@ Section "Device"
 	Option	"TexturedVideo"	"off"
 EndSection
 
+
+linux mint 7
+-------------------------------------------------
+
+sudo vi /etc/sudoers
+sudo vi /etc/apt/sources.list
+vi ~/.bashrc
+
+sudo apt-get install update
+
+sudo apt-get install \
+subversion rapidsvn vim-full ctags ttf-wqy-zenhei stardict sdcv fcitx
+
+http://im.qq.com/qq/linux/download.shtml
+
+im-switch -z en_US.UTF-8 -s fcitx
+gedit --encoding gbk ~/.fcitx/config
+Wen Quan Yi Zen Hei
+re login
+
+wget -O - http://releases.mozilla.org/pub/mozilla.org/firefox/releases/latest/linux-i686/en-US/firefox-3.5.3.tar.bz2 | tar xj -C ~
+
+======================================================================
+app everywhere --> list
+config everywhere --> svn directory
+fast deploy --> scrpits
+same user experience
+one place all stuff
+
+#for gameboy color
+agi mednafen
+
+find out a file belongs to which package
+dpkg -S /usr/bin/ls
+
+-time wrong, modify bios time ? 4 hours faster than windows time
+<SOLVE> /etc/default/rcS --> UTC=no
