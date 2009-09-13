@@ -354,3 +354,6 @@ dpkg -S /usr/bin/ls
 
 -time wrong, modify bios time ? 4 hours faster than windows time
 <SOLVE> /etc/default/rcS --> UTC=no
+dpkg-reconfigure tzdata
+
+
