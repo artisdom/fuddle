@@ -1,2 +1,2 @@
 rem restore vimperator rc file
-copy .vimperatorrc %USERPROFILE%
+copy .vimperatorrc "%USERPROFILE%"
