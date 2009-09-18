@@ -1,3 +1,8 @@
+2009-9-18
+-------------------------------------------------
+
+plink -ssh -X -pw cidana cidana@192.168.0.86 xterm     
+
 2009-9-17
 -------------------------------------------------
 cidana_shanghai,    cidana2008
@@ -1105,6 +1110,9 @@ adb shell mount -o remount rw /system
 adb uninstall com.cidana.jplayer
 adb push libcidana_media_jni.so /system/lib
 adb install com.cidana.jplayer
+
+adb shell rm /system/lib/libcidana_media_jni.so
+adb shell rm /system/lib/libcidanavrp.so
 
 2009-7-20
 -------------------------------------------------
