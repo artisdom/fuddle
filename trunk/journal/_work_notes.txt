@@ -1,3 +1,55 @@
+2009-9-17
+-------------------------------------------------
+cidana_shanghai,    cidana2008
+www.marvell.com/extranet
+
+https://www.marvell.com/extranet/dms/documents.do?groupID=4&subGroupID=23932
+
+usb
+eth
+sound
+serial
+
+tray everything make all app slow, damn it
+
+
+2009-9-16
+-------------------------------------------------
+serial port connect to J110 (on board), usb/rs232 converter at COM4
+
+# cat cpuinfo
+Processor       : ARM926EJ-S rev 5 (v5l)
+BogoMIPS        : 162.20
+Features        : swp half thumb fastmult edsp java
+CPU implementer : 0x41
+CPU architecture: 5TEJ
+CPU variant     : 0x0
+CPU part        : 0x926
+CPU revision    : 5
+
+Hardware        : ST Cartesio STA2062, EVB2062
+Revision        : 0000
+Serial          : 0000000000000000
+
+
+static int times=1;
+if(times){
+	DP("[VideoRender][%4d] Call IMcVideoPresenter::Present() FAILED!! ErrorCode=0x%08x.\n", __LINE__, res);
+	--times;
+}
+
+
+2009-9-15
+-------------------------------------------------
+
+./configure --host=/usr/local/x-tools/arm-stm-linux-gnueabi/bin/arm-stm-linux-gnueabi- --prefix=`pwd`/out
+
+
+has problem with clock_gettime?
+comment HAVE_CLOCK_GETTIME line in include/config.h, set it to zero will not resolve your problem.
+
+
+
 2009-9-11
 -------------------------------------------------
 adb uninstall com.cidana.jplayer
@@ -40,7 +92,7 @@ merge code to trunk ?
 
 mydroid$ adb shell cat /sdcard/log.txt
 log file created
-[PlaybackEngine] ------------Close-----------
+[PlaybackEngine] ------------Close-----------s
 [PlaybackEngine] ------------Close-----------
 CGxBridge_Overlay::Open() 
 CGxBridge_Overlay::OpenDisplay() 
@@ -1050,8 +1102,9 @@ MediaPlayer::setDataSource(int fd, int64_t offset, int64_t length)
 -sdcard /home/cidana/mydroid/256M.img
 
 adb shell mount -o remount rw /system
-
-
+adb uninstall com.cidana.jplayer
+adb push libcidana_media_jni.so /system/lib
+adb install com.cidana.jplayer
 
 2009-7-20
 -------------------------------------------------
