@@ -1,3 +1,16 @@
+2009-9-18
+-------------------------------------------------
+google notebook can only export to google doc
+
+ultravpn can bypass fw but it is a overall solution, modified every applications \
+network connection
+
+ultrasurf is down
+
+
+
+
+
 2009-9-10
 -------------------------------------------------
 
