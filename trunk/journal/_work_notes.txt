@@ -1,7 +1,131 @@
-2009-9-18
+2009-9-23
 -------------------------------------------------
+config 
+	ANPATH
+	toolchain prefix
+
+/mnt/hgfs/hostshare/System.CidanaSDK/trunk/build/android_arm/ExternalDependency/libwin32/windows.h:185: error: '_llseek' has not been declared
+<SOLVE>
+Makefile.rules
+	DEFINES += -D__linux__
+
+add source code
+{sdk}/src/libutility/AndroidAudioTrack
+
+modify sdk_lib/libutility/Makefile
+remove alsa , add AndroidAudioTrack.o
+
+../../../../src/LibUtility/AndroidAudioTrack.h:10:30: error: media/AudioTrack.h: No such file or directory
+<SOLVE> add there lines to sdk_lib/libutility/Makefile
+INCLUDEDIRS += -I${ANPATH}/hardware/libhardware_legacy/include
+INCLUDEDIRS += -I${ANPATH}/system/core/include
+INCLUDEDIRS += -I${ANPATH}/frameworks/base/include
+INCLUDEDIRS += -I${ANPATH}/frameworks/base/libs
+INCLUDEDIRS += -I${ANPATH}/bionic/libstdc++/include
+INCLUDEDIRS += -I${ANPATH}/hardware/libhardware/include
+INCLUDEDIRS += -I${ANPATH}/external/skia/include
+INCLUDEDIRS += -I${ANPATH}/external/alsa-lib/include
+INCLUDEDIRS += -I${ANPATH}/hardware
 
 
+../../../../src/LibUtility/AndroidAudioTrack.cpp: In function 'IEmcAudioContext* CreateAudioContext()':
+../../../../src/LibUtility/AndroidAudioTrack.cpp:623: error: cannot allocate an object of abstract type 'CAudioTrack'
+../../../../src/LibUtility/AndroidAudioTrack.h:26: note:   because the following virtual functions are pure within 'CAudioTrack':
+../../../../src/LibEMC/emccore.h:415: note: 	virtual HRESULT IEmcMediaComponent::FastForward()
+
+<SOLVE>
+add 	STDMETHODIMP FastForward(); declare to AndroidAudioTrack.h
+add 	STDMETHODIMP FastForward(); define to AndroidAudioTrack.cpp
+
+compile app error
+<SOLVE>
+comment a line in Makefile
+MAKE -C demos
+
+
+cidana_media_jni: Makefile rewriten
+	cmmb new headers
+
+pmp jni write needed, done
+
+libwin32 code merge, android_arm make file 
+
+
+add isurface step
+
+CI_SDK_Typedef.h
+#ifdef ANDROID	
+	CI_CFG_ANDROID_ISURFACE,
+#endif	
+
+CI_SDK_Playback.cpp
+#ifdef ANDROID
+	case CI_CFG_ANDROID_ISURFACE:
+		{
+			if(pPlaybackSDK->m_pGraphicsContext)
+			{	
+				DP("pPlaybackSDK->m_pGraphicsContext->Set CI_CFG_ANDROID_ISURFACE %p\n", pValue);		
+				ret = pPlaybackSDK->m_pGraphicsContext->Set(EMC_PROPSET_GFXCTXT, EMC_PROPID_GFXCTXT_ANDROIDISURFACE,0,0, pValue, 0);
+			}
+			else
+			{
+				DP("pPlaybackSDK->m_pGraphicsContext->Set pPlaybackSDK->m_pGraphicsContext == NULL \n");
+				ret = E_FAIL;
+			}
+		}
+		break;
+#endif
+
+GxBridge_Overlay.cpp
+#ifdef ANDROID	
+	case EMC_PROPID_GFXCTXT_ANDROIDISURFACE:
+		{
+			DP("CGxBridge_Overlay::Set CI_CFG_ANDROID_ISURFACE\n");		
+			if(NULL != pPropData)
+			{
+				DP("CGxBridge_Overlay::Set CI_CFG_ANDROID_ISURFACE not null %p\n", pPropData);
+				int ret;
+				ret = m_pPresent->Set(EMC_PROPSET_GFXCTXT, MC_PROPID_VP_ANDROID_ISURFACE, 0, 0, pPropData, 0);
+				DP("CGxBridge_Overlay ret %x\n", ret);
+				//isurface = *(sp<ISurface> *)(pPropData);
+				//DP(">>>> isurface=%p \n", isurface.get());	
+				return S_OK;
+			}
+			else
+			{
+				DP("CGxBridge_Overlay::Set CI_CFG_ANDROID_ISURFACE null\n");
+				return E_POINTER;
+			}
+			return S_OK;
+		}
+#endif	
+
+
+Playercore.h
+
+#ifdef ANDROID
+	EMC_PROPID_VIDRND_ANDROIDISURFACE,
+#endif	
+
+modify java filter
+
+adb install out/target/product/generic/obj/APPS/CI_Android_intermediates/package.apk
+
+
+2009-9-21
+-------------------------------------------------
+libwin32
+
+gcc -E -dM -c
+to figure out where __linux__ is defined
+
+
+E/copybit (   65): copyBits failed (Invalid argument)
+E/SurfaceFlinger(   65): copybit failed (Unknown error: -22)
+
+
+export unsigned apk from eclipse
+jarsigner still got problem with surface flinger
 
 2009-9-17
 -------------------------------------------------
@@ -130,6 +254,9 @@ HRESULT CCBDemuxCMMB::SetPlaybackPos(DWORD dwPos)
 CI_CFG_ANDROID_ISURFACE,
 
 sync headers to avoid wired problem
+
+
+
 
 
 2009-9-1
@@ -471,8 +598,10 @@ set ADB_HOST=192.168.0.81
 
 
 PROJ_NAME=JniTest
+ACT_NAME=JniTest
+PACKAGE_NAME=com.cidana
 USR_NAME=cidana
-android create project --target 2 --package com.twm --activity JniTest --path $HOME/workspace/$PROJ_NAME
+android create project --target 2 --package $PACKAGE_NAME --activity $ACT_NAME --path $PROJ_NAME
 keytool -genkey -v -keystore $USR_NAME.keystore -alias $USR_NAME -keyalg RSA -validity 10000
 jarsigner -verbose -keystore $HOME/$USR_NAME.keystore $PROJ_NAME-unsigned.apk $USR_NAME
 
@@ -485,6 +614,10 @@ jarsigner -verbose -keystore $HOME/$USR_NAME.keystore bin/$PROJ_NAME-unsigned.ap
 
 
 JHFLAGS=-classpath $HOME/workspace/JniTest/bin
+
+
+jarsigner -verbose -keystore ~/cidana.keystore bin/CI_CMMB_320.apk cidana
+
 
 
 local include path
@@ -1082,6 +1215,8 @@ modify them to public, audio output has no sound, write 2 times, 8 times no data
 const sp<IAudioFlinger>& AudioSystem::get_audio_flinger()
 
 try audio track
+
+
 
 2009-7-22
 -------------------------------------------------

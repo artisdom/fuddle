@@ -1,0 +1,16 @@
+libwin32
+http://svn-server:81/svn/Component.MuxDemux/Libwin32/
+
+\\fileserver\Builds\Components\libwin32\Manual
+
+mount -t smbfs -o
+
+//fileserver/Public/Employees/chengwei.shi
+
+toolchain
+
+\\fileserver\RD\Engineer\ThirdParty\ST\STCodec\x-tools.tar.bz2
+/usr/local/x-tools/arm-stm-linux-gnueabi/bin/arm-stm-linux-gnueabi-gcc
+
+\\fileserver\RD\Engineer\ThirdParty\PXA\toolchain\arm-iwmmxt-linux-gnueabi-4.1.1-gpl.tgz (for golan)
+/opt/arm-linux-4.1.1/bin/arm-iwmmxt-linux-gnueabi-gcc
