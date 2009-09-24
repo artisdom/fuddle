@@ -1,3 +1,31 @@
+2009-9-24
+-------------------------------------------------
+yuhua phone , simple ui apk from cuilong, cmmb jni
+E/ALSALib (   36): external/alsa-lib/src/pcm/pcm.c:7050:(snd_pcm_recover) underrun occured
+
+
+~$ ls /etc/udev/rules.d/51-android.rules -l
+-rwxr-xr-x 1 root root 55 2009-08-24 10:44 /etc/udev/rules.d/51-android.rules
+
+
+dmesg
+[84525.293007] Time: acpi_pm clocksource has been installed.
+[174030.910328] usb 1-1: new full speed USB device using uhci_hcd and address 3
+[174031.435420] usb 1-1: not running at top speed; connect to a high speed hub
+[174031.499567] usb 1-1: configuration #1 chosen from 1 choice
+[174031.703119] scsi4 : SCSI emulation for USB Mass Storage devices
+[174031.721251] usb-storage: device found at 3
+[174031.721254] usb-storage: waiting for device to settle before scanning
+[174038.717915] usb-storage: device scan complete
+[174039.776283] scsi 4:0:0:0: Direct-Access     <NULL>   <NULL>           0000 PQ: 0 ANSI: 2
+[174039.815276] sd 4:0:0:0: [sdb] Attached SCSI removable disk
+[174039.815735] sd 4:0:0:0: Attached scsi generic sg2 type 0
+
+sudo adb devices
+
+
+ sudo /home/cidana/android-sdk-linux_x86-1.5_r1/tools/adb 
+
 2009-9-23
 -------------------------------------------------
 config 
@@ -111,6 +139,7 @@ modify java filter
 
 adb install out/target/product/generic/obj/APPS/CI_Android_intermediates/package.apk
 
+miss comment the play command in jni module, damn it.
 
 2009-9-21
 -------------------------------------------------
