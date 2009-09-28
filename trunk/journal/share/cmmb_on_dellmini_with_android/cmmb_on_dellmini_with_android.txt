@@ -1,0 +1,177 @@
+* how to compile the playback sdk
+* how to add a native command line app to android
+* when you have some compile/link error
+* what's the different between bionic libc and GNU libc
+* source files modified
+
+
+
+* how to compile the playback sdk (CMMB Playback SDK)
+-----------------------------------------------------------------------------
+To compile sdk there three things we need to do:
+1. let the compiler which comes with android to be the default CC.
+2. let the compiler and  search/include android headers.
+3. let the linker link with android libs.
+
+To do the first step you need to follow:
+
+For example our sdk comes here.
+PlaybackSDK\SMIT.SDK\Embedded\embedded_sdk\release\TDMB_PMP_SDK\build_linux_ubuntu_x86\sdk_linux
+
+modify config and add there lines.
+
+TCPATH=$HOME/myroid/prebuilt/linux-x86/toolchain/i686-unknown-linux-gnu-4.2.1
+
+ARCH                     = LINUX-ANDROID
+#ARCH                     = LINUX-NATIVE
+BIGENDIAN                = N
+ANDROIDTOOLSPREFIX        = ${TCPATH}/bin/i686-unknown-linux-gnu-
+NATIVETOOLSPREFIX        = 
+ARMTOOLSPREFIX           = /usr/local/3.3.2/bin/arm-linux-
+MIPSTOOLSPREFIX          = mipsel-linux-
+POWERPCTOOLSPREFIX       = powerpc-linux-
+SHTOOLSPREFIX            = sh-linux-gnu
+RTEMSTOOLSPREFIX         = i386-rtemself-
+
+
+modify Arch.rules and add there lines.
+
+ifeq ($(ARCH), LINUX-ANDROID)
+COMPILER = gcc
+CXX_COMPILER = g++
+TOOLSPREFIX = $(ANDROIDTOOLSPREFIX)
+DEFINES +=
+CFLAGS += $(GCC_WARNINGS) $(OPTFLAGS) -D__int64="long long"
+CPPFLAGS += $(GCC_WARNINGS) $(OPTFLAGS) -D__int64="long long"
+LDFLAGS +=
+endif
+
+
+To do the second step you need to follow:
+
+modify Makefile.rules and add there lines.
+
+ANPATH=$HOME/myroid
+INCLUDEDIRS += -I$(TOP)/include -I. \
+			   -I${ANPATH}/bionic/libc/include/ \
+			   -I${ANPATH}/bionic/libc/arch-x86/include \
+			   -I${ANPATH}/bionic/libc/kernel/arch-x86 \
+			   -I${ANPATH}/bionic/libc/kernel/common \
+			   -I${ANPATH}/bionic/libm/include \
+			   -I${ANPATH}/external/alsa-lib/include \
+
+
+To do the third step you need to follow:
+
+modify Makefile.rules and add there lines.
+
+LDDIRS += ${ANPATH}/out/target/product/eee_701/system/lib
+
+After you have there three things done.
+make
+
+
+
+* how to add a native console app to android
+-----------------------------------------------------------------------------
+For example you want add a command line player named "andemo" to android, all 
+you need to do is follow the android's make rules.
+
+If your android source tree comes here:
+$HOME/myroid
+
+cd $HOME/myroid/external
+mkdir andemo
+
+Copy your source code here and just copy an Android.mk file from other directory
+as a template, then modify the corresponding field.
+
+Then cd to myroid and invoke mkmk_android.sh <MODULE_NAME>
+
+
+
+* when you have some compile/link error
+-----------------------------------------------------------------------------
+You may encounter some compile errors, just follow the +line to resolve it.
+
+-undefined symbol: __stack_chk_fail_local
++define a char array in cpp function may cause this kind of linkage error
+
+
+-undefined symbol:__vmi_class_type_info or __si_class_type_info
++add -fno-rtti to your CPPFLAGS
+
+-when you compile alsa-lib this error may comes to you
+-error: redefinition of ¡®struct timeval¡¯
++just add this line to your code #define _POSIX_C_SOURCE
+
+-undefined symbol:__dso_handle
++you may have defined a static object from a class, like: static ClassA obja;
+
+-undefined reference to `fopen64'
++define your off_t to 32bits not 64bits
+
+...
+
+
+* what's the different between bionic libs(come with android) and GNU/Linux libs
+-----------------------------------------------------------------------------
+bionic has no STL support.
+
+off_t in bionic is 64-bit.
+
+pthread_mutex_t, pthread_cond_t are only 4 bytes each.
+
+Process-shared mutexes and condition variables are not supported.
+
+There is currently no support for read/write locks, 
+	priority-ceiling in mutexes and other more advanced features.
+
+bionic does not support thread_cancel()
+
+bionic does not provide support for System-V IPCs like
+	(semget(), shmget(), msgget())
+
+...
+
+
+* source files modified
+-----------------------------------------------------------------------------
+
+<CMMB Playback SDK>
+
+LibPlayer\DemuxCMMB.cpp
+LibPlayer\VideoRenderLinux.cpp	
+	for yuv2565 convertion and video scaling
+
+LibUtility\AlsaDevice.h
+LibUtility\AlsaDevice.cpp	
+	for using android libaudio which bases on ALSA
+
+LibUtility\GraphicsContext.h
+LibUtility\GraphicsContext.cpp
+	for framebuffer display
+
+Libwin32\include\windows.h	
+	for avoid compile error
+
+Libwin32\linux\linuxsync2.cpp	
+	for fix bionic's broken pthread compatibility
+
+Libwin32\linux\linuxtimer.cpp	
+	for avoid dynamic symbol table error
+
+Libwin32\linux\win32.cpp	
+	bionic don't support STL and sysinfo syscall
+
+<Android>
+
+hardware\alsa_sound\AudioHardwareALSA.cpp	
+	for audio playback these classes used by SDK Libutility
+
+frameworks\base\libs\audioflinger\AudioHardwareInterface.cpp
+	android media manager will open a stub audio device in this modification
+
+<Console Demo>
+
+external\andemo

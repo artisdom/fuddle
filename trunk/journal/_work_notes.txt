@@ -1,3 +1,20 @@
+2009-9-25
+-------------------------------------------------
+repo init -u git://android.git.kernel.org/platform/external/opencore.git  -b android-1.5
+
+git clone git://android.git.kernel.org/platform/external/opencore.git  --branch android-1.5
+
+
+
+IOError: [Errno 2] No such file or directory: '/home/cidana/damn_version/.repo/manifests/.git/HEAD'
+
+repo init -u git://android.git.kernel.org/platform/manifest.git -b android-1.5
+
+repo sync external/opencore
+
+
+repo init -u git://android.git.kernel.org/platform/manifest.git -b cupcake
+
 2009-9-24
 -------------------------------------------------
 yuhua phone , simple ui apk from cuilong, cmmb jni
@@ -24,7 +41,12 @@ dmesg
 sudo adb devices
 
 
- sudo /home/cidana/android-sdk-linux_x86-1.5_r1/tools/adb 
+sudo /home/cidana/android-sdk-linux_x86-1.5_r1/tools/adb
+
+modify \\192.168.0.86\cidana\arm\mydroid\development\emulator\skins\HVGA\layout
+to make emulator display a little smaller
+
+
 
 2009-9-23
 -------------------------------------------------
