@@ -1,19 +1,122 @@
+2009-9-29
+-------------------------------------------------
+adb shell mount -o remount rw /system
+adb shell mkdir /system/tmp
+
+ui stop hanging 
+
+[AudioRender] Stop, ret = 0
+[CAudioTrack] Close
+[CAudioTrack] Stop
+[CAudioTrack] Close end 
+[VideoRender] Try to Stop
+[VideoRender] Stop, ret = 0
+[CBDemux] Try to Stop
+
+basethread.cpp
+	WaitThenTerminate
+
+
+cmmb sdk switch program(mfs files) problem:
+
+sdk without vr, works fine, if there were no video displayed, try use cmmb headers(type.h) recompile jni
+
+sdk with vr, no good
+
+==========
+TODO:
+cmmb 
+investigate switch mfs files problem
+
+pmp 
+investigate switch video files problem if has this issue
+investigate switch media files audiotrack can't stop and cause crash problem
+support each format
+
+\\fileserver\Builds\Components\MPEG4Vdec\Manual\MPEG4.H263.DIVX3Vdec_gcc_android_eabi421_2009_09_30_000000
+.3gp, .mp4, .flv, .wav, .avi
+
+general
+download cupcake [done]
+merge/test opencore plugins from xi'an [they are wrong about tag cupcake]
+need sd card and reader
+
+devices:
+
+android
+Dell mini 9"
+Yuhua X2 phone
+Freescale i.MX51
+Marvell PXA310
+TI OMAP 35xx
+
+linux
+ST 2062
+==============
+
+AVI_DMX			= Y
+3GP_DMX			= N
+//ASF_DMX			= N
+WAV_DMX			= N
+//ELE_DMX			= Y
+//RAW_DMX			= N
+//DMB_DMX			= N
+FLV_DMX			= N
+//REAL_DMX		= N
+CMMB_DMX			= N
+//DVBT_DMX		= N
+//DVBH_DMX		= N
+//ISDBT_DMX		= N
+//MPEG_DMX		= N
+
+MP3_ADEC			= Y
+AAC_ADEC			= Y
+WMA_ADEC			= N
+//AMR_ADEC		= N
+//BSAC_ADEC		= N
+//IMA_ADEC		= N
+//MIDI_ADEC		= N
+//DRA_ADEC		= N
+PCM_ADEC			= N
+//REAL_ADEC		= N
+//AC3_ADEC		= N
+//OGG_ADEC		= N
+//FLAC_ADEC		= N
+
+MPG2_VDEC			= N
+MPG4_VDEC			= N
+H264_VDEC			= Y
+//WMV_VDEC		= N
+//REAL_VDEC		= N
+FLV_VDEC			= N
+//MP2V_VDEC		= N
+//MJPEG_VDEC		= N
+
+
+
+tar zcf includes.tar.gz bionic/libc/arch-arm/include bionic/libc/include bionic/libc/kernel/common bionic/libc/kernel/arch-arm bionic/libc/include/sys bionic/libm/include
+
+\\fileserver\Public\Employees\JJ.Dai\Mpeg4\MPEG4Vdec_gcc_android_eabi421_2009_09_29_000000
+
+MovieFile.cpp  \
+Mp4Box.cpp  \
+mp4demux.cpp  \
+Mp4Riff.cpp \
+Mp4Audio.cpp \
+Mp4Com.cpp  \
+Mp4File.cpp   \
+Mp4Navigator.cpp  \
+Mp4Ve.cpp
+
+compile mp4mux.cpp error
+StszBoxMem
+
 2009-9-25
 -------------------------------------------------
-repo init -u git://android.git.kernel.org/platform/external/opencore.git  -b android-1.5
-
-git clone git://android.git.kernel.org/platform/external/opencore.git  --branch android-1.5
-
-
-
-IOError: [Errno 2] No such file or directory: '/home/cidana/damn_version/.repo/manifests/.git/HEAD'
-
+repo init -u git://android.git.kernel.org/platform/manifest.git -b cupcake
 repo init -u git://android.git.kernel.org/platform/manifest.git -b android-1.5
-
 repo sync external/opencore
 
-
-repo init -u git://android.git.kernel.org/platform/manifest.git -b cupcake
 
 2009-9-24
 -------------------------------------------------
@@ -46,6 +149,8 @@ sudo /home/cidana/android-sdk-linux_x86-1.5_r1/tools/adb
 modify \\192.168.0.86\cidana\arm\mydroid\development\emulator\skins\HVGA\layout
 to make emulator display a little smaller
 
+
+vtable for __cxxabiv1::__class_type_info
 
 
 2009-9-23
@@ -551,6 +656,7 @@ logfile_close made a crash ?  ??
 
 i.mx 51
 http://www.freescale.com/go/208588093
+https://www.freescale.com/cgi/go/210001833
 Username: ricky.fei@cidana.com
 Password: m4Khns 
 
@@ -1358,6 +1464,8 @@ build/core/envsetup.mk:	ABP:=$(ABP):$(PWD)/prebuilt/$(HOST_PREBUILT_TAG)/toolcha
 build/core/combo/linux-arm.mk:	prebuilt/$(HOST_PREBUILT_TAG)/toolchain/arm-eabi-4.2.1/bin/arm-eabi-
 
 cp out/target/product/generic/symbols/system/lib/libcidanaplayer.so out/target/product/generic/obj/lib/libcidanaplayer.so
+
+
 
 
 2009-7-17
@@ -2613,12 +2721,12 @@ find . -name *.a -exec mv '{}' static_libs \;
 
 ANPATH=/home/gavinwang/myroid
 INCLUDEDIRS += -I$(TOP)/include -I. \
-			   -I${ANPATH}/bionic/libc/include/ \
-			   -I${ANPATH}/bionic/libc/arch-x86/include \
-			   -I${ANPATH}/bionic/libc/kernel/arch-x86 \
-			   -I${ANPATH}/bionic/libc/kernel/common \
-			   -I${ANPATH}/bionic/libm/include \
-			   -I${ANPATH}/external/alsa-lib/include \
+bionic/libc/include/ \
+bionic/libc/arch-x86/include \
+bionic/libc/kernel/arch-x86 \
+bionic/libc/kernel/common \
+bionic/libm/include \
+external/alsa-lib/include \
 
 
 __si_class_type_info
