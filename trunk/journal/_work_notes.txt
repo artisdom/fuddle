@@ -1,3 +1,117 @@
+2009-10-10
+-------------------------------------------------
+ST kernel 2.6.28
+
+mmc1: host does not support reading read-only switch. assuming write-enable.
+mmc1: new SD card at address 0002
+mmcblk0: mmc1:0002 00000 1.88 GiB 
+ mmcblk0: p1
+
+mmc1: card 0002 removed
+
+/sys/bus/mmc/devices/
+# ls mmc1\:0002/
+block      date       hwrev      oemid      serial     uevent
+cid        driver     manfid     power      subsystem
+csd        fwrev      name       scr        type
+
+# cat hwrev 
+0x1
+# cat oemid 
+0x534d
+# cat serial 
+0xb180f0ed
+# cat uevent 
+DRIVER=mmcblk
+MMC_TYPE=SD
+MMC_NAME=00000
+# cat cid 
+1b534d303030303010b180f0ed0086d0
+# cat manfid 
+0x00001b
+# cat csd 
+007fff325f5a83c3f6dbdfff9680003e
+# cat fwrev 
+0x0
+# cat name 
+00000
+# cat scr 
+0225000000000000
+# cat type 
+SD
+
+2009-10-9
+-------------------------------------------------
+usage: repo COMMAND [ARGS]
+
+The most commonly used repo commands are:
+
+  abandon   Permanently abandon a development branch
+  branches  View current topic branches
+  checkout  Checkout a branch for development
+  diff      Show changes between commit and working tree
+  download  Download and checkout a change
+  grep      Print lines matching a pattern
+  init      Initialize repo in the current directory
+  prune     Prune (delete) already merged topics
+  stage     Stage file(s) for commit
+  start     Start a new branch for development
+  status    Show the working tree status
+  sync      Update working tree to the latest revision
+  upload    Upload changes for code review
+
+See 'repo help <command>' for more information on a specific command.
+See 'repo help --all' for a complete list of recognized commands.
+
+repo --trace branches
+
+repo init -b donut
+
+donut$ du -sh .repo/
+932M	.repo/
+
+donut$ du -sh *
+12M	bionic
+1.3M	bootable
+6.1M	build
+81M	dalvik
+63M	development
+553M	external
+165M	frameworks
+1.4M	hardware
+4.0K	Makefile
+65M	packages
+576M	prebuilt
+16M	system
+3.0M	vendor
+
+
+donut$ . build/envsetup.sh 
+including vendor/aosp/vendorsetup.sh
+donut$ which lunch
+donut$ lunch 1
+
+donut$ du -sh out/
+3.0G	out/
+
+
+merge opencore node from xi'an on donut
+
+opencore\Android.mk
+
+opencore\build_config\opencore_dynamic
+opencore\codecs_v2\audio
+opencore\codecs_v2\omx
+cpopencore.sh
+
+opencore\codecs_v2\omx\omx_common\include\pv_omxcore.h
+line:178, add some ex UUID
+
+opencore\codecs_v2\omx\omx_common\src\pv_omxregistry.cpp
+donut one is same as dellmini one
+
+libaac_dec_ali.a
+
 2009-9-29
 -------------------------------------------------
 adb shell mount -o remount rw /system
@@ -2114,6 +2228,7 @@ ExternalDependency/imageprocess
 
 no sound?
 check if opensound/alsa config is correct
+
 
 
 2009-6-22

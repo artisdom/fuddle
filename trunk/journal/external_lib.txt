@@ -1,6 +1,0 @@
-3GP_DMX			= N
-FLV_DMX			= N
-
-
-MPG4_VDEC			= N
-FLV_VDEC			= N
