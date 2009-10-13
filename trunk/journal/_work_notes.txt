@@ -1,3 +1,24 @@
+2009-10-13
+-------------------------------------------------
+google jam
+
+EZ-Sokoban solve by using ruby
+
+read input file contents
+build model
+solve model
+output
+
+init Matrix
+
+take one step
+stack into
+back stack
+
+update Matrix
+steps counter
+
+
 2009-10-10
 -------------------------------------------------
 ST kernel 2.6.28
