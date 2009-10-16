@@ -9,6 +9,7 @@ class Resolver
 		@matrix = matrix
         parse_matrix
         set_goal
+		move_to(@box2, [5, 8])
 #print_matrix(@matrix)
 	end
 	def print_boxes
@@ -77,6 +78,9 @@ class Resolver
 			[box.x, box.y-1],
 			[box.x, box.y+1]
 		]
+	end
+	def move_to(box, spot_to)
+		box.coordinate = spot_to
 	end
 	def update_matix
 	end

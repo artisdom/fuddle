@@ -40,6 +40,6 @@ def print_mymatrix(m)
 end
 
 if __FILE__ == $0
-	filename="/home/cidana/hostshare/A-small-practice.in"
+	filename="A-small-practice.in"
 	resolver = Resolver.new(read_input_file(filename))
 end

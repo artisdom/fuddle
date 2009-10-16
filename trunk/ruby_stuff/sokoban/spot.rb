@@ -21,6 +21,7 @@ class Spot
 end
 
 class Box < Spot
+	attr_accessor :coordinate
 	attr_accessor :dangerous
 	attr_accessor :goal
 	def initialize(coordinate)
