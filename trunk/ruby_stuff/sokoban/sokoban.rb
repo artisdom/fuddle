@@ -24,7 +24,7 @@ def read_input_file(filename)
 				break
 			end
 		end 
-		print_matrix(mymatrix)
+#print_matrix(mymatrix)
 		file.close
 		mymatrix
 	rescue => err

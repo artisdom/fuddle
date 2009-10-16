@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby1.9 -w
 
-require 'matrix'
 require_relative 'spot'
 require_relative 'util'
 
@@ -10,12 +9,89 @@ class Resolver
         parse_matrix
         set_goal
 		print_boxes
+		print_matrix(@matrix); puts
 		start
-#print_matrix(@matrix)
+	end
+	def move_box(box)
+		target = box.which_way?
+		if target
+			move_to(box, target)
+			return true
+		else
+			puts "no way to go"
+			return false
+		end
+	end
+	def switch_current_box
+		if @current_box == @box1
+			@current_box = @box2
+		else
+			@current_box = @box1
+		end
 	end
 	def start
-		move_to(@box2, [5, 8])
-		puts dangerous?(@box2)
+		@current_box = @box1
+		if @box1.on_your_way?(@box2)
+			@current_box = @box2
+		end
+		counter=0
+		while !(@box1.done == true and @box2.done == true)
+			if move_box(@current_box) == false
+				switch_current_box
+			else
+				if keep_moving?(@current_box) != true
+					switch_current_box
+				end
+			end
+#            puts @box1.done
+#            puts @box2.done
+			counter+=1
+		end
+		puts "total step = #{counter}"
+	end
+	def keep_moving?(box)
+		if dangerous?(box)
+			cross_spots = find_cross_spot
+			if(cross_spots.length > 1)
+				target = remove_back_step(box, cross_spots)[0]
+#puts "found one"
+				puts target.inspect if target
+				return true
+			else
+				if back_step?(box, cross_spots)
+#puts "backstep"
+					return false
+				end
+			end
+		end
+		puts "i_don't_know'"
+		return "i_don't_know'"
+	end
+	def find_cross_spot
+		cross_spots = []
+		get_neighbours(@box1).each do |near_box1| 
+			get_neighbours(@box2).each do |near_box2| 
+				cross_spots.push(near_box1) if near_box1 == near_box2
+			end
+		end
+		cross_spots
+	end
+	def back_step?(box, cross_spots)
+		cross_spots.each do |spot|
+			return false if box.old_coordinate != spot
+		end
+		true
+	end
+	def remove_back_step(box, cross_spots)
+		cross_spots.each do |spot|
+			if box.old_coordinate == spot
+#                puts cross_spots.inspect
+#                puts box.old_coordinate
+				cross_spots.delete(spot)
+#                puts cross_spots.inspect
+			end
+		end
+		cross_spots
 	end
 	def print_boxes
 		puts @box1
@@ -113,10 +189,19 @@ class Resolver
 				to = 'w'
 			end
 			@matrix[spot_to[0]][spot_to[1]] = to
+			box.old_coordinate = box.coordinate
 			box.coordinate = spot_to 
+#            puts box.coordinate.inspect
+#            puts spot_to.inspect
+			box.done = true if (box.goal.coordinate == spot_to)
+#             if (box.goal.coordinate == spot_to)
+#                box.done = true
+#                puts "done"
+#             end
 		end
 #puts box
 		print_matrix(@matrix)
+		puts
 	end
 	def update_matix
 	end

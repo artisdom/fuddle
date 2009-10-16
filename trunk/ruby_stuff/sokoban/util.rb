@@ -1,5 +1,4 @@
 #!/usr/bin/env ruby1.9 -w
-require 'matrix'
 
 def print_matrix(m)
 	m.each do |row|
