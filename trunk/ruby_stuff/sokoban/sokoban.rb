@@ -1,43 +1,42 @@
 #!/usr/bin/env ruby1.9
 #/usr/bin/env ruby1.9 -w
 
-require 'matrix'
 require_relative 'resolver'
 
 def read_input_file(filename)
 	puts "read_input_file()"
 	rownum, colnum, linenum = 0,0,0;
-	rows=[]
+	mymatrix = []
 	begin
 		file = File.open(filename, "r")
 		while(line = file.gets)
 			linenum = linenum + 1
 			if(linenum == 1)
 				casenum = line; 
-#puts "casenum = #{casenum}"  
 			elsif(linenum <= 12)
 				if(line.length <= 6)
 					rownum = line.split(' ')[0]
 					colnum = line.split(' ')[1] 
-#puts "rownum=#{rownum}, colnum=#{colnum}"
 				else
 					line[-1]='' #remove trail charactor, string length=11
-#puts line
-					rows.push(line)
-#rows.push(line.to_a())
-					matrix = Matrix[rows]
+					mymatrix.push(line.split('').to_a)
 				end
 			else
 				break
 			end
 		end 
-#puts "\n" 
-#print_matrix(matrix)
+		print_mymatrix(mymatrix)
 		file.close
-		matrix
+		mymatrix
 	rescue => err
 		puts "Exception: #{err}"
 		err
+	end
+end
+
+def print_mymatrix(m)
+	m.each do |row|
+		puts row.inspect
 	end
 end
 

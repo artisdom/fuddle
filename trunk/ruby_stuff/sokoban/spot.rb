@@ -5,19 +5,34 @@ class Spot
 	attr_accessor :type
 	def initialize(coordinate, type)
 		@coordinate = coordinate
-		@type = type			  
+		@type = type
+#puts to_s
+	end
+	def x
+		coordinate[0]
+	end
+	def y
+		coordinate[1]
 	end
 	def to_s
-		"Spot (#{coordinate[0]}" ", " "#{coordinate[1]}) #{type}"	
+#"#{type}(#{coordinate[0]}" ", " "#{coordinate[1]})"
+		"#{type}(#{x}" ", " "#{y})"
 	end
 end
 
 class Box < Spot
 	attr_accessor :dangerous
+	attr_accessor :goal
 	def initialize(coordinate)
-		@coordinate = coordinate
-		@type = :box
+		super(coordinate, :box)
 		@dangerous = false
+		@goal = nil
+	end
+	def set_goal(goal)
+		@goal = goal
+	end
+	def to_s
+		super.to_s + "->#{goal}"
 	end
 	def movable?
 	end

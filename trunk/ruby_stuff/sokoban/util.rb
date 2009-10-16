@@ -1,4 +1,4 @@
-#!/usr/bin/env ruby -w
+#!/usr/bin/env ruby1.9 -w
 require 'matrix'
 
 def print_matrix(matrix)
