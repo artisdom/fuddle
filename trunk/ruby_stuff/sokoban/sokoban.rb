@@ -4,7 +4,6 @@
 require_relative 'resolver'
 
 def read_input_file(filename)
-	puts "read_input_file()"
 	rownum, colnum, linenum = 0,0,0;
 	mymatrix = []
 	begin

@@ -7,12 +7,8 @@ require_relative 'util'
 class Resolver
 	def initialize(matrix)
 		@matrix = matrix
-		puts "Resolver constructor"
         parse_matrix
         set_goal
-        print_boxes
-		puts movable?(@box1)
-puts movable?(@box2)
 #print_matrix(@matrix)
 	end
 	def print_boxes
@@ -20,7 +16,6 @@ puts movable?(@box2)
 		puts @box2
 	end
 	def parse_matrix
-		puts "parse_matrix"
 		rownum, colnum = 0,0
 		firstbox, firstgoal = 0,0
 		@matrix.each do |row|
@@ -61,23 +56,16 @@ puts movable?(@box2)
 				if spot_type(near) == blocker
 					blockers.push(near)
 					counter +=1
-					if counter == 2 and same_line(blockers)
-						return false
-					end
-					if counter == 3
-						return false
-					end
+					return false if counter == 2 and same_line?(blockers)
+					return false if counter == 3
 				end
 			end
 		end
 		true
 	end
-	def same_line(blockers)
-		if blockers[0][0] == blockers[1][0] or blockers[0][1] == blockers[1][1]
-			return true
-		else
-			return false
-		end
+	def same_line?(blockers)
+		return true if blockers[0][0] == blockers[1][0] or blockers[0][1] == blockers[1][1]
+		false
 	end
 	def spot_type(spot)
 		@matrix[spot[0]][spot[1]]
