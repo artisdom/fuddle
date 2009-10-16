@@ -1,3 +1,145 @@
+2009-10-15
+-------------------------------------------------
+
+~$ inotifywait -m -r /sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1
+Setting up watches.  Beware: since -r was given, this may take a while!
+Watches established.
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/usb_endpoint/ DELETE_SELF 
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/usb_endpoint/ IGNORED 
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/host20/ DELETE_SELF 
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/host20/ IGNORED 
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/usb_endpoint/ DELETE_SELF 
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/usb_endpoint/ IGNORED
+
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/ OPEN idVendor
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/ ACCESS idVendor
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/ CLOSE_NOWRITE,CLOSE idVendor
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/ OPEN dev
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/ ACCESS dev
+...
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/usb_endpoint/usbdev2.19_ep81/ IGNORED 
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/usb_endpoint/usbdev2.19_ep02/ DELETE_SELF 
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/usb_endpoint/usbdev2.19_ep02/ IGNORED 
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/host20/target20:0:0/ DELETE_SELF 
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/host20/target20:0:0/ IGNORED
+
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/ DELETE_SELF 
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/ IGNORED 
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/usb_endpoint/usbdev2.19_ep00/ DELETE_SELF 
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/usb_endpoint/usbdev2.19_ep00/ IGNORED 
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/ DELETE_SELF 
+/sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/ IGNORED 
+
+fdisk /dev/sdb, partitation 1, don't set boot
+mke2fs /dev/sdb1
+grub-install
+cp backup files
+fdisk set boot
+The file /flash/boot/grub/stage1 not read correctly.
+
+
+backup_andr_sd$ sudo grub-install --recheck /dev/sdb
+Probing devices to guess BIOS drives. This may take a long time.
+Searching for GRUB installation directory ... found: /boot/grub
+Installing GRUB to /dev/sdb as (hd1)...
+Installation finished. No error reported.
+This is the contents of the device map /boot/grub/device.map.
+Check if this is correct or not. If any of the lines is incorrect,
+fix it and re-run the script `grub-install'.
+
+(fd0)	/dev/fd0
+(hd0)	/dev/sda
+(hd1)	/dev/sdb
+
+
+sudo cp -r cache  d  data  default.prop  dev  etc  init  init.eee_701.rc  init.goldfish.rc  init.rc  lib  proc  sbin  sdcard  sqlite_stmt_journals  sys  system  yylog /flash
+
+out/target/product/generic/system/lib/libcidana_media_jni_cmmb.so
+out/target/product/generic/system/app/CI_Android_cmmb.apk
+
+out/target/product/generic/system/lib/libcidanavrp.so
+out/target/product/generic/system/lib/libcidana_media_jni_pmp.so
+out/target/product/generic/system/app/CI_Android_pmp.apk
+
+adb install -r 
+
+
+i.mx 51
+sudo dd if=mx51_TO2_babbage_redboot-no-padding.bin of=/dev/sdb bs=1K seek=1
+sudo dd if=zImage of=/dev/sdb bs=1M seek=1 
+sudo fdisk /dev/sdb
+u --> sector
+n --> new, start from 20480 sector (10M)
+sudo mkfs.vfat /dev/sdb1 
+sudo mkfs.ext3 /dev/sdb2 
+
+mount -t ext3 /dev/sdb2 /flash
+tar xzvf android_fs.tar.gz -C /flash
+cd android_fs
+mv * ..
+
+connect usb from OTG cable, adb is ready now
+on vmware
+
+W/dalvikvm(  741): Exception Ljava/lang/UnsatisfiedLinkError; thrown during Lcidana/media/MediaPlayer;.<clinit>
+recheck your so files, make sure they are there
+
+20
+11
+16
+13
+12
+
+cmmb/pmp porting (android)
+cgmobile demo support (android)
+java ui integrate support (android)
+vrpresent integrate (android/linux)
+st2062 demo support (linux)
+
+
+2009-10-14
+-------------------------------------------------
+array, stacks, sets, queues, dequeues, FIFO queues
+
+
+87/936
+agi ruby1.9 libruby1.9 libreadline-ruby1.9 irb1.9
+
+
+inotify not work on /sys (sysfs)
+use udev instead
+
+git://git.kernel.org/pub/scm/linux/hotplug/udev.git
+
+udevmonitor will print the received events for:
+UDEV the event which udev sends out after rule processing
+UEVENT the kernel uevent
+
+UEVENT[1255506296.388938] add      /devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1 (usb)
+UEVENT[1255506296.389046] add      /devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/usb_endpoint/usbdev2.11_ep00 (usb_endpoint)
+UDEV  [1255506296.429018] add      /devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1 (usb)
+UEVENT[1255506296.433970] add      /devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0 (usb)
+UDEV  [1255506296.451092] add      /devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/usb_endpoint/usbdev2.11_ep00 (usb_endpoint)
+UEVENT[1255506296.453200] add      /class/scsi_host/host12 (scsi_host)
+UEVENT[1255506296.465282] add      /devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/usb_endpoint/usbdev2.11_ep81 (usb_endpoint)
+UEVENT[1255506296.465333] add      /devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/usb_endpoint/usbdev2.11_ep02 (usb_endpoint)
+UDEV  [1255506296.534205] add      /devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0 (usb)
+UDEV  [1255506296.538458] add      /class/scsi_host/host12 (scsi_host)
+UDEV  [1255506296.580083] add      /devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/usb_endpoint/usbdev2.11_ep81 (usb_endpoint)
+UDEV  [1255506296.588632] add      /devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1/2-1:1.0/usb_endpoint/usbdev2.11_ep02 (usb_endpoint)
+
+ST don't have this
+/var/log/messages
+has usb sdb1 plugin event
+
+/proc/sys/kernel/hotplug
+
+/etc/udev/
+/etc/hotplug/
+
+TODO:
+system polling ?
+
 2009-10-13
 -------------------------------------------------
 google jam
@@ -1895,10 +2037,7 @@ ro.secure=0
 ro.allow.mock.location=1
 ro.debuggable=1
 persist.service.adb.enable=1
-sudo grub-install --root-directory=/media/disk --no-floppy /dev/sdb1
 sudo grub-install --root-directory=/media/disk-1 --no-floppy /dev/sdb1
-sudo grub-install --root-directory=/media/disk-1 --no-floppy /dev/sdc1
-sudo grub-install --root-directory=/flash --no-floppy /dev/sdc1
 sudo grub-install --root-directory=/flash --no-floppy /dev/sdb1
 sudo cp vmlinuz /flash/boot/
 sudo cp grub/menu.lst /flash/boot/grub/
