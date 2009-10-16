@@ -24,18 +24,12 @@ def read_input_file(filename)
 				break
 			end
 		end 
-		print_mymatrix(mymatrix)
+		print_matrix(mymatrix)
 		file.close
 		mymatrix
 	rescue => err
 		puts "Exception: #{err}"
 		err
-	end
-end
-
-def print_mymatrix(m)
-	m.each do |row|
-		puts row.inspect
 	end
 end
 

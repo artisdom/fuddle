@@ -9,8 +9,13 @@ class Resolver
 		@matrix = matrix
         parse_matrix
         set_goal
-		move_to(@box2, [5, 8])
+		print_boxes
+		start
 #print_matrix(@matrix)
+	end
+	def start
+		move_to(@box2, [5, 8])
+		puts dangerous?(@box2)
 	end
 	def print_boxes
 		puts @box1
@@ -79,8 +84,39 @@ class Resolver
 			[box.x, box.y+1]
 		]
 	end
+	def can_move_to?(spot)
+		[nil, 'o', 'w', '#'].each do |blocker|
+			return false if spot_type(spot) == blocker
+		end
+		true
+	end
+	def dangerous?(box)
+		get_neighbours(box).each do |near|
+			return false if @matrix[near[0]][near[1]] == 'o'
+		end
+		true
+	end
 	def move_to(box, spot_to)
-		box.coordinate = spot_to
+#puts box
+		if can_move_to?(spot_to)
+			if box.type == :box
+				from = '.'
+			elsif box.type == :box_and_goal
+				from = 'x'
+			end
+			@matrix[box.x][box.y] = from
+			if spot_type(spot_to) == '.'
+				box.type = :box
+				to = 'o'
+			elsif spot_type(spot_to) == 'x'
+				box.type = :box_and_goal
+				to = 'w'
+			end
+			@matrix[spot_to[0]][spot_to[1]] = to
+			box.coordinate = spot_to 
+		end
+#puts box
+		print_matrix(@matrix)
 	end
 	def update_matix
 	end
