@@ -1,7 +1,8 @@
 #!/usr/bin/env ruby1.9
 #/usr/bin/env ruby1.9 -w
 
-require_relative 'resolver'
+#require_relative 'resolver'
+require 'resolver'
 
 def read_input_file(filename)
 	rownum, colnum, linenum = 0,0,0;

@@ -1,7 +1,9 @@
 #!/usr/bin/env ruby1.9 -w
 
-require_relative 'spot'
-require_relative 'util'
+#require_relative 'spot'
+#require_relative 'util'
+require 'spot'
+require 'util'
 
 class Resolver
 	def initialize(matrix)
