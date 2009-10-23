@@ -1,4 +1,7 @@
 . vim
+hex edit
+%!xxd
+%!xxd -r
 
 [tips]
 tip 1: use google
