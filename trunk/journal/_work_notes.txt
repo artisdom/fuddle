@@ -1,6 +1,112 @@
+2009-10-30
+-------------------------------------------------
+gvim pmp_CI_Android_Demo/src/cidana/media/MediaPlayer.java \
+cmmb_CI_Android_Demo/src/cidana/media/MediaPlayer.java \
+dvbt_CI_Android_Demo/src/cidana/media/MediaPlayer.java \
+isdbt_CI_Android_Demo/src/cidana/media/MediaPlayer.java
+
+gvim pmp_cidana_media_jni/cidana_media_Mediaplayer.cpp \
+cmmb_cidana_media_jni/cidana_media_Mediaplayer.cpp \
+dvbt_cidana_media_jni/cidana_media_Mediaplayer.cpp \
+isdbt_cidana_media_jni/cidana_media_Mediaplayer.cpp
+
+crash with link problem, try clean java code and build again
+
+REMEMBER:
+cmmb_sdk --> new
+
+pmp
+cmmb
+simple_ui backup works, but may have /sdcard/log.txt there
+
+dvbt dlopen, Open error
+isdbt H264 decode return wired
+
+TODO:
+try ndk ?
+use surface flinger, andemo test sdk first. then port them to isurface and vr.
+if dvbt still not work with vr, try static link with it
+
+
+2009-10-29
+-------------------------------------------------
+dlopen
+
+generic/obj/STATIC_LIBRARIES/libdl_intermediates/libdl.a
+out/target/product/generic/obj/APPS/CI_Android_dvbt_intermediates/package.apk
+out/target/product/generic/obj/APPS/CI_Android_pmp_intermediates/package.apk
+out/target/product/generic/obj/APPS/CI_Android_isdbt_intermediates/package.apk
+link android vr present to dl,  just add libdl to link line of Android.mk
+
+src
+makefile
+extern lib
+
+vr headers
+vr android
+
+jni
+java ui
+
+TODO: 
+dvbt vr problem
+isdbt continue
+
+
+2009-10-27
+-------------------------------------------------
+resource consume
+
+CPPFLAGS += -fno-rtti -fomit-frame-pointer -fno-exceptions 
+
+D:\hostshare\sdk_dvbt\DVBT_LINUX\linux_ui\output\dvbt\General
+
+TODO: integrate isurface
+
+modify alsa m_volume static
+ret = CI_Player_SetConfig(ciplayer.pplayer, CI_CFG_AUDIO_VOLUME2, &volume);
+
+android make sdcard
+mksdcard 1024M mysdcard
+
+2009-10-26
+-------------------------------------------------
+kernel$ find drivers/ -name cartesio* 
+drivers/input/keyboard/cartesio-keypad.c
+drivers/input/touchscreen/cartesio_ts.c
+drivers/mtd/nand/cartesio_nand.c
+drivers/net/can/ccan/cartesio_can.c
+
+mknod /dev/input/event0 c 13 64
+
+IRQ 19/MSP: IRQF_DISABLED is not guaranteed on shared IRQs
+
+framebuffer audio icon
+Animated GIF Banner Maker	png->gif
+Total Video Converter	gif->avi
+
+TODO:
+android solution
+
+# fbset -depth 32
+# cat logo2.raw  > /dev/fb0
+
+2009-10-23
+-------------------------------------------------
+libpam
+
+dvbt phase 1
+cmmb rip rabish
+
+TODO:
+mpg2 vdec
+mpg2 demux
+surface
+
+
 2009-10-15
 -------------------------------------------------
-
+65125945
 ~$ inotifywait -m -r /sys/devices/pci0000:00/0000:00:11.0/0000:02:03.0/usb2/2-1
 Setting up watches.  Beware: since -r was given, this may take a while!
 Watches established.
@@ -37,6 +143,7 @@ cp backup files
 fdisk set boot
 The file /flash/boot/grub/stage1 not read correctly.
 
+202.96.209.133
 
 backup_andr_sd$ sudo grub-install --recheck /dev/sdb
 Probing devices to guess BIOS drives. This may take a long time.
@@ -507,6 +614,8 @@ CI_SDK_Playback.cpp
 		}
 		break;
 #endif
+PlaybackEngine.cpp
+
 
 GxBridge_Overlay.cpp
 #ifdef ANDROID	
@@ -1227,7 +1336,7 @@ CVideoRenderer::YUVto565
 CAndroidVideoDevice::Open
 CAndroidVideoDevice::SetViewport
 
-
+FRAMEBUFFER
 2009-8-7
 -------------------------------------------------
 compile sdk with toolchain
@@ -2401,7 +2510,10 @@ st_demo_20090622
 -------------------------------------------------
 decoder cpu usage
 
+
 mknod /dev/fb0 c 29 0
+
+mkdir /dev/input
 mknod /dev/input/event0 c 13 64
 
 mkdir -p /dev/snd
@@ -2409,15 +2521,16 @@ mknod /dev/snd/controlC0 c 116 0
 mknod /dev/snd/pcmC0D0p c 116 16
 mknod /dev/snd/pcmC0D0c c 116 24
 
-mount /dev/mmc0p1 /mnt
 
-&& cd /mnt && ./cidana_sample
+mount /dev/mmc0p1 /mnt && cd /mnt
+mount /dev/mmc1p1 /mnt && cd /mnt
+
+mount /dev/mmc1p1 /mnt && cd /mnt/st_demo_20091027/bin/
+./cidana_sample -l playlist.txt
 
 cd / && umount /mnt
 
-sudo rm /media/disk/cidana_sample \
-&& sudo cp bin/cidana_sample /media/disk/
-
+fbset 480 272 480 272 24
 
 sudo umount /media/disk/
 
