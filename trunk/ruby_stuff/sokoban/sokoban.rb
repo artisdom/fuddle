@@ -5,29 +5,29 @@
 require 'resolver'
 
 def read_input_file(filename)
-	rownum, colnum, linenum = 0,0,0;
+	casenum, rownum, colnum = 0,0,0;
 	mymatrix = []
 	begin
 		file = File.open(filename, "r")
-		while(line = file.gets)
-			linenum = linenum + 1
-			if(linenum == 1)
-				casenum = line; 
-			elsif(linenum <= 12)
-				if(line.length <= 6)
-					rownum = line.split(' ')[0]
-					colnum = line.split(' ')[1] 
-				else
-					line[-1]='' #remove trail charactor, string length=11
-					mymatrix.push(line.split('').to_a)
-				end
-			else
-				break
+		line = file.gets;
+		totalcasenum = line.to_i
+		while casenum < 2#totalcasenum
+			casenum+=1
+			line = file.gets
+			rownum = line.split(' ')[0].to_i
+			colnum = line.split(' ')[1].to_i
+			puts "casenum #{casenum} rownum #{rownum} colnum #{colnum}"
+			while rownum > 0
+				line = file.gets
+				line[-1]='' #remove trail charactor, string length=11
+				mymatrix.push(line.split('').to_a)
+				rownum-=1
 			end
+			yield mymatrix
+			mymatrix = []
 		end 
 #print_matrix(mymatrix)
 		file.close
-		mymatrix
 	rescue => err
 		puts "Exception: #{err}"
 		err
@@ -36,5 +36,7 @@ end
 
 if __FILE__ == $0
 	filename="A-small-practice.in"
-	resolver = Resolver.new(read_input_file(filename))
+	read_input_file(filename) do |matrix|
+		resolver = Resolver.new(matrix)
+	end
 end

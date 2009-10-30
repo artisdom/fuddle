@@ -8,15 +8,20 @@ require 'util'
 class Resolver
 	def initialize(matrix)
 		@matrix = matrix
-        parse_matrix
-        set_goal
-		print_boxes
-		print_matrix(@matrix); puts
-		start
+print_matrix(@matrix) #;puts
+parse_matrix
+print_boxes
+set_goal
+print_boxes
+#print_matrix(@matrix) #;puts
+ start
 	end
 	def move_box(box)
 		target = box.which_way?
+puts target.inspect
 		if target
+		puts "a"
+		puts box.inspect
 			move_to(box, target)
 			return true
 		else
@@ -33,7 +38,9 @@ class Resolver
 	end
 	def start
 		@current_box = @box1
-		if @box1.on_your_way?(@box2)
+		puts @box1.on_your_way?(@box2)
+		puts !movable?(@box1)
+		if @box1.on_your_way?(@box2) or !movable?(@box1)
 			@current_box = @box2
 		end
 		counter=0
@@ -48,6 +55,7 @@ class Resolver
 #            puts @box1.done
 #            puts @box2.done
 			counter+=1
+			break if counter > 10
 		end
 		puts "total step = #{counter}"
 	end
@@ -66,7 +74,7 @@ class Resolver
 				end
 			end
 		end
-		puts "i_don't_know'"
+#puts "i_don't_know'"
 		return "i_don't_know'"
 	end
 	def find_cross_spot
@@ -106,20 +114,32 @@ class Resolver
 			row.each do |char|
 				if char == 'o'
 					if(firstbox == 0)
-						@box1 = Box.new([rownum, colnum])
+						@box1 = Box.new([colnum, rownum])
 						firstbox=1
 					else
-						@box2 = Box.new([rownum, colnum])
+						@box2 = Box.new([colnum, rownum])
 					end
 				elsif char == 'x'
 					if(firstgoal == 0)
-						@goal1 = Spot.new([rownum, colnum], :goal)
+						@goal1 = Spot.new([colnum, rownum], :goal)
 						firstgoal=1
 					else
-						@goal2 = Spot.new([rownum, colnum], :goal)
+						@goal2 = Spot.new([colnum, rownum], :goal)
 					end
 				elsif char == 'w'
 #TODO:add w parse
+					if(firstbox == 0)
+						@box1 = Box.new([colnum, rownum])
+						firstbox=1
+					else
+						@box2 = Box.new([colnum, rownum])
+					end
+					if(firstgoal == 0)
+						@goal1 = Spot.new([colnum, rownum], :goal)
+						firstgoal=1
+					else
+						@goal2 = Spot.new([colnum, rownum], :goal)
+					end
 				end
 				colnum+=1
 			end
@@ -152,7 +172,7 @@ class Resolver
 		false
 	end
 	def spot_type(spot)
-		@matrix[spot[0]][spot[1]]
+		@matrix[spot[1]][spot[0]]
 	end
 	def get_neighbours(box)
 		[
@@ -175,14 +195,16 @@ class Resolver
 		true
 	end
 	def move_to(box, spot_to)
-#puts box
 		if can_move_to?(spot_to)
+	puts box.inspect
+	puts @matrix[0][1]
 			if box.type == :box
 				from = '.'
 			elsif box.type == :box_and_goal
 				from = 'x'
 			end
-			@matrix[box.x][box.y] = from
+			@matrix[box.y][box.x] = from
+			puts @matrix[box.y][box.x]
 			if spot_type(spot_to) == '.'
 				box.type = :box
 				to = 'o'
@@ -190,7 +212,8 @@ class Resolver
 				box.type = :box_and_goal
 				to = 'w'
 			end
-			@matrix[spot_to[0]][spot_to[1]] = to
+			@matrix[spot_to[1]][spot_to[0]] = to
+			puts "c"
 			box.old_coordinate = box.coordinate
 			box.coordinate = spot_to 
 #            puts box.coordinate.inspect
@@ -202,8 +225,8 @@ class Resolver
 #             end
 		end
 #puts box
-		print_matrix(@matrix)
-		puts
+#print_matrix(@matrix)
+#puts
 	end
 	def update_matix
 	end
