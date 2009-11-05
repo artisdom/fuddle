@@ -369,4 +369,20 @@ dpkg -S /usr/bin/ls
 <SOLVE> /etc/default/rcS --> UTC=no
 dpkg-reconfigure tzdata
 
+power manager dim screen too soon
+gconftool-2 -Tg /apps/gnome-power-manager/backlight/idle_dim_time
+gconftool-2 -s /apps/gnome-power-manager/backlight/idle_dim_time 120 -t int
+
+check package version before installation
+apt-cache madison packagename
+apt-cache policy packagename
+
+
+firefox and vimperator
+google reader CTRL+Z switch to pass through mode
+
+
+alt+esc is faster version of alt+tab
+gnome-do --quiet cool, mintmenu sucks
+
 
