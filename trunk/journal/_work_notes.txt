@@ -1,3 +1,82 @@
+2009-11-5
+-------------------------------------------------
+VR
+ndk, jni, apk + so
+pmp, test audio work fine ?, wmv crash ?, swtich media crash ?
+dvbt, need another EPG lib and TAL lib
+
+freescale i.mx51 android
+https://www.freescale.com/cgi/go/212959795
+
+2009-11-4
+-------------------------------------------------
+Here are the PMP formats we needs support for PMP demo in Android. 
+
+File Format : 
+mp4, 
+wmv, 
+wma, 
+mp3, 
+3gp, 
+aac, 
+avi, 
+xVid, 
+Divx, 
+rm, 
+rmvb
+
+Codecs: 
+MPEG4 decoder, 
+H.264 decoder, 
+WMV decoder,
+MP3 decoder, 
+HE-AAC V2 decoder (AAC-LC and AAC-SBR), 
+WMA decoder, 
+Real Video, 
+Real Audio
+
+TODO:
+ask leal for presentation
+bug fix, switch to next media crash 
+
+/home/cidana/arm/mydroid/
+
+/home/cidana/arm/mydroid/bionic/libc/arch-arm/include
+/home/cidana/arm/mydroid/bionic/libc/include
+/home/cidana/arm/mydroid/bionic/libc/kernel/common
+/home/cidana/arm/mydroid/bionic/libc/kernel/arch-arm
+/home/cidana/arm/mydroid/bionic/libm/include
+
+bionic/libc/arch-arm/include
+bionic/libc/include
+bionic/libc/kernel/common
+bionic/libc/kernel/arch-arm
+bionic/libm/include
+
+undefined stderr ?  use gcc not g++ compile the c source code
+
+2009-11-3
+-------------------------------------------------
+cmmb done, gfx_bridge need modify ?
+
+2009-11-2
+-------------------------------------------------
+isdbt done
+
+app crash ?
+
+clean-pmp_CI_Android
+
+make clean-CI_Android_pmp clean-libcidanavrp clean-libcidana_media_jni_pmp
+make clean-CI_Android_isdbt clean-libcidanavrp clean-libcidana_media_jni_isdbt
+make clean-CI_Android_cmmb clean-libcidanavrp clean-libcidana_media_jni_cmmb
+make clean-CI_Android_dvbt clean-libcidanavrp clean-libcidana_media_jni_dvbt
+
+TODO:
+
+cmmb again with vr
+
+
 2009-10-30
 -------------------------------------------------
 gvim pmp_CI_Android_Demo/src/cidana/media/MediaPlayer.java \
@@ -138,6 +217,7 @@ Watches established.
 
 fdisk /dev/sdb, partitation 1, don't set boot
 mke2fs /dev/sdb1
+mount sdb1
 grub-install
 cp backup files
 fdisk set boot
@@ -158,6 +238,7 @@ fix it and re-run the script `grub-install'.
 (hd0)	/dev/sda
 (hd1)	/dev/sdb
 
+console=0
 
 sudo cp -r cache  d  data  default.prop  dev  etc  init  init.eee_701.rc  init.goldfish.rc  init.rc  lib  proc  sbin  sdcard  sqlite_stmt_journals  sys  system  yylog /flash
 
@@ -1049,9 +1130,24 @@ Password: m4Khns
 babbage
 
 
+
+
+硬件是dellmini 9
+软件是android 1.5
+linux kernel 是西安那边弄的
+
+
+现在的现象是：
+在android 启动的时候，会出现下面的信息，
+
 app_process use uses 32-bits capbilities
-binder transition failed
+xxxx: binder transition failed
 acpi preparing to enter system sleep state S5
+
+然后 "xxxx: binder transition failed" , xxxx是数字会变化,
+这条会不停的出现，然后android 的界面始终不会出现。
+
+
 
 
 https://www.freescale.com/cgi/doc/210101820/Android_R3_Release.gz
