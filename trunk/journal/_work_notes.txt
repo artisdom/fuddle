@@ -1,3 +1,101 @@
+2009-11-6
+-------------------------------------------------
+connection refused by the server OPTIONS request failed
+local svn-server can't connected, auto detect dns server, don't use your manually set one.
+
+http://mirror.lupaworld.com/ubuntu/releases/hardy/ubuntu-8.04.3-desktop-i386.iso.zsync
+
+http://www.52rd.com/Blog/Archive_Thread.asp?SID=17459
+
+pthread_exit
+
+pthread_cleanup_push(pthread_mutex_unlock, (void *) &mut);
+pthread_mutex_lock(&mut);
+/* do some work */
+pthread_mutex_unlock(&mut);
+pthread_cleanup_pop(0);
+
+
+{ int oldtype;
+ pthread_setcanceltype(PTHREAD_CANCEL_DEFERRED, &oldtype);
+ pthread_cleanup_push(routine, arg);
+ ...
+ pthread_cleanup_pop(execute);
+ pthread_setcanceltype(oldtype, NULL);
+ }
+
+void pthread_exit(void *retval) 
+int pthread_join(pthread_t th, void **thread_return)
+int pthread_detach(pthread_t th)
+
+http://hi.baidu.com/l1l1888/blog/item/68e8f400d823bf86e850cdc0.html
+
+pthread_once_t once = PTHREAD_ONCE_INIT;
+
+void once_run(void)
+{
+        cout<<"once_run in thread "<<(unsigned int )pthread_self()<<endl;
+}
+
+void * child1(void * arg)
+{
+        pthread_t tid =pthread_self();
+        cout<<"thread "<<(unsigned int )tid<<" enter"<<endl;
+        pthread_once(&once,once_run);
+        cout<<"thread "<<tid<<" return"<<endl;
+}
+
+
+void * child2(void * arg)
+{
+        pthread_t tid =pthread_self();
+        cout<<"thread "<<(unsigned int )tid<<" enter"<<endl;
+        pthread_once(&once,once_run);
+        cout<<"thread "<<tid<<" return"<<endl;
+}
+
+int main(void)
+{
+        pthread_t tid1,tid2;
+        cout<<"hello"<<endl;
+        pthread_create(&tid1,NULL,child1,NULL);
+        pthread_create(&tid2,NULL,child2,NULL);
+        sleep(10);
+        cout<<"main thread exit"<<endl;
+        return 0;
+
+}
+
+http://hi.baidu.com/zdtracy/blog/item/7ddc601cd7c9a58287d6b6bf.html
+pthread_kill
+
+http://www.ibm.com/developerworks/cn/linux/thread/posix_threadapi/part1/
+pthread_cancel
+pthread_testcancel
+
+http://www.ibm.com/developerworks/cn/linux/thread/posix_threadapi/part2/
+pthread_key_create  
+pthread_key_delete 
+pthread_getspecific  
+pthread_setspecific 
+
+http://www.ibm.com/developerworks/cn/linux/thread/posix_threadapi/part3/
+int pthread_mutex_lock(pthread_mutex_t *mutex)
+int pthread_mutex_unlock(pthread_mutex_t *mutex)
+int pthread_mutex_trylock(pthread_mutex_t *mutex)
+
+int pthread_cond_wait(pthread_cond_t *cond, pthread_mutex_t *mutex)
+int pthread_cond_timedwait(pthread_cond_t *cond, pthread_mutex_t *mutex, const struct timespec *abstime)
+
+sem_wait()被实现为取消点，而且在支持原子"比较且交换"指令的体系结构上，
+sem_post()是唯一能用于异步信号处理函数的POSIX异步信号安全的API。
+
+int sem_post(sem_t * sem)
+int sem_wait(sem_t * sem)
+int sem_trywait(sem_t * sem)
+int sem_getvalue(sem_t * sem, int * sval)
+
+
 2009-11-5
 -------------------------------------------------
 VR
