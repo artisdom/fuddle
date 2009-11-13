@@ -488,6 +488,11 @@ google reader CTRL+Z switch to pass through mode
 alt+esc is faster version of alt+tab
 gnome-do --quiet cool, mintmenu sucks
 
+/etc/event.d/ttyN
+stop ttyN
+
 lsb_release -a to find out which distro version
+
+feh -- a command line image viewer, good
 
 
