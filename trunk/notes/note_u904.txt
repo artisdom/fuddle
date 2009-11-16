@@ -495,4 +495,11 @@ lsb_release -a to find out which distro version
 
 feh -- a command line image viewer, good
 
+terminator - split, no alt 1,2,3 , but ctrl pagedown, no detach
+xterm, rxvt, aterm, pterm- no right click menu, can't paste from host machine
+yakuake - damn cool shit, 
+		need to config ctrl+f12 as hotkey (this shit may need kde)
+		alt 1,2,3
+		disable above other window
 
+screenlets - desktop widgets
