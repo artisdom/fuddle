@@ -1,3 +1,237 @@
+2009-11-13
+-------------------------------------------------
+sign apk build by ndk ant
+
+java -jar out/host/linux-x86/framework/signapk.jar \
+build/target/product/security/testkey.x509.pem \
+build/target/product/security/testkey.pk8 \
+/home/cidana/android-ndk-1.6_r1/apps/pmp/project/bin/pmp-debug.apk \
+/home/cidana/android-ndk-1.6_r1/apps/pmp/project/bin/super.apk
+
+
+java -jar out/host/linux-x86/framework/signapk.jar \
+build/target/product/security/platform.x509.pem \
+build/target/product/security/platform.pk8 \
+/home/cidana/android-ndk-1.6_r1/apps/pmp/project/bin/pmp-debug.apk \
+/home/cidana/android-ndk-1.6_r1/apps/pmp/project/bin/super.apk
+
+out/target/product/generic/obj/APPS/HelloAndroid_intermediates/package.apk.unsigned \
+out/target/product/generic/obj/APPS/HelloAndroid_intermediates/package.apk.signed
+
+
+
+/home/cidana/arm/mydroid/build/target/product/security
+
+TODO:
+link cidana jni lib with ophone dumped rootfs /system/lib
+
+blank screen
+no display, maybe demux can't find
+
+ophone rootfs
+drwxr-xr-x root     root              2000-01-02 02:34 Linux
+lrwxrwxrwx root     root              2000-01-02 02:34 bin -> /opl/telephony/bin
+lrwxrwxrwx root     root              2000-01-02 02:34 usr -> /opl/telephony/usr
+lrwxrwxrwx root     root              2000-01-02 02:34 lib -> /opl/telephony/lib
+drwxrwxrwt root     root              2000-01-02 08:09 tmp
+drwxrwxrwt root     root              2000-01-02 02:35 sqlite_stmt_journals
+drwxrwx--- system   cache             2009-11-08 08:30 cache
+drwxr-xr-x root     root              2009-08-03 12:25 opl
+lrwxrwxrwx root     root              2000-01-02 02:34 System -> /system
+drwxrwxrwx system   system            2000-01-01 08:00 local
+drwxrwxrwx system   system            1970-01-01 08:00 sdcard
+drwxr-xr-x root     root              1970-01-01 08:00 d
+lrwxrwxrwx root     root              2000-01-02 02:34 etc -> /system/etc
+drwxr-xr-x root     root              1970-01-01 08:00 sys
+dr-xr-xr-x root     root              1970-01-01 08:00 proc
+drwxr-xr-x root     root              2009-07-27 17:39 system
+-rwxr-x--- root     root        10805 1970-01-01 08:00 init.rc
+-rw-r--r-- root     root           93 1970-01-01 08:00 default.prop
+drwxr-x--- root     root              1970-01-01 08:00 sbin
+drwxrwx--x system   system            2009-11-08 08:30 data
+-rwxr-x--- root     root       119204 1970-01-01 08:00 init
+-rwxr-x--- root     root         2171 1970-01-01 08:00 init.goldfish.rc
+drwx------ root     root              1970-01-01 08:00 root
+drwxr-xr-x root     root              2000-01-02 02:34 dev
+
+Linux opl local d sbin data root
+
+
+ophone_rootfs$ adb shell cat /proc/cpuinfo
+Processor	: XScale-V3 based processor rev 8 (v5l)
+BogoMIPS	: 155.87
+Features	: swp half thumb fastmult edsp iwmmxt 
+CPU implementer	: 0x69
+CPU architecture: 5TE
+CPU variant	: 0x0
+CPU part	: 0x683
+CPU revision	: 8
+Cache type	: undefined 5
+Cache clean	: undefined 5
+Cache lockdown	: undefined 5
+Cache format	: Harvard
+I size		: 32768
+I assoc		: 4
+I line length	: 32
+I sets		: 256
+D size		: 32768
+D assoc		: 4
+D line length	: 32
+D sets		: 256
+
+Hardware	: Jadespring
+Revision	: 0002
+Serial		: 0000000000000000
+
+ophone_rootfs$ adb shell cat /proc/devices
+Character devices:
+  1 mem
+  4 /dev/vc/0
+  4 tty
+  4 ttyS
+  5 /dev/tty
+  5 /dev/console
+  5 /dev/ptmx
+  7 vcs
+ 10 misc
+ 13 input
+ 14 sound
+ 29 fb
+ 81 video4linux
+ 89 i2c
+ 90 mtd
+ 96 fxmfg_gsensor
+ 99 innodev
+116 alsa
+128 ptm
+136 pts
+190 Fxmfg_mtv
+216 rfcomm
+237 hwmap
+247 cidatatty
+248 cctdatadev
+253 sensors
+254 rtc
+
+Block devices:
+ 31 mtdblock
+179 mmc
+
+
+
+2009-11-12
+-------------------------------------------------
+sudo ifconfig usb0 192.168.100.1
+export ADBHOST=192.168.100.2
+adb kill-server
+
+ophone sdk version #2
+
+default android 1.5 sdk version #3
+
+adb push via usb is very slow
+
+D/dalvikvm( 2910): Trying to load lib /system/lib/libcidana_media_jni_pmp.so 0x434add08
+I/dalvikvm( 2910): Unable to dlopen(/system/lib/libcidana_media_jni_pmp.so): Cannot find library
+W/dalvikvm( 2910): Exception Ljava/lang/UnsatisfiedLinkError; thrown during Lcidana/media/MediaPlayer;.<clinit>
+<SOLVE>
+libhardware, libhardware_legcy cause load
+
+/home/cidana/arm/mydroid/generic/system/lib/libui.so: undefined reference to `acquire_wake_lock'
+/home/cidana/arm/mydroid/generic/system/lib/libui.so: undefined reference to `hw_get_module'
+/home/cidana/arm/mydroid/generic/system/lib/libui.so: undefined reference to `release_wake_lock'
+/home/cidana/arm/mydroid/generic/system/lib/libpixelflinger.so: undefined reference to `qemu_add_mapping'
+
+0x434edd08
+
+
+
+2009-11-11
+-------------------------------------------------
+android list
+emulator -avd avd1
+adb shell mount -o remount rw /system
+adb install -r out/target/product/generic/obj/APPS/CI_Android_pmp_intermediates/package.apk
+adb push generic/system/lib/libcidana_media_jni_pmp.so /system/lib
+adb push generic/system/lib/libcidanavrp.so /system/lib
+
+
+mydroid$ adb install -r out/target/product/generic/obj/APPS/CI_Android_pmp_intermediates/package.apk
+1434 KB/s (190828 bytes in 0.129s)
+	pkg: /data/local/tmp/package.apk
+Failure [INSTALL_PARSE_FAILED_INCONSISTENT_CERTIFICATES]
+
+<SOLVE>, uninstall apk from setting page, then install the package again.
+because of same package has been installed with differcent signment.
+
+D/dalvikvm(  751): Trying to load lib /system/lib/libcidana_media_jni_pmp.so 0x43597fc8
+I/dalvikvm(  751): Unable to dlopen(/system/lib/libcidana_media_jni_pmp.so): Cannot find library
+W/dalvikvm(  751): Exception Ljava/lang/UnsatisfiedLinkError; thrown during Lcidana/media/MediaPlayer;.<clinit>
+D/AndroidRuntime(  751): Shutting down VM
+W/dalvikvm(  751): threadid=3: thread exiting with uncaught exception (group=0x4000fe70)
+E/AndroidRuntime(  751): Uncaught handler: thread main exiting due to uncaught exception
+E/AndroidRuntime(  751): java.lang.ExceptionInInitializerError
+
+tmp$ android create project --target 1 --name ugly_ui --path ugly_ui --activity MediaPlayerActivity --package com.cidana.jplayer
+Created project directory: ugly_ui
+Created directory /home/cidana/tmp/ugly_ui/src/com/cidana/jplayer
+Added file ugly_ui/src/com/cidana/jplayer/MediaPlayerActivity.java
+Created directory /home/cidana/tmp/ugly_ui/res
+Created directory /home/cidana/tmp/ugly_ui/bin
+Created directory /home/cidana/tmp/ugly_ui/libs
+Created directory /home/cidana/tmp/ugly_ui/res/values
+Added file ugly_ui/res/values/strings.xml
+Created directory /home/cidana/tmp/ugly_ui/res/layout
+Added file ugly_ui/res/layout/main.xml
+Added file ugly_ui/AndroidManifest.xml
+Added file ugly_ui/build.xml
+
+
+
+2009-11-10
+-------------------------------------------------
+bml
+
+
+nascape
+git clone git://git.webvm.net/npsimple
+agi xulrunner-dev libwebkit-1.0-1
+INCS = -I/usr/include/xulrunner-1.9.0.15/stable -I/usr/include/nspr
+
+mkdir .mozilla/plugins
+ln -s /home/cidana/tmp/npsimple/npsimple.so
+
+click call foo()
+<log>
+npsimple$ npsimple: getvalue - scriptable object
+npsimple: getvalue - scriptable object
+npsimple: hasProperty
+npsimple: hasMethod
+npsimple: hasProperty
+npsimple: hasMethod
+npsimple: hasProperty
+npsimple: hasMethod
+npsimple: invoke
+npsimple: invokeDefault
+
+emulator -avd avd15 -sdcard arm/mydroid/generic/sdcard.img
+
+Don't forget the command "man touch", 
+or the obligatory "unzip; strip; touch; finger; mount; fsck; more; yes; unmount; sleep"
+
+for cmd in sed grep cat find telnet init exit ; do echo -n $cmd= ; grep -c "^$cmd " ~/.bash_history; done
+
+2009-11-9
+-------------------------------------------------
+make verbose V=1
+
+android ndk, pack .so file to lib/armeabi/libxxx.so
+
+libcidana_media_jni_pmp compile ok in ndk.
+
+CI_android_demo can't be compiled by eclipse
+
+
 2009-11-6
 -------------------------------------------------
 connection refused by the server OPTIONS request failed
