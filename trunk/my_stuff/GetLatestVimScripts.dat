@@ -1,5 +1,8 @@
 ScriptID SourceID Filename
 --------------------------
+521 1 :AutoInstall: mru.vim
+1849 1 :AutoInstall: AutoClose.vim
+273 1 :AutoInstall: taglist.vim
 23 1 :AutoInstall: EnhCommentify.vim
 152 1 :AutoInstall: ShowMarks.vim
 474 1 :AutoInstall: SearchComplete.vim

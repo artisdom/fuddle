@@ -33,3 +33,7 @@ alias svnmodi="svn status | grep '^ \?' | awk '{print $2}'"
 alias svnadd="svn status | grep '^ \??' | awk '{print $2}' |xargs svn add"
 alias svncmit="svn commit -m ' '"
 alias cm="./configure && make"
+
+alias s="sdcv"
+alias cpgl="cp $HOME/my_stuff/GetLatestVimScripts.dat $HOME/.vim/GetLatest/"
+alias fixqbuf="sed -i 's/F4/F12/' $HOME/.vim/plugin/qbuf.vim"
