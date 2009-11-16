@@ -1,14 +1,65 @@
+2009-11-16
+-------------------------------------------------
+android ndk host-setup.sh
+
+Line 119 reads: 
+    if [ "$result" == "Pass" ] ; then 
+
+I believe it should read: 
+    if [ "$result" = "Pass" ] ; then 
+
+BUILD_TINY_ANDROID
+include $(BUILD_STATIC_LIBRARY)
+/home/cidana/arm/mydroid/frameworks/base/libs/ui/Android.mk
+/home/cidana/arm/mydroid/frameworks/base/media/libmedia/Android.mk
+/home/cidana/arm/mydroid/system/core/libpixelflinger/Android.mk
+
+
+mm clean will clean everything
+ophone don't have ISurface::BufferHeap
+
+terminator - split, no alt 1,2,3 , but ctrl pagedown, no detach
+xterm, rxvt, aterm, pterm- no right click menu, can't paste from host machine
+yakuake - damn cool shit, 
+		need to config ctrl+f12 as hotkey (this shit may need kde)
+		alt 1,2,3
+		disable above other window
+
+screenlets - desktop widgets
+
+TODO: 
+add timed log to vr
+fix vr close crash problem
+test other sdk with ndk
+
 2009-11-13
 -------------------------------------------------
-sign apk build by ndk ant
+sign apk build by ndk ant\
+/home/cidana/android-ndk-1.6_r1/apps/pmp/project/bin/pmp-debug.apk \
+/home/cidana/android-ndk-1.6_r1/apps/pmp/project/bin/super.apk
+*/
 
+<USE THIS ONE>
+java -jar out/host/linux-x86/framework/signapk.jar \
+build/target/product/security/platform.x509.pem \
+build/target/product/security/platform.pk8 \
+/home/cidana/android-ndk-1.6_r1/apps/pmp/project/bin/pmp-debug.apk \
+/home/cidana/android-ndk-1.6_r1/apps/pmp/project/bin/super.apk
+
+out/target/product/generic/obj/APPS/HelloAndroid_intermediates/package.apk.unsigned \
+out/target/product/generic/obj/APPS/HelloAndroid_intermediates/package.apk.signed
+
+
+
+/*
 java -jar out/host/linux-x86/framework/signapk.jar \
 build/target/product/security/testkey.x509.pem \
 build/target/product/security/testkey.pk8 \
 /home/cidana/android-ndk-1.6_r1/apps/pmp/project/bin/pmp-debug.apk \
 /home/cidana/android-ndk-1.6_r1/apps/pmp/project/bin/super.apk
+*/
 
-
+<USE THIS ONE>
 java -jar out/host/linux-x86/framework/signapk.jar \
 build/target/product/security/platform.x509.pem \
 build/target/product/security/platform.pk8 \

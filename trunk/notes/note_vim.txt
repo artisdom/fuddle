@@ -1,3 +1,5 @@
+ctrl-Y <CR> to yank stuff to clipboard
+
 . vim
 hex edit
 %!xxd
