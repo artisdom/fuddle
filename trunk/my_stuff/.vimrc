@@ -42,7 +42,6 @@ else
 	if has("gui")
 		set guioptions-=m
 		set guioptions-=T
-		set guifont=WenQuanYi\ Zen\ Hei\ Mono\ Medium
 		colorscheme evening
 	endif
 endif

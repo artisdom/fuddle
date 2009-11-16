@@ -22,7 +22,7 @@ alias ag='sudo apt-get'
 alias acs='apt-cache search'
 alias ac='apt-cache'
 
-alias gdb='gdb -silent'
+alias gdb='gdb -silent -tui'
 alias la='ls -A'
 alias ll='ls -l'
 alias le='less'
