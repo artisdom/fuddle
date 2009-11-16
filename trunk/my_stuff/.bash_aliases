@@ -4,9 +4,13 @@ if [ -d $HOME/bin ]; then
 	export PATH=$HOME/bin:$PATH
 fi
 
-ANDROID_SDK_PATH=$HOME/android-sdk-linux_x86-1.5_r3
+ANDROID_SDK_PATH=$HOME/android-sdk-linux
 if [ -d ${ANDROID_SDK_PATH} ]; then
 	export PATH=${ANDROID_SDK_PATH}/tools:$PATH
+fi
+ANDROID_NDK_PATH=$HOME/android-ndk-1.6_r1
+if [ -d ${ANDROID_SDK_PATH} ]; then
+	export PATH=${ANDROID_NDK_PATH}/build/prebuilt/linux-x86/arm-eabi-4.2.1/bin:$PATH
 fi
 
 export LESS_TERMCAP_mb=$'\E[01;32m'

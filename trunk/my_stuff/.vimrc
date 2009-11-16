@@ -59,7 +59,7 @@ map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
 map <F4> :w<CR>
 map <F5> :cnext<CR>
-map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
+"map <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 "map <F12> :ls<CR>
 
 imap <C-F5> <C-R>=strftime("%Y-%m-%d %H:%M")<CR>
