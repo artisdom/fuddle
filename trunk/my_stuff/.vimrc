@@ -32,7 +32,6 @@ if has("win32")
     set columns=120
     set lines=40
 	colorscheme evening
-	set guifont=Bitstream Vera Sans Mono 10
 	"set guifont=Courier_New:h9:cANSI
 	"set guifont=新宋体:h12:cANSI
 	"map ,f :set guifont=新宋体:h12:cANSI<CR>
