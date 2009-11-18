@@ -6,7 +6,7 @@ fi
 
 ANDROID_SDK_PATH=$HOME/android-sdk-linux
 if [ -d ${ANDROID_SDK_PATH} ]; then
-	export PATH=${ANDROID_SDK_PATH}/tools:$PATH
+	export PATH=${ANDROID_SDK_PATH}/platforms/android-1.5/tools:${ANDROID_SDK_PATH}/tools:$PATH
 fi
 ANDROID_NDK_PATH=$HOME/android-ndk-1.6_r1
 if [ -d ${ANDROID_SDK_PATH} ]; then
