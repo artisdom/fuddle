@@ -7,9 +7,6 @@ ScriptID SourceID Filename
 273 1 :AutoInstall: taglist.vim
 23 1 :AutoInstall: EnhCommentify.vim
 474 1 :AutoInstall: SearchComplete.vim
-1218 1 :AutoInstall: NerdCommenter.vim
-1697 1 :AutoInstall: Surround.vim
-39 1 :AutoInstall: MatchIt.vim
 1910 1 :AutoInstall: QuickBuf.vim
 642 1 :AutoInstall: getscript.vim
 1502 1 :AutoInstall: vimball.vim
