@@ -1,4 +1,0 @@
-FreeType 1 only supports the TrueType format, while FreeType 2 supports a lot more.
-
-1.freetype-config provides a lot of information about itself.
-
