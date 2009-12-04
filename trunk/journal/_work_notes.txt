@@ -1,3 +1,666 @@
+2009-12-4 10:44 
+-------------------------------------------------
+dalvik debug monitor
+ddms
+
+
+test1$ android create project -t 1 -k com.test -a Test1 -n test1 -p test1
+
+test1$ adb install -r bin/test1-unsigned.apk 
+69 KB/s (3400 bytes in 0.047s)
+	pkg: /data/local/tmp/test1-unsigned.apk
+Failure [INSTALL_PARSE_FAILED_NO_CERTIFICATES]
+
+makesuper.sh
+
+~% FILE=prog.tar.gz 
+~% echo ${FILE%%.*} 
+prog 
+~% echo ${FILE%.*} 
+prog.tar 
+~% echo ${FILE#*.} 
+tar.gz 
+~% echo ${FILE##*.} 
+gz 
+
+$(basename $1)
+
+ant install
+
+agi nginx
+
+/etc/init.d/nginx start
+/etc/nginx/nginx.conf
+
+enable file list
+http{
+	autoindex on;
+}
+
+/etc/init.d/nginx restart
+
+
+threse is a problem parsing the package
+
+http://192.168.0.86/
+
+2009-12-3 09:56 
+-------------------------------------------------
+
+chown root.root com.cidana.jplayer.apk
+chown system.system com.cidana.jplayer.apk
+
+chown root.root com.home.apk
+
+app_25   219   30    104008 19696 ffffffff afe0d9e4 S com.home
+
+chmod 6 setuid, setgid
+chmod 1 sticky
+
+setuid/setgid don't have no effect on surfaceflinger access deny problem.
+invoke ps you still got app_25 displayed as uid.
+
+
+stephane, hi
+
+I'm tring to get our DTV/PMP player work on Harmony board (which is running android 2.0).
+
+Thanks for sending documents.
+
+And I would like to let you know the problems which we have met here.
+
+1. adb connection problem, and we can't debug our applications without this.
+
+via usb port (type Mini-B)
+I have tried on different computer and both windows and linux. 
+adb could not detect the T20 device.
+we are using android usb driver rev. 2
+
+via WIFI 
+export ADBHOST=xxx.xxx.xxx.xxx (which is T20's ip address)
+I can got response from ping command, and T20 can access internet browse some webpage.
+adb could not detect the T20 device too.
+
+2. harmony_Eclair_Nov25.zip ?
+You mentioned these stuff in README_FIRST_KT.TXT.
+Where can I get this file, if you have weblink. Send it to me pls.
+
+here is our problem with nVidia Tegra II
+
+
+opencore
+catch up the newest code
+git checkout v2.06
+
+make installclean
+
+
+Lunch menu... pick a combo:
+     1. generic-eng
+     2. simulator
+     3. aosp_emulator_us-eng
+     4. aosp_emulator_eu-eng
+     5. aosp_dream_us-userdebug
+     6. aosp_dream_eu-userdebug
+     7. aosp_dream_us-eng
+     8. aosp_dream_eu-eng
+     9. aosp_sapphire_us-userdebug
+     10. aosp_sapphire_eu-userdebug
+     11. aosp_sapphire_us-eng
+     12. aosp_sapphire_eu-eng
+
+make: *** No rule to make target `out/target/product/generic/obj/lib/libsgl.so', 
+needed by `out/target/product/generic/obj/SHARED_LIBRARIES/libopencore_player_intermediates/LINKED/libopencore_player.so'.  Stop.
+
+skia core lib rename 
+eclair --> libskia
+cupcake --> libsgl
+
+rollback to eclair v2.02 (but libskia link changed)
+git checkout korg/eclair
+
+
+lunch -> 12 
+lunch 12 
+lunch aosp_sapphire_eu-eng 
+choosecombo -> select the appropriate options 
+make PRODUCT-aosp_sapphire_eu-eng 
+
+
+2009-12-2 09:57 
+-------------------------------------------------
+system/core/include/arch/linux-arm/AndroidConfig.h
+#define HAVE_ANDROID_OS 1
+
+/home/cidana/eclair/prebuilt/linux-x86/toolchain/arm-eabi-4.4.0/bin
+eclair use 4.4.0 gcc
+kernel 2.6.29
+
+chmod +x make_kconfig.pl make_makefile.pl make_myconfig.pl
+export PATH=/home/cidana/eclair/prebuilt/linux-x86/toolchain/arm-eabi-4.4.0/bin:$PATH
+make ARCH=arm CROSS_COMPILE=arm-eabi-
+
+
+                 from /home/cidana/siano/arm/smshostlib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
+include/asm/processor_32.h: At top level:
+include/asm/processor_32.h:608: error: conflicting types for 'cpuid'
+include/asm/msr.h:248: error: previous definition of 'cpuid' was here
+include/asm/msr.h:303: error: previous definition of 'cpuid_edx' was here
+
+
+# insmod smsmdtv.ko default_mode=0 debug=3
+insmod: init_module 'smsmdtv.ko' failed (Function not implemented)
+
+TODO:
+on released emulator
+ndk projects
+can't access surfaceflinger, because of permission check changed to by signment
+
+on source built emulator
+surfaceflinger crash when opencore player start playback
+
+
+
+2009-12-1 10:03 
+-------------------------------------------------
+
+dotnet, jay mp4 playback abnomal in audio ?
+<SOLVE>
+remove special treate in audiotrack.cpp for 24kHz and 32kHz audio
+
+android 2.0
+audio playback is ok
+isurface access will crash the system
+
+set ADBHOST=192.168.0.84
+
+:h filename-modixxxxxx
+:!echo %:p
+/30g/eclair/frameworks/base/core/java/android/content/pm/PackageParser.java 
+
+TODO:
+st demo xserver with framebuffer display
+test apk on released emulator
+
+
+out/host/linux-x86/framework/dumpkey.jar
+
+java -jar out/host/linux-x86/framework/dumpkey.jar /home/cidana/30g/eclair/build/target/product/security/media.x509.pem 
+
+2009-11-30 10:02
+-------------------------------------------------
+
+build/core/package.mk:39: *** android-cidana/CI_Android_Demo_pmp: Package modules may not define LOCAL_MODULE.  Stop.
+
+out/target/common/obj/APPS/CI_Android_pmp_intermediates
+
+
+
+This list is roughly based on the order in time, and may missed something
+
+0. make android run on x86 (this may need a lot of effort)
+
+1. java ui
+dellmini demo (opencore api based)
+dellmini demo (sdk jni wrapping based)
+yuhua demo (blue skined ui)
+simple ui demo (according to lynn's spec)
+
+2. cidana sdk jni wrapping
+cmmb sdk wrapping
+
+3. isurface display solution demo code
+nc15/jni
+
+4. opencore plugin
+audio
+- aac
+- mp3
+video
+- h.264
+- mpeg4
+
+/home/cidana/cupcake/prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1
+
+ln -s  /home/cidana/crt0.o
+
+st gtk
+
+export DISPLAY=:0 
+export TSLIB_TSDEVICE=/dev/event1 
+
+mount /dev/mmcblk1p1 /mnt
+
+
+gtk version
+pkg-config --modversion gtk+-x11-2.0
+pkg-config --modversion gtk+-2.0
+
+TODO:
+wma file playback crash
+make audio track format correspoding with abi.formats ?
+
+
+D/        ( 1021): [<<<<<<<<<<<CAudioTrack] audio track created
+E/AudioFlinger(  554): not enough memory for AudioTrack size=1474624
+D/MemoryDealer(  554):   AudioTrack (0x75280, size=1048576)
+D/MemoryDealer(  554):     0: 000753a8 | 0x00000000 | 0x00100000 | F 
+D/MemoryDealer(  554):   size allocated: 0 (0 KB)
+E/AudioTrack( 1021): AudioFlinger could not create track, status: -12
+D/        ( 1021): [<<<<<<<<<<<CAudioTrack] mAudioTrack set error
+
+audio file can't play ? enable ELE_DEMUX in sdk_build/config 
+
+
+
+mp3
+D/        ( 1081): [<<<<<<<<<<<CAudioTrack] m_ABI dwFormatTag 0
+D/        ( 1081): [<<<<<<<<<<<CAudioTrack] m_ABI dwChannels 2
+D/        ( 1081): [<<<<<<<<<<<CAudioTrack] m_ABI dwBitsPerSample 16
+D/        ( 1081): [<<<<<<<<<<<CAudioTrack] m_ABI dwSamplesPerFrame 1024
+D/        ( 1081): [<<<<<<<<<<<CAudioTrack] !!!!!! m_dwFrameSize 4096
+D/        ( 1081): [<<<<<<<<<<<CAudioTrack] m_ABI dwSamplesPerSec 44100
+D/        ( 1081): [<<<<<<<<<<<CAudioTrack] !!!!!! m_dwFramesPerBlock 4
+D/        ( 1081): [<<<<<<<<<<<CAudioTrack] m_dwBlocksInBuffer 10, m_BlockSize 16384, m_dwFrameSize 4096
+D/        ( 1081): [<<<<<<<<<<<CAudioTrack] audioBufferSize 167936
+
+dotnet
+D/        ( 1181): [<<<<<<<<<<<CAudioTrack] m_ABI dwFormatTag 353
+D/        ( 1181): [<<<<<<<<<<<CAudioTrack] m_ABI dwChannels 2
+D/        ( 1181): [<<<<<<<<<<<CAudioTrack] m_ABI dwBitsPerSample 16
+D/        ( 1181): [<<<<<<<<<<<CAudioTrack] m_ABI dwSamplesPerFrame 1024
+D/        ( 1181): [<<<<<<<<<<<CAudioTrack] !!!!!! m_dwFrameSize 4096
+D/        ( 1181): [<<<<<<<<<<<CAudioTrack] m_ABI dwSamplesPerSec 32000
+D/        ( 1181): [<<<<<<<<<<<CAudioTrack] !!!!!! m_dwFramesPerBlock 3
+D/        ( 1181): [<<<<<<<<<<<CAudioTrack] m_dwBlocksInBuffer 10, m_BlockSize 12288, m_dwFrameSize 4096
+
+
+
+
+2009-11-27 10:02 
+-------------------------------------------------
+all version tar
+
+
+2009-11-25 10:04 
+-------------------------------------------------
+permission
+audiotrack
+
+TODO:
+google io flv audio abnormal
+
+make libc libstdc++ libm
+
+
+aapt
+
+
+android-cidana/CI_Android_Demo_pmp/jni/gfxAndroid/3rdparty/linux/libwin32/inc/iviUnknwn.h:61: error: 'struct IUnknown' has virtual functions and accessible non-virtual destructor
+android-cidana/CI_Android_Demo_pmp/jni/gfxAndroid/3rdparty/linux/libwin32/inc/iviUnknwn.h:98: error: 'struct IClassFactory' has virtual functions and accessible non-virtual destructor
+make: *** [out/target/product/generic/obj/SHARED_LIBRARIES/libcidanavrp_intermediates/src/LibGfxPresent/dp.o] Error 1
+
+eclair
+build/core/config.mk:90:TARGET_ERROR_FLAGS := -Werror=return-type -Werror=non-virtual-dtor -Werror=address -Werror=sequence-point
+<SOLVE>
+remove this -Werror=non-virtual-dtor
+
+crt0.o copied
+
+INSTALL_FAILED_OLDER_SDK
+build/core/version_defaults.mk
+
+
+make && cp sdk/cidana_sdk.a /home/cidana/android-cidana/CI_Android_Demo_pmp/jni/cidana_media_jni/
+
+mmm android-cidana/CI_Android_Demo_pmp/ && adb install -r out/target/product/generic/system/app/CI_Android_pmp.apk
+
+export ANDROID_PRODUCT_OUT=$PWD/out/target/product/generic/
+ANDROID_PRODUCT_OUT=$PWD/out/target/product/generic/ ./out/host/linux-x86/bin/emulator &
+
+W/PackageManager(   55): Unknown permission android.permission.media in package com.cidana.jplayer
+
+		status = m_isurface->registerBuffers(buffers);
+
+may have problem
+
+2009-11-24 10:14
+-------------------------------------------------
+mechanism
+
+keytool -genkey -alias anddev.keystore -keyalg RSA -validity 20000 -keystore keys/anddev.keystore 
+jarsigner -verbose -keystore keys/anddev.keystore -signedjar AndOpenStreetMap_signed.apk AndOpenStreetMap.apk anddev.keystore 
+
+keytool -genkey -alias cidana.keystore -keyalg RSA -validity 20000 -keystore keys/cidana.keystore
+jarsigner -verbose -keystore /home/cidana/keytool/keys/cidana.keystore -signedjar pmp-debug_signed.apk bin/pmp-debug.apk /home/cidana/keytool/keys/cidana.keystore 
+
+signed with cidana.pem(made by makekey.sh ~/keytool/), will not display on emulator
+
+adb shell pm list permissions -s
+
+
+
+2009-11-23
+-------------------------------------------------
+pack lib sample
+/home/cidana/arm/mydroid/development/samples/SimpleJNI
+
+1. siano tuner driver, live demo (liang jing has sent a mail titled "android on PXA95x")
+	They have not sent any code/doc for now, as I know. 
+	(may need to ask liang jing/fisher for detail)
+
+2. nVidia T20 project
+	isdbt, dvbt local file playback demo are ready (only for android 1.5/1.6)
+	(may need to ask lynn for detail)
+
+3. ST demo on Accordo III
+	They may need linux demo later but I don't know the exactly time.
+	As Dicky said this demo will integrate cmmb/pmp together, 
+	which has cmmb local file playback function and pmp media playback function.
+	(may need to ask ricky for detail)
+
+4. figure out why our demo can't run on android 2.0 (prepare for T20 which is based on android 2.0)
+	I'm download source code but the network is really lag.
+
+	current issue:
+	* pmp sdk, audio playback has memory allocate problem
+	* simple ui display abnormal (ui shift to upper screen) on android 1.6 (I will ask xi'an ui team why)
+
+
+2009-11-20
+-------------------------------------------------
+libcorecg
+libsgl
+libskiagl
+
+crt0.o use 
+/home/cidana/legacy/mydroid/prebuilt/linux-x86/toolchain/arm-eabi-4.2.1/lib/gcc/arm-eabi/4.2.1/
+
+
+this lib libcorecg is not necessary
+don't touch the code
+
+~$ grep MemoryHeapBase 16_rootfs/ -r
+Binary file 16_rootfs/system/lib/libutils.so matches
+Binary file 16_rootfs/system/lib/libcameraservice.so matches
+Binary file 16_rootfs/system/lib/libmediaplayerservice.so matches
+Binary file 16_rootfs/system/lib/libandroid_runtime.so matches
+Binary file 16_rootfs/system/lib/libopencore_player.so matches
+Binary file 16_rootfs/system/lib/libsurfaceflinger.so matches
+
+~$ grep MemoryHeapBase 20_rootfs/ -r
+Binary file 20_rootfs/system/lib/libcameraservice.so matches
+Binary file 20_rootfs/system/lib/libbinder.so matches
+Binary file 20_rootfs/system/lib/libmediaplayerservice.so matches
+Binary file 20_rootfs/system/lib/libstagefright_omx.so matches
+Binary file 20_rootfs/system/lib/libandroid_runtime.so matches
+Binary file 20_rootfs/system/lib/libopencore_player.so matches
+Binary file 20_rootfs/system/lib/libsurfaceflinger.so matches
+
+
+
+~$ adb shell ls /system/lib | sort
+browsertestplugin.so
+hw
+libagl.so
+libandroid_runtime.so
+libandroid_servers.so
+libaudioflinger.so
+libcameraservice.so
+libc_debug.so
+libcerttool_jni.so
+libcorecg.so
+libcrypto.so
+libc.so
+libctest.so
+libcutils.so
+libdl.so
+libdrm1_jni.so
+libdrm1.so
+libdvm.so
+libEGL.so
+libemoji.so
+libexif.so
+libexpat.so
+libFFTEm.so
+libGLESv1_CM.so
+libgtalk_jni.so
+libhardware_legacy.so
+libhardware.so
+libicudata.so
+libicui18n.so
+libicuuc.so
+libjni_latinime.so
+libjni_pinyinime.so
+liblog.so
+libmedia_jni.so
+libmediaplayerservice.so
+libmedia.so
+libm.so
+libnativehelper.so
+libnetutils.so
+libomx_aacdec_sharedlibrary.so
+libomx_amrdec_sharedlibrary.so
+libomx_amrenc_sharedlibrary.so
+libomx_avcdec_sharedlibrary.so
+libomx_m4vdec_sharedlibrary.so
+libomx_m4venc_sharedlibrary.so
+libomx_mp3dec_sharedlibrary.so
+libomx_sharedlibrary.so
+libomx_wmadec_sharedlibrary.so
+libomx_wmvdec_sharedlibrary.so
+libopencore_author.so
+libopencore_common.so
+libopencore_downloadreg.so
+libopencore_download.so
+libopencore_mp4localreg.so
+libopencore_mp4local.so
+libopencore_net_support.so
+libopencore_player.so
+libopencore_rtspreg.so
+libopencore_rtsp.so
+libpagemap.so
+libpixelflinger.so
+libpvasfcommon.so
+libpvasflocalpbreg.so
+libpvasflocalpb.so
+libreference-cdma-sms.so
+libreference-ril.so
+libril.so
+libsgl.so
+libskiagl.so
+libsonivox.so
+libsoundpool.so
+libsqlite.so
+libsrec_jni.so
+libssl.so
+libstdc++.so
+libsurfaceflinger.so
+libsystem_server.so
+libsysutils.so
+libthread_db.so
+libttspico.so
+libttssynthproxy.so
+libui.so
+libutils.so
+libvorbisidec.so
+libwbxml_jni.so
+libwbxml.so
+libwebcore.so
+libwnndict.so
+libWnnEngDic.so
+libWnnJpnDic.so
+libwpa_client.so
+libxml2wbxml.so
+libz.so
+
+#define dperr(...) fprintf(stderr, ##__VA_ARGS)
+#define dp(fmt, arg...) printf(fmt, ##arg)
+
+
+__BASE_FILE__ 完整的源文件名路径
+__cplusplus 测试c++程序
+__DATE__ 
+__FILE__ 源文件名
+__func__ 替代__FUNCTION__，__FUNCTION__以被GNU不推荐使用
+__TIME__ 
+__LINE__
+ __VERSION__ gcc版本
+ 
+
+
+
+2009-11-19
+-------------------------------------------------
+
+E/AudioTrack(  833): AudioFlinger could not create track, status: -12
+D/        (  833): mAudioTrack set error
+
+
+cupcake$ tapas 
+
+
+crash problem:
+	audio create vr
+	audio track can't malloc
+
+dotnetpromo_v8_384k.wmv, audio abnormal
+
+
+
+isdbt:
+	PlaybackEngine.cpp:2265
+		Unknown event type
+
+
+
+2009-11-18
+-------------------------------------------------
+1010
+
+c-a c-S
+c-a c-i
+c-a c-c
+c-a c-X
+
+android-2.0 don't have libcorecg.so
+
+
+root     1     0     296   204   c0093b98 0000c93c S /init
+root     2     0     0     0     c004bb50 00000000 S kthreadd
+root     3     2     0     0     c003d428 00000000 S ksoftirqd/0
+root     4     2     0     0     c00487a4 00000000 S events/0
+root     5     2     0     0     c00487a4 00000000 S khelper
+root     6     2     0     0     c00487a4 00000000 S suspend
+root     7     2     0     0     c00487a4 00000000 S kblockd/0
+root     8     2     0     0     c00487a4 00000000 S cqueue
+root     9     2     0     0     c0174bf4 00000000 S kseriod
+root     10    2     0     0     c00487a4 00000000 S kmmcd
+root     13    2     0     0     c0071d74 00000000 D kswapd0
+root     14    2     0     0     c00487a4 00000000 S aio/0
+root     21    2     0     0     c01723f4 00000000 S mtdblockd
+root     22    2     0     0     c00487a4 00000000 S hid_compat
+root     23    2     0     0     c0187478 00000000 S mmcqd
+root     24    2     0     0     c00487a4 00000000 S rpciod/0
+root     25    1     728   236   c014c8dc afe0c7bc S /system/bin/sh
+system   26    1     796   244   c0193774 afe0ca5c S /system/bin/servicemanager
+root     27    1     832   340   c0093b98 afe0cb84 S /system/bin/vold
+root     28    1     668   292   c019f514 afe0d3ec S /system/bin/debuggerd
+radio    29    1     5428  496   ffffffff afe0d0cc S /system/bin/rild
+root     30    1     79980 12076 c0093b98 afe0cb84 S zygote
+media    31    1     22184 3112  ffffffff afe0ca5c S /system/bin/mediaserver
+root     32    1     784   284   c02023c8 afe0c7bc S /system/bin/installd
+keystore 33    1     1616  380   c019f514 afe0d3ec S /system/bin/keystore
+root     34    1     728   240   c003b100 afe0d68c S /system/bin/sh
+root     35    1     1032  528   c00b1308 afe0d7dc S /system/bin/qemud
+root     37    1     4472  260   ffffffff 0000eca4 S /sbin/adbd
+root     44    34    780   280   c02023c8 afe0c7bc S /system/bin/qemu-props
+system   59    30    145876 19308 ffffffff afe0ca5c S system_server
+app_1    112   30    107848 12780 ffffffff afe0d9e4 S com.android.inputmethod.pinyin
+radio    114   30    119836 13576 ffffffff afe0d9e4 S com.android.phone
+app_1    137   30    121864 16328 ffffffff afe0d9e4 S android.process.acore
+app_14   156   30    100884 11712 ffffffff afe0d9e4 S com.android.alarmclock
+app_0    168   30    111488 11796 ffffffff afe0d9e4 S com.android.mms
+app_9    189   30    107024 13200 ffffffff afe0d9e4 S android.process.media
+app_21   211   30    103976 12228 ffffffff afe0d9e4 S com.android.email
+app_9    230   30    126192 14160 ffffffff afe0d9e4 S com.android.camera
+root     255   2     0     0     c0068318 00000000 S pdflush
+root     261   37    728   324   c003b100 afe0d68c S /system/bin/sh
+root     262   2     0     0     c0068318 00000000 S pdflush
+
+
+* you may need there stuff
+android-sdk (we are using v1.5, v1.6)
+http://androidappdocs.appspot.com/sdk/index.html
+
+android-ndk (we are using v1.6 jni example included)
+http://androidappdocs.appspot.com/sdk/ndk/1.6_r1/index.html
+
+android source code github (not necessary, just FYI)
+http://android.git.kernel.org/
+
+
+* steps you need to do
+compile your code by using android prebuilt toolchain 4.2.1
+	(our case: android-ndk-1.6_r1/build/prebuilt/linux-x86/arm-eabi-4.2.1/bin)
+
+write jni code which will be called by java app
+write java app
+	(have a look at android-ndk-1.6_r1/apps/hello-jni)
+
+test your code
+	(run android-sdk-linux/tools/emulator to test your code)
+
+* got problem ? check it out, there web links
+http://androidappdocs.appspot.com/guide/index.html
+http://groups.google.com/groups/search?q=android&qt_s=Search+Groups
+
+
+
+2009-11-17 
+-------------------------------------------------
+logcat is visible to sdk and vr now.
+
+cd /home/cidana/android-ndk-1.6_r1/apps/
+mkdir isdbt
+cd isdbt
+android create project -t 1 -k com.cidana.jplayer -a MediaPlayerActivity -n isdbt -p project
+cp ../pmp/Application.mk
+modify APP_MODULE to xxx
+modify AndroidManifest.xml, add surfaceflinger access permission
+
+mkdir jni
+cp -r isdbt_cidana_media_jni/ /home/cidana/android-ndk-1.6_r1/apps/isdbt/project/jni/
+
+cidana/media/java	media_jni
+com/cidana/jplayer/java		.MFS
+
+
+/home/cidana/android-ndk-1.6_r1/apps/pmp/project
+
+
+sdk path
+/home/cidana/hostshare/sdk_pmp/System.CidanaSDK_android/trunk/build/android_arm
+/home/cidana/hostshare/sdk_isdbt/trunk_of_isdbt/build/android_arm
+/home/cidana/hostshare/sdk_cmmb/SDK/Embedded/embedded_sdk/release/TDMB_PMP_SDK/build_android_arm/sdk_linux
+/home/cidana/hostshare/sdk_dvbt/CI_Playback_SDK_android/Embedded/embedded_sdk/release/SDK/build_android_arm/sdk_linux
+
+
+
+D:\hostshare\sdk_pmp\System.CidanaSDK_android\trunk
+D:\hostshare\sdk_isdbt\trunk_of_isdbt
+D:\hostshare\sdk_cmmb\SDK\Embedded\embedded_sdk\release\TDMB_PMP_SDK\build_android_arm\sdk_linux
+D:\hostshare\sdk_dvbt\CI_Playback_SDK_android\Embedded\embedded_sdk\release\SDK\build_android_arm\sdk_linux
+
+TODO:
+	investigate AudioTrack stop problem
+
+
+
+pmp , switch crash
+cmmb, enddraw crash
+
+
 2009-11-16
 -------------------------------------------------
 android ndk host-setup.sh
@@ -954,6 +1617,8 @@ StszBoxMem
 2009-9-25
 -------------------------------------------------
 repo init -u git://android.git.kernel.org/platform/manifest.git -b cupcake
+repo init -u git://android.git.kernel.org/platform/manifest.git -b eclair
+repo sync
 repo init -u git://android.git.kernel.org/platform/manifest.git -b android-1.5
 repo sync external/opencore
 
