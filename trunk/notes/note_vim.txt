@@ -1,3 +1,6 @@
+ln -s xxx/.vimrc , Trailing char .xxxxxx ?
+set ff=unix
+
 ctrl-Y <CR> to yank stuff to clipboard
 
 . vim
