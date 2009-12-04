@@ -42,3 +42,7 @@ alias mcm='make clean && make'
 alias s="sdcv"
 alias cpgl="cp $HOME/my_stuff/GetLatestVimScripts.dat $HOME/.vim/GetLatest/"
 alias fixqbuf="sed -i 's/F4/F12/' $HOME/.vim/plugin/qbuf.vim"
+
+alias emu15='emulator @android-1.5&'
+alias emu16='emulator @android-1.6&'
+alias emu20='emulator @android-2.0&'

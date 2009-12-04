@@ -225,6 +225,7 @@ def main():
     parser.error('Only one file may be specified.') """ 
 
   file_path = args[0]
+  file_name = os.path.basename(file_path)
 
   if options.labels:
     labels = options.labels.split(',')
@@ -234,7 +235,7 @@ def main():
   options.project = "fuddle"
   options.user = "physaris"
   options.password = "xE8Mq4XY6tX2"
-  options.summary = file_path
+  options.summary = file_name
 
   status, reason, url = upload_find_auth(file_path, options.project,
                                          options.summary, labels,
