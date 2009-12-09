@@ -25,6 +25,7 @@ alias ac='apt-cache'
 alias la='ls -A'
 alias ll='ls -l'
 alias le='less'
+alias grep='grep --exclude-dir=.git --exclude-dir=.svn'
 
 alias gpmstart='sudo gpm -m /dev/misc/psaus -t ps2'
 
@@ -46,12 +47,14 @@ ANDROID_SDK_PATH=$HOME/android-sdk-linux
 if [ -d ${ANDROID_SDK_PATH} ]; then
 	export PATH=${ANDROID_SDK_PATH}/platforms/android-1.5/tools:${ANDROID_SDK_PATH}/tools:$PATH
 fi
-ANDROID_NDK_PATH=$HOME/android-ndk-1.6_r1
-if [ -d ${ANDROID_SDK_PATH} ]; then
-	export PATH=${ANDROID_NDK_PATH}/build/prebuilt/linux-x86/arm-eabi-4.2.1/bin:$PATH
-fi
+
+# ANDROID_NDK_PATH=$HOME/android-ndk-1.6_r1
+# if [ -d ${ANDROID_SDK_PATH} ]; then
+#     export PATH=${ANDROID_NDK_PATH}/build/prebuilt/linux-x86/arm-eabi-4.2.1/bin:$PATH
+# fi
 
 alias emu15='emulator @android-1.5&'
 alias emu16='emulator @android-1.6&'
 alias emu20='emulator @android-2.0&'
+
 #================end of my .bash_aliases==================#
