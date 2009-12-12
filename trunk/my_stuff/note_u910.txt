@@ -1,3 +1,5 @@
+http://ubuntu.cn99.com/.help/ubuntu.html
+
 #download my config files to make world familar
 mkdir $HOME/my_stuff
 cd $HOME/my_stuff
