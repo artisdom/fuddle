@@ -9,6 +9,7 @@ if [ -d $HOME/bin ]; then
 	export PATH=$HOME/bin:$PATH
 fi
 
+export EDITOR=vi
 export LESS_TERMCAP_mb=$'\E[01;32m'
 export LESS_TERMCAP_md=$'\E[01;32m'
 export LESS_TERMCAP_me=$'\E[0m'
