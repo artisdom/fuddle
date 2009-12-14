@@ -1,3 +1,302 @@
+2009-12-14 10:07 
+-------------------------------------------------
+33830208-874
+
+TODO:
+dtv demo display problem on T20
+siano tuner driver on T20
+test cortex codec on T20
+rmvb opencore integration
+dvbt whole system run on linux
+
+
+
+plug siano 1150 to vmware
+[387951.208588] usb 2-1: new high speed USB device using ehci_hcd and address 34
+[387951.490698] usb 2-1: configuration #1 chosen from 1 choice
+[387952.502868] smscore_set_device_mode: error -2 loading firmware: sms1xxx-nova-b-dvbt-01.fw, trying again with default firmware
+[387952.517759] smscore_set_device_mode: error -2 loading firmware: dvb_nova_12mhz_b0.inp
+[387952.517800] smsusb_init_device: line: 378: smscore_start_device(...) failed
+[387952.518181] smsusb_onresponse: line: 71: error, urb status -2, 0 bytes
+[387952.518364] smsusb_onresponse: line: 71: error, urb status -2, 0 bytes
+[387952.518398] smsusb_onresponse: line: 71: error, urb status -2, 0 bytes
+[387952.518428] smsusb_onresponse: line: 71: error, urb status -2, 0 bytes
+[387952.518458] smsusb_onresponse: line: 71: error, urb status -2, 0 bytes
+[387952.518487] smsusb_onresponse: line: 71: error, urb status -2, 0 bytes
+[387952.518517] smsusb_onresponse: line: 71: error, urb status -2, 0 bytes
+[387952.518570] smsusb_onresponse: line: 71: error, urb status -2, 0 bytes
+[387952.518614] smsusb_onresponse: line: 71: error, urb status -2, 0 bytes
+[387952.518644] smsusb_onresponse: line: 71: error, urb status -2, 0 bytes
+[387952.519030] smsusb: probe of 2-1:1.0 failed with error -2
+[387952.519288] usbcore: registered new interface driver smsusb
+
+
+
+D:\hostshare\android_opencore\opencore-2.02-donut-merged\pvmi\recognizer\plugins\pvmp4ffrecognizer
+D:\hostshare\android_opencore\opencore-2.02-donut-merged\fileformats\mp4\parser
+
+
+
+
+2009-12-11 10:02 
+-------------------------------------------------
+
+<6>[ 2553.020000] usb 1-1.5: new high speed USB device using tegra-ehci and address 6
+<6>[ 2553.160000] usb 1-1.5: New USB device found, idVendor=187f, idProduct=0201
+<6>[ 2553.160000] usb 1-1.5: New USB device strings: Mfr=1, Product=2, SerialNumber=0
+<6>[ 2553.180000] usb 1-1.5: Product: Test EEPROM Product String
+<6>[ 2553.180000] usb 1-1.5: Manufacturer: Test EEPROM Manufacturer String
+<6>[ 2553.180000] usb 1-1.5: configuration #1 chosen from 1 choice
+
+fisher
+yuwf78
+
+2009-12-10 10:05 
+-------------------------------------------------
+\\192.168.0.86\cidana\eclair\frameworks\base\core\java\com\android\internal\policy
+
+Killed pm xxxx
+
+aac
+mp3
+
+h264
+m4v
+
+
+USE_DYNAMIC_LOAD_OMX_COMPONENTS
+
+
+int PlayerDriver::playerThread()
+	OSCL_EXPORT_REF OMX_ERRORTYPE OMX_MasterInit()
+		OSCL_DLL_ENTRY_POINT_DEFAULT _OMX_Init
+			Mpeg4Register
+				CidanaMpeg4Register
+
+2009-12-9 10:02 
+-------------------------------------------------
+dvbt _AUDIO_ONLY
+
+emulator -sysdir /home/cidana/android-sdk-linux/platforms/android-2.0/images -system /home/cidana/android-sdk-linux/platforms/android-2.0/images/system.img -ramdisk /home/cidana/android-sdk-linux/platforms/android-2.0/images/ramdisk.img -sdcard ~/sdcard.img -skin WVGA800
+
+TODO:
+opencore
+
+eclair$ rm out/target/common/obj/APPS/CI_Android_dvbt_intermediates/* -r
+
+undefined reference to `CI_Player_GetClipInfo'
+
+git clone git://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux-2.6.git
+
+
+W/PlayerDriver(   31): Using generic video MIO
+D/AudioSink(   31): bufferCount (4) is too small and increased to 12
+W/MediaPlayer(  261): info/warning (1, 44)
+I/MediaPlayer(  261): Info (1,44)
+D/vp.VideoView(  261): video size=128x96
+D/dalvikvm(   53): GC freed 7786 objects / 374440 bytes in 290ms
+E/gralloc (   53): invalid gralloc handle (at 0x0)
+I/ARMAssembler(   53): generated scanline__00000077:03010104_00000005_00000000 [ 28 ipp] (47 ins) at [0x40ebd0:0x40ec8c] in 5349031 ns
+
+
+
+
+untar nc15.tar.gz
+
+If your directory layout like this
+$HOME/android src path/
+$HOME/nc15
+
+cd $HOME/android src path/
+source build/envsetup.sh
+mmm ../nc15
+
+And adb install this apk to T20 board.
+There will be a application named "HeiSa" apear.
+
+Launch it then press the button named "rgb",  please let me know whether it crash in your place.
+If not you will see a color change within a block.
+
+
+把rar解压到HOME下面
+
+比如你的目录结构是这样的
+
+
+cd $HOME/android src path/
+source build/envsetup.sh
+mmm ../nc15
+
+console上面会看到生成了一个apk
+应该是在$HOME/android src path/out/target/product/generic/system/app/nc15.apk ,具体的名字你看一下屏幕上的提示
+
+adb install out/target/product/generic/system/app/nc15.apk
+
+装好以后，会有一个蝴蝶icon的app出现，运行，然后点rgb按钮
+
+adb logcat 看看结果是怎么样的，如果crash这里可以看到
+
+
+2009-12-8 10:01 
+-------------------------------------------------
+android create project -t 1 -k com.example.android.apis.graphics -a BitmapPixels -n BitmapPixels -p BitmapPixels
+
+
+TODO:
+codec -mfpu neon
+opencore plugin
+dvbt on 2.0
+video render
+
+jarsigner -verbose -verify generic/system/app/CI_Android_pmp.apk
+
+\\192.168.0.86\cidana\cupcake\frameworks\base\media\jni
+\\192.168.0.86\cidana\eclair\frameworks\base\media\jni
+
+./adb kill-server
+./adb devices
+just need adb fork-server run by root
+
+
+elad hi
+
+Thanks for the useful information, now I get error message like this.
+
+@target machine nVidia Tegra II
+# cat /proc/version
+Linux version 2.6.29-00117-g3a218ab-dirty (@CENT64-C04-33-1) (gcc version 4.4.0 (GCC) ) #1 SMP Mon Nov 23 19:23:08 UTC 2009
+
+# lsmod
+ar6000 221056 0 - Live 0xbf00f000
+g_android 33208 2 - Live 0xbf000000
+
+# insmod ./smsmdtv.ko
+insmod: init_module './smsmdtv.ko' failed (Exec format error)
+
+@linux host machine
+v4l$ file smsmdtv.ko 
+smsmdtv.ko: ELF 32-bit LSB relocatable, ARM, version 1, not stripped
+
+I don't if this is caused by kernel header's difference. 
+
+-----------------------------------
+Let's put this problem to a faster way.
+Since we are tring to make a DTV demo base on cidana's SW, nVidia's HW, and siano's tuner.
+And wish this demo will be able to be present in 2010 CES January 7-10 .
+
+Resources what we have is like this
+
+nVidia, 
+android 2.0 source code (I don't know if you modified some code)
+linux kernel source code (I don't know if you modified some code)
+
+siano, 
+tuner kernel module source code
+
+cidana,
+T20 board
+android 2.0 binary
+kernel binary
+siano kernel module binary
+
+But we can't get siano's tuner driver load to kernel.
+I don't know if siano and nVidia can cooperate on this issue, this may help accelerate our progress.
+
+2009-12-7 10:03 
+-------------------------------------------------
+isurface prototype
+android_media_MediaPlayer.cpp
+
+
+T20, test-overlays fixed
+# test-overlays
+isurface = 0xac98
+buffer = 0xb0367bab
+address = 0x0
+
+
+# insmod ./smsmdtv.ko
+insmod: init_module './smsmdtv.ko' failed (Exec format error)
+
+# cat /proc/version
+Linux version 2.6.29-00117-g3a218ab-dirty (@CENT64-C04-33-1) (gcc version 4.4.0 (GCC) ) #1 SMP Mon Nov 23 19:23:08 UTC 2009
+
+liblog libutils libcutils libui libdl libbinder libmedia libandroid_runtime
+
+rzhuo@nvidia.com
+
+This trick works, now I can get adb connection established.
+
+I don't know if you can support more on our cooperation on T20 platform.
+
+If not please let lynn know about this.
+
+Because of our target is get cidana's DTV(DVBT/ISDBT) player running on nVidia Tegra II.
+
+So the next problem will be I can't get our DTV player (apk) installed in T20.
+
+When I adb install xxx.apk, here comes a error
+
+elad, hi
+
+This is how I compile the siano kernel module.
+
+download linux kernel from
+http://www.kernel.org/pub/linux/kernel/v2.6/linux-2.6.29.6.tar.bz2
+
+~$ tar jxvf linux-2.6.29.6.tar.bz2 -C /home/cidana/kernel
+
+~$ sudo mkdir /lib/modules/2.6.29-6
+~$ sudo ln -s /home/cidana/kernel/linux-2.6.29.6 /lib/modules/2.6.29-6/build
+~$ ls -l /lib/modules/2.6.29-6/
+total 0
+lrwxrwxrwx 1 root root 34 2009-12-07 11:30 build -> /home/cidana/kernel/linux-2.6.29.6
+
+linux-2.6.29.6$ pwd
+/home/cidana/kernel/linux-2.6.29.6
+linux-2.6.29.6$ make menuconfig
+#
+# configuration written to .config
+#
+linux-2.6.29.6$ export PATH=/home/cidana/eclair/prebuilt/linux-x86/toolchain/arm-eabi-4.4.0/bin:$PATH
+linux-2.6.29.6$ make ARCH=arm CROSS_COMPILE=arm-eabi-
+
+v4l$ pwd
+/home/cidana/siano/build_for_android/smshostlib/Platforms/Linux/kernel/v4l
+v4l$ vi .version
+v4l$ cat .version 
+VERSION=2
+PATCHLEVEL:=6
+SUBLEVEL:=29
+KERNELRELEASE:=2.6.29-6
+v4l$ chmod +x scripts/*.pl
+v4l$ make menuconfig
+#
+# configuration written to .config
+#
+deselect SDIO
+v4l$ export PATH=/home/cidana/eclair/prebuilt/linux-x86/toolchain/arm-eabi-4.4.0/bin:$PATH
+v4l$ make ARCH=arm CROSS_COMPILE=arm-eabi-
+  LD [M]  /home/cidana/siano/build_for_android/smshostlib/Platforms/Linux/kernel/v4l/smsmdtv.o
+  Building modules, stage 2.
+  MODPOST 1 modules
+  CC      /home/cidana/siano/build_for_android/smshostlib/Platforms/Linux/kernel/v4l/smsmdtv.mod.o
+  LD [M]  /home/cidana/siano/build_for_android/smshostlib/Platforms/Linux/kernel/v4l/smsmdtv.ko
+compile done
+
+
+The reason I deselect SDIO is I greped around but can't find there symbols .
+  CC [M]  /home/cidana/siano/build_for_android/smshostlib/Platforms/Linux/kernel/v4l/smssdio.o
+/home/cidana/siano/build_for_android/smshostlib/Platforms/Linux/kernel/v4l/smssdio.c:52: error: 'SDIO_VENDOR_ID_SIANO' undeclared here (not in a function)
+/home/cidana/siano/build_for_android/smshostlib/Platforms/Linux/kernel/v4l/smssdio.c:52: error: 'SDIO_DEVICE_ID_SIANO_STELLAR' undeclared here (not in a function)
+/home/cidana/siano/build_for_android/smshostlib/Platforms/Linux/kernel/v4l/smssdio.c:54: error: 'SDIO_DEVICE_ID_SIANO_NOVA_A0' undeclared here (not in a function)
+/home/cidana/siano/build_for_android/smshostlib/Platforms/Linux/kernel/v4l/smssdio.c:56: error: 'SDIO_DEVICE_ID_SIANO_NOVA_B0' undeclared here (not in a function)
+/home/cidana/siano/build_for_android/smshostlib/Platforms/Linux/kernel/v4l/smssdio.c:58: error: 'SDIO_DEVICE_ID_SIANO_VEGA_A0' undeclared here (not in a function)
+/home/cidana/siano/build_for_android/smshostlib/Platforms/Linux/kernel/v4l/smssdio.c:60: error: 'SDIO_DEVICE_ID_SIANO_VENICE' undeclared here (not in a function)
+
+
+
+
 2009-12-4 10:44 
 -------------------------------------------------
 dalvik debug monitor
@@ -139,6 +438,8 @@ kernel 2.6.29
 chmod +x make_kconfig.pl make_makefile.pl make_myconfig.pl
 export PATH=/home/cidana/eclair/prebuilt/linux-x86/toolchain/arm-eabi-4.4.0/bin:$PATH
 make ARCH=arm CROSS_COMPILE=arm-eabi-
+
+/home/cidana/siano/build_for_android/smshostlib/Platforms/Linux/kernel
 
 
                  from /home/cidana/siano/arm/smshostlib/Platforms/Linux/kernel/v4l/smscoreapi.c:24:
@@ -693,6 +994,17 @@ sign apk build by ndk ant\
 /home/cidana/android-ndk-1.6_r1/apps/pmp/project/bin/pmp-debug.apk \
 /home/cidana/android-ndk-1.6_r1/apps/pmp/project/bin/super.apk
 */
+
+keytool
+jarsigner
+.keystore
+.key?
+
+signapk.jar
+.x509.pem
+.pk8
+
+zipalign 
 
 <USE THIS ONE>
 java -jar out/host/linux-x86/framework/signapk.jar \
