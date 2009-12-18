@@ -1,3 +1,315 @@
+2009-12-18 10:04 
+-------------------------------------------------
+opencore unittest run fail ?
+<SOLVE> cp pvplayer.cfg to bin/linux
+
+
+linux$ ./test_omx_client 
+
+Arguments insufficient
+
+Usage: Input_file {options}
+Option{} 
+-output {console out}: Output file for console messages - Default is Stderr
+-o      {fileout}: Output file to be generated 
+-i      {input_file2}: 2nd input file for dynamic reconfig, etc.
+-r      {ref_file}:   Reference file for output verification
+-c/-n   {CodecType/ComponentName}
+        CodecType could be avc, aac, mpeg4, h263, wmv, rv, amr, mp3, wma, ra
+-t x y  {A range of test cases to run}
+         To run one test case use same index for x and y - Default is ALL
+-l      log to file
+
+
+./test_omx_client /30g/donut/external/opencore-2.07/engines/player/mytest/data/test_cbr.mp3 -c mp3 -n mp3 -output outputfile -t 11 11
+
+<OUTPUT>this mp3 file output will be 44100hz, mono pcm
+
+pvplayer_engine_test
+
+linux$ ./pvplayer_engine_mytest -help
+Version: CORE_8.000.1.1 generated on 20091108
+
+Test Program for pvPlayer engine class.
+Printing leak info option. Default is OFF:
+  -leakinfo
+   If there is a memory leak, prints out the memory leak information
+   after all specified test cases have finished running.
+
+Source specification option. Default is 'test.mp4':
+  -source sourcename
+   Specify the source filename or URL to use for test cases which
+   allow user-specified source name. The unit test determines the
+   source format type using extension or URL header.
+
+List specification option:
+  -list 100:104,108,110,115:117
+   Specify a range of test cases using from A to B like A:B
+   for a single test case C use coma ,C
+   -list A:B,C
+
+Test cases to run option. Default is ALL:
+  -test x y
+   Specify a range of test cases to run. To run one test case, use the
+   same index for x and y.
+  -test L
+   Run local playback test cases only.
+  -test D
+   Run download playback test cases only.
+  -test S
+   Run streaming playback test cases only.
+
+Compressed video and audio output option. Default is OFF for both:
+  -compV AND/OR -compA
+   For test cases and sinks that support compressed media output (media
+   I/O node test cases), the output data files would have compressed
+   bitstreams. This also means the player engine would not use a decoder
+   node to decode the bitstream from the source node.
+
+Packet Source plug-in option. Default is OFF for both:
+  -fi
+  For file input
+  -bcs
+  For broadcast socket
+
+Log configuration file options:
+  -logconfigfile ==> Use cfg file to configure logger. Ignores all other log options.
+
+Log level options. Default is debug level:
+  -logerr
+   Log at error level
+  -logwarn
+   Log at warning level
+
+Log node options. Default is player engine only:
+  -logall                   ==> Log everything (log appender at root node)
+  -logdatapath              ==> Log datapath only
+  -logclock                 ==> Log clock only
+  -logoscl                  ==> Log OSCL only
+  -logperf                  ==> Log scheduler performance
+  -logperfmin               ==> Log scheduler performance (minimal)
+  -logdatapathsrc           ==> Log source node datapath only
+  -logdatapathdec           ==> Log decoder node datapath only
+
+Log to file options.
+  -logfile                  ==> Send log output to file
+
+   proxy enabled ON or OFF, default is OFF
+  -proxy
+   For test cases where proxy support is reqd
+   Downloadrate for external download simulator testcase in Kbps - Default 32Kbps
+  -downloadrate
+   Applicable only to external download simulator testcases
+XML test results file option.  Default is to not write a summary.
+  -xmloutput file
+   Specify a source filename to output a test results summary to.
+
+Memory Stats:
+  peakNumAllocs 11
+  peakNumBytes 861
+  totalNumAllocs 22
+  totalNumBytes 980
+  numAllocFails 0
+  ERROR: Memory Leaks! numAllocs 4, numBytes 278
+
+
+
+#include <ui/ISurface.h>
+#include <binder/MemoryHeapBase.h>
+
+
+header files which we need
+ui/Surface.h
+ui/ISurface.h
+utils/Log.h
+binder/IMemory.h
+binder/MemoryBase.h
+binder/MemoryHeapBase.h
+
+
+libraries which we need
+libcutils
+libutils
+libui
+libbinder
+
+
+
+-Wfatal-errors
+make first error stop
+
+<6>[42949435.980000] smsusb_probe: smsusb_probe 0
+<6>[42949435.980000] smsusb_probe: endpoint 0 81 02 512
+<6>[42949435.980000] smsusb_probe: endpoint 1 02 02 512
+<6>[42949435.980000] smsusb_init_device: smsusb_init_device: in_ep = 81, out_ep = 02
+<6>[42949436.020000] smscore_register_device: allocated 50 buffers
+<6>[42949436.020000] smscore_register_device: device db19ba00 created
+<6>[42949436.020000] smsusb_init_device: smsusb_start_streaming(...).
+<6>[42949436.050000] smschar_hotplug: entering 1
+<6>[42949436.050000] 
+<6>[42949436.050000] smschar_hotplug: create device 0
+<6>[42949436.060000] smschar_setup_cdev: exiting bf00aa9c 0, rc 0
+<6>[42949436.060000] smschar_hotplug: create device 1
+<6>[42949436.070000] smschar_setup_cdev: exiting bf00ab08 1, rc 0
+<6>[42949436.080000] smschar_hotplug: create device 2
+<6>[42949436.080000] smschar_setup_cdev: exiting bf00ab74 2, rc 0
+<6>[42949436.080000] smschar_hotplug: create device 3
+<6>[42949436.080000] smschar_setup_cdev: exiting bf00abe0 3, rc 0
+<6>[42949436.080000] smschar_hotplug: create device 4
+<6>[42949436.100000] smschar_setup_cdev: exiting bf00ac4c 4, rc 0
+<6>[42949436.110000] smschar_hotplug: create device 5
+<6>[42949436.110000] smschar_setup_cdev: exiting bf00acb8 5, rc 0
+<6>[42949436.110000] smschar_hotplug: create device 6
+<6>[42949436.110000] smschar_setup_cdev: exiting bf00ad24 6, rc 0
+<6>[42949436.130000] smschar_hotplug: create device 7
+<6>[42949436.130000] smschar_setup_cdev: exiting bf00ad90 7, rc 0
+<6>[42949436.130000] smschar_hotplug: create device 8
+<6>[42949436.130000] smschar_setup_cdev: exiting bf00adfc 8, rc 0
+<6>[42949436.150000] smschar_hotplug: create device 9
+<6>[42949436.150000] smschar_setup_cdev: exiting bf00ae68 9, rc 0
+<6>[42949436.150000] smschar_hotplug: create device 10
+<6>[42949436.170000] smschar_setup_cdev: exiting bf00aed4 10, rc 0
+<6>[42949436.170000] smschar_hotplug: create device 11
+<6>[42949436.170000] smschar_setup_cdev: exiting bf00af40 11, rc 0
+<6>[42949436.170000] smschar_hotplug: create device 12
+<6>[42949436.170000] smschar_setup_cdev: exiting bf00afac 12, rc 0
+<6>[42949436.170000] smschar_hotplug: create device 13
+<6>[42949436.170000] smschar_setup_cdev: exiting bf00b018 13, rc 0
+<6>[42949436.200000] smschar_hotplug: create device 14
+<6>[42949436.200000] smschar_setup_cdev: exiting bf00b084 14, rc 0
+<6>[42949436.210000] smschar_hotplug: create device 15
+<6>[42949436.210000] smschar_setup_cdev: exiting bf00b0f0 15, rc 0
+<6>[42949436.220000] smschar_hotplug: create device 16
+<6>[42949436.230000] smschar_setup_cdev: exiting bf00b15c 16, rc 0
+<6>[42949436.230000] smschar_hotplug: exiting, rc 0
+<6>[42949436.230000] 
+<6>[42949436.230000] smscore_init_ir: IR port has not been detected
+<6>[42949436.230000] smscore_start_device: device db19ba00 started, rc 0
+<6>[42949436.250000] smsusb_init_device: device db2c5800 created
+<6>[42949436.260000] smsusb_probe: rc 0
+<6>[42949456.960000] smschar_open: entering index 0
+<6>[42949456.960000] 
+<7>[42949456.960000] smscore_register_client: Register new client bf00aa9c DT=0 ID=150
+<6>[42949456.960000] smscore_unregister_client: bf00aa9c
+<6>[42949456.960000] smschar_release: exiting
+<6>[42949456.960000] 
+
+D/        (  997): [TunerUtility::FindFileName] find file /data/tal/tuners/libTalSiano.so.
+D/        (  997): SmsHostApiLibInit return 0x80000049
+D/        ( 1008): [TunerUtility::FindFileName] find file /data/tal/tuners/libTalSiano.so.
+D/        ( 1008): [SianoCtrlCallback] receive siano message 14003 error code 0x0.
+D/        ( 1008): SmsHostApiGetDevicesList return DeviceName SmsDevice mode -1
+D/        ( 1029): [TunerUtility::FindFileName] find file /data/tal/tuners/libTalSiano.so.
+
+
+
+
+2009-12-17 10:12 
+-------------------------------------------------
+
+
+test_load_so$ /home/cidana/siano/x86/smshostlib/Platforms/Linux/smsctrllib/libsmscontrol.so 
+Illegal instruction
+
+
+# ./test_load libsmscontrol.so
+load libsmscontrol.so 
+dlopen error :Cannot load library: reloc_library[1259]:  1048 cannot locate 'strcpy'...
+
+
+
+Software Liscense Agreement
+
+2009-12-16 10:04 
+-------------------------------------------------
+ctrl+F12 switch emulator to landscape mode
+
+E/SurfaceFlinger(   59): LayerBuffer::BufferSource::postBuffer() invalid buffer (offset=0, size=307200, heap-size=155648
+
+320*240=76800
+
+*2 = 153600
+
+
+I/ActivityManager(  820): Starting activity: Intent { act=android.intent.action.MAIN cat=[android.intent.category.LAUNCHER] flg=0x10200000 cmp=com.android.smsmdtvjclient/.SmsMdtvJClient }
+I/System.out( 1026): goDVBT!
+I/System.out( 1026): SmsMdtv.init called
+W/InputManagerService(  820): Starting input on non-focused client com.android.internal.view.IInputMethodClient$Stub$Proxy@43b9f6f0 (uid=10000 pid=878)
+I/System.out( 1026): no entry for device index 0 !!! 14003
+I/System.out( 1026): SmsMdtv.setDbgLogMask called
+I/System.out( 1026): dev 0 :SmsDevice
+I/System.out( 1026): deviceInitReq
+I/System.out( 1026): SmsMdtv.deviceInitReq called
+I/ActivityManager(  820): Displayed activity com.android.smsmdtvjclient/.SmsMdtvJClient: 537 ms (total 537 ms)
+I/System.out( 1026): returned devHandle=0
+I/System.out( 1026): client handleInitDeviceRes res=0 handle=0
+I/System.out( 1026): SmsMdtv.getVersionReq called
+I/System.out( 1026): client handleGetVersionRes res=0 Version=DVB 02.00.12 DLU 01.00.04
+I/System.out( 1026): SMS Host Library Version: 5.1.06 Dec  4 2009 08:20:06
+I/System.out( 1026): dvbtTuneReq
+I/System.out( 1026): SmsMdtv.dvbttune called
+I/System.out( 1026): client handleTuneRes res=0 context=Thread[Thread-10,5,main]
+I/System.out( 1026): dvbtAddPIDReq
+I/System.out( 1026): SmsMdtv.addpid called
+I/System.out( 1026): client handleAddPIDFilterRes res=0
+I/System.out( 1026): SmsMdtv.getStatisticsExReq called
+I/System.out( 1026): client handleDVBTStatisticsRes res=0
+I/System.out( 1026): rfLocked =true
+I/System.out( 1026): isDemodLocked =false
+I/System.out( 1026): isExternalLnaOn =false
+I/System.out( 1026): snr =0
+I/System.out( 1026): rssi =-57
+I/System.out( 1026): inBandPwr =-98
+I/System.out( 1026): carrierOffset =0
+I/System.out( 1026): ber =0
+I/System.out( 1026): frequency =0
+I/System.out( 1026): modemState =2
+I/System.out( 1026): SmsMdtv.getReceptionQualityReq called
+
+
+eclair$ cat /home/cidana/.android/adb_usb.ini 
+0x955
+
+
+TODO:
+display problem
+- debug in android source (need nvidia code), postBuffer
+
+tuner integrate
+- know what is what
+
+opencore rmvb plugin
+- know what is what
+- testcase can't be run
+
+simple ui dtv addon
+- add interface for jni wrap
+
+cmmb demo pack for dragontech
+- need android version number
+
+export LD_LIBRARY_PATH=/30g/donut/external/opencore-2.07/build_config/opencore_dynamic/build/installed_lib/linux
+
+./pvplayer_engine_test -test 51 51 -source ../../../engines/player/test/data/test_m4v_amr.mp4 -logall
+
+
+2009-12-15 10:53 
+-------------------------------------------------
+bin/linux/pvplayer_engine_test -test 51 51 -source ../../../engines/player/test/data/test_m4v_amr.mp4 -logall
+
+
+
+
+lynn
+
+There is a risk about simple ui which provided by xi'an team.
+Since ui have used some android internal class, so these code must compile with android source.
+If we cooperate with our clients and they don't provide they android source code (modified).
+We will not managed to build the application.
+You may create a jira item about this to let them know.
+
+
+
 2009-12-14 10:07 
 -------------------------------------------------
 33830208-874
@@ -32,10 +344,62 @@ plug siano 1150 to vmware
 
 
 
-D:\hostshare\android_opencore\opencore-2.02-donut-merged\pvmi\recognizer\plugins\pvmp4ffrecognizer
 D:\hostshare\android_opencore\opencore-2.02-donut-merged\fileformats\mp4\parser
+D:\hostshare\android_opencore\opencore-2.02-donut-merged\nodes\pvmp4ffcomposernode
+D:\hostshare\android_opencore\opencore-2.02-donut-merged\pvmi\recognizer\plugins\pvmp4ffrecognizer
+D:\hostshare\android_opencore\opencore-2.02-donut-merged\modules\linux_mp4
 
 
+
+D:\hostshare\android_opencore\opencore-2.02-donut-merged\fileformats\mp3\parser
+D:\hostshare\android_opencore\opencore-2.02-donut-merged\nodes\pvmp3ffparsernode
+D:\hostshare\android_opencore\opencore-2.02-donut-merged\pvmi\recognizer\plugins\pvmp3ffrecognizer
+
+pvme_node_registry_populator.cpp
+RegisterAllNodes
+RegisterAllRecognizers
+
+BUILD_RM_FF_PARSER_NODE
+BUILD_RM_FF_REC
+
+
+donut$ ls generic/system/lib/libomx*
+generic/system/lib/libomx_aacdec_ali_sharedlibrary.so
+generic/system/lib/libomx_aacdec_sharedlibrary.so
+generic/system/lib/libomx_amrdec_sharedlibrary.so
+generic/system/lib/libomx_amrenc_sharedlibrary.so
+generic/system/lib/libomx_avcdec_sharedlibrary.so
+generic/system/lib/libomx_cidana_avcdec_sharedlibrary.so
+generic/system/lib/libomx_cidana_m4vdec_sharedlibrary.so
+generic/system/lib/libomx_m4vdec_sharedlibrary.so
+generic/system/lib/libomx_m4venc_sharedlibrary.so
+generic/system/lib/libomx_mp3dec_ali_sharedlibrary.so
+generic/system/lib/libomx_mp3dec_sharedlibrary.so
+generic/system/lib/libomx_sharedlibrary.so
+
+
+D:\hostshare\android_opencore\opencore-2.02-donut-merged\codecs_v2\audio\mp3\dec
+D:\hostshare\android_opencore\opencore-2.02-donut-merged\codecs_v2\omx\omx_mp3
+
+
+add undefined
+<SOLVE> include add.h
+
+git reset HEAD .
+
+opencore_dynamic$ pwd
+/30g/donut/external/opencore-2.02-donut-orig/build_config/opencore_dynamic
+opencore_dynamic$ export LD_LIBRARY_PATH+=$PWD/build/installed_lib/linux/
+opencore_dynamic$ ./build/bin/linux/pvme_test 
+
+/30g/donut/external/opencore-2.02-donut-orig/build_config/opencore_dynamic/build/bin/linux
+
+
+export LD_LIBRARY_PATH+=/30g/donut/external/opencore-2.07/build_config/opencore_dynamic/build/installed_lib/linux/
+
+pvme, metadata engine
+
+git branch -a
 
 
 2009-12-11 10:02 
