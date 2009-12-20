@@ -1,0 +1,18 @@
+gcc --version
+gcc -v -Wall
+
+#need to be exported, shell assign and makefile inline both not work
+C_INCLUDE_PATH
+CPLUS_INCLUDE_PATH
+
+LIBRARY_PATH
+
+#list objects in static library
+ar cr LIB_NAME a.o b.o ...
+ar t LIB_NAME
+
+
+LD_LIBRARY_PATH
+
+#save temp files
+gcc -save-temps
