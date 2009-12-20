@@ -53,6 +53,7 @@ nmap <Leader>g :e $HOME/.vim/GetLatest/GetLatestVimScripts.dat<CR>
 nmap <Leader>n :NERDTreeToggle<CR>
 nmap <Leader>t :TlistToggle<CR>
 nmap <Leader>m :MRU<CR>
+nmap <Leader>p :set spell!<CR>
 
 map <F2> :bprevious<CR>
 map <F3> :bnext<CR>
