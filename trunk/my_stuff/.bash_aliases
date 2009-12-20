@@ -30,7 +30,8 @@ alias grep='grep --exclude-dir=.git --exclude-dir=.svn'
 
 alias gpmstart='sudo gpm -m /dev/misc/psaus -t ps2'
 
-alias checkoutfuddle='svn checkout https://fuddle.googlecode.com/svn/trunk/ fuddle --username physaris --password xE8Mq4XY6tX2'
+#alias checkoutfuddle='svn checkout https://fuddle.googlecode.com/svn/trunk/ fuddle --username physaris --password xE8Mq4XY6tX2'
+alias fuddlecheckout='svn checkout https://fuddle.googlecode.com/svn/trunk/ fuddle --username physaris --password xE8Mq4XY6tX2'
 alias svnmodi="svn status | grep '^ \?' | awk '{print $2}'"
 alias svnadd="svn status | grep '^ \??' | awk '{print $2}' |xargs svn add"
 alias svncmit="svn commit -m ' '"
