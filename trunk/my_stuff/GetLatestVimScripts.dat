@@ -1,5 +1,6 @@
 ScriptID SourceID Filename
 --------------------------
+1338 1 :AutoInstall: tabbar.vim
 1658 1 :AutoInstall: NerdTree.vim
 521 1 :AutoInstall: mru.vim
 1849 1 :AutoInstall: AutoClose.vim
