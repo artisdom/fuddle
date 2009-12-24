@@ -40,7 +40,7 @@ alias mcm='make clean && make'
 
 alias s="sdcv"
 
-alias cpgl="cp $HOME/fuddle/my_stuff/GetLatestVimScripts.dat $HOME/.vim/GetLatest/"
+alias cpgl="cp $HOME/my_stuff/GetLatestVimScripts.dat $HOME/.vim/GetLatest/"
 alias fixqbuf="sed -i 's/F4/F12/' $HOME/.vim/plugin/qbuf.vim"
 
 ANDROID_SDK_PATH=$HOME/android-sdk-linux
