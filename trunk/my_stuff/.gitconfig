@@ -4,3 +4,5 @@
 [color]
 	branch = auto
 	status = auto
+[core]
+	excludesfile = /home/cidana/.gitignore
