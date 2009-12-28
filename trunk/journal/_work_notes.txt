@@ -1,3 +1,399 @@
+2009-12-28 10:04 
+-------------------------------------------------
+access samba by using \\ip\username
+~$ git config --global core.excludesfile ~/.gitignore
+~$ echo '*.swp' >> .gitignore
+
+
+2009-12-25 10:02 
+-------------------------------------------------
+
+
+2009-12-24 10:07 
+-------------------------------------------------
+LOCAL_LDFLAGS += -lnvddk_2d
+LOCAL_LDFLAGS += -lnvddk_2d_v2
+LOCAL_LDFLAGS += -lnvddk_audiomixer_impl
+LOCAL_LDFLAGS += -lnvddk_audiomixer
+LOCAL_LDFLAGS += -lnvddk_disp
+LOCAL_LDFLAGS += -lnvdispatch_helper
+LOCAL_LDFLAGS += -lnvdispmgr_d
+LOCAL_LDFLAGS += -lnvdispmgr_impl_d
+LOCAL_LDFLAGS += -lnvidia_graphics_jni
+LOCAL_LDFLAGS += -lnvmm_audio
+LOCAL_LDFLAGS += -lnvmm_contentpipe
+LOCAL_LDFLAGS += -lnvmm_image
+LOCAL_LDFLAGS += -lnvmm_manager_impl
+LOCAL_LDFLAGS += -lnvmm_manager
+LOCAL_LDFLAGS += -lnvmm_misc
+LOCAL_LDFLAGS += -lnvmm_parser
+LOCAL_LDFLAGS += -lnvmm_service
+LOCAL_LDFLAGS += -lnvmm
+LOCAL_LDFLAGS += -lnvmm_tracklist
+LOCAL_LDFLAGS += -lnvmm_utils
+LOCAL_LDFLAGS += -lnvmm_videorenderer
+LOCAL_LDFLAGS += -lnvmm_video
+LOCAL_LDFLAGS += -lnvmm_vp6_video
+LOCAL_LDFLAGS += -lnvmm_writer
+LOCAL_LDFLAGS += -lnvodm_disp
+LOCAL_LDFLAGS += -lnvodm_dtvtuner
+LOCAL_LDFLAGS += -lnvodm_hdmi
+LOCAL_LDFLAGS += -lnvodm_imager
+LOCAL_LDFLAGS += -lnvodm_query
+LOCAL_LDFLAGS += -lnvomxilclient
+LOCAL_LDFLAGS += -lnvomx
+LOCAL_LDFLAGS += -lnvos
+LOCAL_LDFLAGS += -lnvrm_graphics_impl
+LOCAL_LDFLAGS += -lnvrm_graphics
+LOCAL_LDFLAGS += -lnvrm
+LOCAL_LDFLAGS += -lnvsm
+LOCAL_LDFLAGS += -lnvwinsys
+LOCAL_LDFLAGS += -lnvwsi
+
+# ./ort   
+------------------------------------
+GENERAL TEST OMX_ERRORTYPE test_OMX_ComponentNameEnum()
+component 0 is OMX.Nvidia.raw.read
+component 1 is OMX.Nvidia.audio.read
+component 2 is OMX.Nvidia.video.read
+component 3 is OMX.Nvidia.image.read
+component 4 is OMX.Nvidia.video.read.large
+component 5 is OMX.Nvidia.video.scheduler
+component 6 is OMX.Nvidia.clock.component
+component 7 is OMX.Nvidia.raw.write
+component 8 is OMX.Nvidia.audio.write
+component 9 is OMX.Nvidia.video.write
+component 10 is OMX.Nvidia.image.write
+component 11 is OMX.Nvidia.imagesequence.write
+component 12 is OMX.Nvidia.vidhdr.write
+component 13 is OMX.Nvidia.vidhdr.read
+component 14 is OMX.Nvidia.mp4.write
+component 15 is OMX.Nvidia.mp4.decode
+component 16 is OMX.Nvidia.mp4ext.decode
+component 17 is OMX.Nvidia.h263.decode
+component 18 is OMX.Nvidia.sorenson.decode
+component 19 is OMX.Nvidia.mpeg2v.decode
+component 20 is OMX.Nvidia.vp6.decode
+component 21 is OMX.Nvidia.h264.decode
+component 22 is OMX.Nvidia.h264ext.decode
+component 23 is OMX.Nvidia.vc1.decode
+component 24 is OMX.Nvidia.aac.decoder
+component 25 is OMX.Nvidia.adts.decoder
+component 26 is OMX.Nvidia.eaacp.decoder
+component 27 is OMX.Nvidia.bsac.decoder
+component 28 is OMX.Nvidia.mp3.decoder
+component 29 is OMX.Nvidia.wav.decoder
+component 30 is OMX.Nvidia.wma.decoder
+component 31 is OMX.Nvidia.wmapro.decoder
+component 32 is OMX.Nvidia.wmalossless.decoder
+component 33 is OMX.Nvidia.vorbis.decoder
+component 34 is OMX.Nvidia.amr.decoder
+component 35 is OMX.Nvidia.amrwb.decoder
+component 36 is OMX.Nvidia.jpeg.encoder
+component 37 is OMX.Nvidia.jpeg.decoder
+component 38 is OMX.Nvidia.mjpeg.decoder
+component 39 is OMX.Nvidia.theora.decoder
+component 40 is OMX.Nvidia.std.iv_renderer.overlay.rgb565
+component 41 is OMX.Nvidia.render.overlay.argb8888
+component 42 is OMX.Nvidia.std.iv_renderer.overlay.yuv420
+component 43 is OMX.Nvidia.render.hdmi.overlay.yuv420
+component 44 is OMX.Nvidia.render.tvout.overlay.yuv420
+component 45 is OMX.Nvidia.render.secondary.overlay.yuv420
+component 46 is OMX.Nvidia.video.renderer
+component 47 is OMX.Nvidia.ts.read
+component 48 is OMX.Nvidia.bitstream.read
+component 49 is OMX.Nvidia.audio.render
+component 50 is OMX.Nvidia.amr.encoder
+component 51 is OMX.Nvidia.amrwb.encoder
+component 52 is OMX.Nvidia.aac.encoder
+component 53 is OMX.Nvidia.mp4.encoder
+component 54 is OMX.Nvidia.h264.encoder
+component 55 is OMX.Nvidia.h263.encoder
+component 56 is OMX.Nvidia.ilbc.encoder
+component 57 is OMX.Nvidia.camera
+component 58 is OMX.Nvidia.audio.capturer
+component 59 is OMX.Nvidia.asf.read
+component 60 is OMX.Nvidia.mp4.read
+component 61 is OMX.Nvidia.avi.read
+component 62 is OMX.Nvidia.mp3.read
+component 63 is OMX.Nvidia.ogg.read
+component 64 is OMX.Nvidia.wav.read
+component 65 is OMX.Nvidia.aac.read
+component 66 is OMX.Nvidia.amr.read
+component 67 is OMX.Nvidia.awb.read
+component 68 is OMX.Nvidia.reader
+component 69 is OMX.Nvidia.mp2.decoder
+component 70 is OMX.Nvidia.video.extractor
+GENERAL TEST OMX_ERRORTYPE test_OMX_ComponentNameEnum() result 8000100e
+------------------------------------
+GENERAL TEST OMX_ERRORTYPE test_OMX_RoleEnum(char*)
+The number of roles for the component OMX.Nvidia.video.renderer is: 1
+The role 1 for the component:  iv_renderer.yuv.overlay 
+GENERAL TEST OMX_ERRORTYPE test_OMX_RoleEnum(char*) result 0
+------------------------------------
+GENERAL TEST OMX_ERRORTYPE test_OMX_ComponentEnumByRole(char*)
+Getting number of components per role for video_src
+Number of components per role for video_src is 0
+ The components are:
+GENERAL TEST OMX_ERRORTYPE test_OMX_ComponentEnumByRole(char*) result OMX_ErrorNone
+------------------------------------
+
+
+
+
+2009-12-23 10:06 
+-------------------------------------------------
+opencore/android
+generates libandroidpv.a
+
+
+ftp://partner.nvidia:nvidiamobile1@ftp.cidana.com/nvidia/smshostlib-hw-dvbt.zip
+
+Username: partner.nvidia             
+
+Password: nvidiamobile1
+
+
+etc$ sudo dhclient eth2
+sudo ifconfig eth2 192.168.0.90 netmask 255.255.255.0 broadcast  192.168.0.255
+sudo route add -net 192.168.0.0 netmast 255.255.255.0 gw 192.168.0.2 dev eth2
+
+
+/home/cidana/eclair/external/opencore/oscl/oscl/osclbase/src/oscl_opaque_type.h:47: error: expected '=', ',', ';', 'asm' or '__attribute__' before 'Oscl_Opaque_Type_Alloc'
+<SOLVE> don't compile cpp as c
+
+
+
+
+
+
+
+void PVMediaOutputNodePort::SendMediaData()
+        PvmiMediaXferHeader mediaxferhdr;
+        mediaxferhdr.seq_num = mediaData->getSeqNum();
+        mediaxferhdr.timestamp = mediaData->getTimestamp();
+        mediaxferhdr.duration = duration;
+        mediaxferhdr.flags = flags;
+        mediaxferhdr.stream_id = mediaData->getStreamID();
+        mediaxferhdr.private_data_length = privatedatalength;
+        mediaxferhdr.private_data_ptr = privatedataptr;
+        err = WriteDataToMIO(cmdId, mediaxferhdr, frag);
+int32 PVMediaOutputNodePort::WriteDataToMIO(int32 &aCmdId, PvmiMediaXferHeader &aMediaxferhdr, OsclRefCounterMemFrag &aFrag)
+PVMFCommandId AndroidSurfaceOutput::writeAsync(uint8 aFormatType, int32 aFormatIndex, uint8* aData, uint32 aDataLen,
+
+
+
+
+
+2009-12-22 10:55 
+-------------------------------------------------
+
+donut opencore
+pvmf_node_interface.cpp:(.text._ZN14PVMFAsyncEventD1Ev[PVMFAsyncEvent::~PVMFAsyncEvent()]+0x17): undefined reference to `vtable for PVMFAsyncEvent'
+
+
+
+./pvplayer_engine_test ~/hostshare/media_pmp_sample/176x144xMPEG4_aac.mp4 -t 1 1 -output of -logerr
+
+
+
+1. Install the vsftpd with the package manager.
+
+  
+
+     apt-get install vsftpd 
+
+ 
+
+2. Configure the conf file. 
+
+ 
+
+    Open /etc/vsftpd.conf. And add the following lines,
+
+ 
+
+    ###Enable anonymous read
+
+    anonymous_enable=YES
+
+    anon_root=/
+    anon_world_readable_only=YES
+
+ 
+
+    #anon_mkdir_write_enable=YES
+    #anon_upload_enable=YES
+
+    ###Enable local user read and write
+    local_enable=YES
+    write_enable=YES
+
+ 
+
+3. Restart the server. 
+
+ 
+
+    /etc/init.d/vsftpd restart
+
+
+dellmini opencore is base on this commit
+
+6b31782f62c033186ad890719195f3c04e0a5f25
+
+-c/-n   {CodecType/ComponentName}
+        CodecType could be avc, aac, mpeg4, h263, wmv, rv, amr, mp3, wma, ra
+
+
+
+void PVMERegistryPopulator::RegisterAllRecognizers(PVPlayerRecognizerRegistryInterface* aRegistry, OsclAny*& aContext)
+OSCL_EXPORT_REF PVMFRecognizerPluginInterface* PVMP4FFRecognizerFactory::CreateRecognizerPlugin()
+PVMFStatus PVMP4FFRecognizerPlugin::Recognize(PVMFDataStreamFactory& aSourceDataStreamFactory,
+OSCL_EXPORT_REF bool MP4FileRecognizer::IsMP4File(OSCL_wString& filename,
+
+
+void PVMERegistryPopulator::RegisterAllNodes(PVPlayerNodeRegistryInterface* aRegistry, OsclAny*& aContext)
+bool PVMFMP4FFParserNode::ParseMP4File(PVMFNodeCommand& aCmd, PVMFStatus& aStatus)
+    iMP4FileHandle = IMpeg4File::readMP4File(iFilename,
+
+
+
+CPM
+ContentPolicyManager
+
+
+mime
+pvmf_format_type.h
+
+
+
+linux$ ./test_pvauthorengine -help
+Version: CORE_8.000.1.1 generated on 20091108
+
+PVAuthorEngine Unit Test
+
+Printing leak info option. Default is OFF:
+  -leakinfo
+   If there is a memory leak, prints out the memory leak information
+   after all specified test cases have finished running.
+
+Test cases to run option. Default is ALL:
+  -test x x
+   Specify a range of test cases to run. To run one test case, use the
+   same index for x and y.
+
+[test range from: 1001 to: 999]
+
+CMD LINE ARGS FOR COMPRESSED TESTS [test range from: 0 to: 105]
+
+Source specification option for audio.:
+  -audio sourcename
+   Specify the source filename or URL to use for test cases which
+   allow user-specified source name. The unit test determines the
+   source format type using extension or URL header.
+
+Source specification option for video.:
+  -video sourcename
+   Specify the source filename or URL to use for test cases which
+   allow user-specified source name. The unit test determines the
+   source format type using extension or URL header.
+
+Output specification option.
+  -output outputname
+   Specify the output filename to use for test cases which
+   allow user-specified source name. 
+
+Authoring Time specification option for Author.:
+  -duration time_in_seconds
+   Specify the time argument to use for test cases which
+   allow user-specified source name.
+
+CMD LINE ARGS FOR UNCOMPRESSED TESTS(with AVI/WAV inputs)[test range from 200 to 308]
+
+Source specification option.:
+  -source sourcename
+   Specify the source filename or URL to use for test cases which
+   allow user-specified source name. The unit test determines the
+   source format type using extension or URL header.
+
+Output specification option.
+  -output outputname
+   Specify the output filename to use for test cases which
+   allow user-specified source name. 
+
+Video Encoder Type option. Default is M4V:
+  -encV encodertype
+  specifies the encoder to be used for authoring
+  0:M4V
+  1:H263
+  2:H264
+  e.g -encV 0 
+
+Audio Encoder Type option. Default is AMRNb:
+  -encA encodertype
+  specifies the encoder to be used for authoring
+  0:AMRNb
+  1:AMRWb
+  2:AAC_ADIF
+ 3:AAC_ADTS
+ 4:AAC MPEG4
+  e.g -encA 0 
+
+AAC Audio Encoder Profile Type option. Default is AAC LC:
+  -aactype 
+  specifies the aac encoder profile type to be used for authoring
+  0:AAC LC
+  1:AAC+
+  2:eAAC+
+  e.g -aactype 0 
+
+Authoring Time specification option for Author.:
+  -duration time_in_seconds
+   Specify the time argument to use for test cases which
+   allow user-specified source name.
+
+
+XML test results file option.  Default is to not write a summary.
+  -xmloutput file
+   Specify a source filename to output a test results summary to.
+
+NO CMD LINE ARGS WERE REQUIRED TO RUN COMPRESSED ERROR HANDLING TESTS [test range from:400 to 403]
+
+NO CMD LINE ARGS WERE REQUIRED TO RUN UNCOMPRESSED ERROR HANDLING TESTS [test range from:500 to 570]
+
+
+Memory Stats:
+  peakNumAllocs 50
+  peakNumBytes 15667
+  totalNumAllocs 110
+  totalNumBytes 18674
+  numAllocFails 0
+
+
+
+2009-12-21 10:05 
+-------------------------------------------------
+SmsHostApiDeviceInit_Req
+SmsHostApiGetVersion_Req
+SmsHostApiAddPidFilter_Req
+1 devices exist. Using first device in the list SmsDeviceCalling SmsHostApiTune_Req(pAsyncData->DevHandle, CurFreq, DVBT_USER_SCAN_BANDWIDTH) .
+device mode = 0 
+
+
+**********************************************************************************************************
+Calling SmsHostApiDeviceInit_Req( DeviceData.DeviceName, SMSHOSTLIB_DEVMD_DVBT, 12000000L, pAsyncData, &pAsyncData->DevHandle)
+#Callbacks:        1; #Bytes:     3948
+**********************************************************************************************************
+
+
+
+**********************************************************************************************************
+Calling SmsHostApiGetVersion_Req(pAsyncData->DevHandle)
+**********************************************************************************************************
+
+
+
 2009-12-18 10:04 
 -------------------------------------------------
 opencore unittest run fail ?
@@ -20,6 +416,7 @@ Option{}
          To run one test case use same index for x and y - Default is ALL
 -l      log to file
 
+./test_omx_client /30g/donut/external/opencore-2.07/engines/player/mytest/data/test_cbr.mp3 -c mp3 -n mp3 -t 0 0 -output outputfile -logerror
 
 ./test_omx_client /30g/donut/external/opencore-2.07/engines/player/mytest/data/test_cbr.mp3 -c mp3 -n mp3 -output outputfile -t 11 11
 
