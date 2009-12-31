@@ -1,8 +1,82 @@
+2009-12-31 10:03 
+-------------------------------------------------
+
+svn checkout svn://svn.mplayerhq.hu/mplayer/trunk mplayer
+
+
+
+2009-12-30 10:00 
+-------------------------------------------------
+bellagio rm plugin,
+
+autoreconf -i -f
+
+- github
+sdk_pmp/trunk
+CI_Android_Demo_pmp
+gfxAndroid
+
+../pvplayer_engine_test ~/hostshare/media_pmp_sample/split/176x144xMPEG4_aac_001.mp4 -test 0 0 -logerr
+test ok
+
+
+../pvplayer_engine_test test.mp4 -test 1 1 -logerr
+use this video file \\192.168.0.30\cidana\30g\opencore\engines\player\test\data\test.mp4
+
+output
+test_player_openplaystop_test_mp4_audio.dat can listen by using cooledit
+test_player_openplaystop_test_mp4_video.dat can view by using yuvviewer 176x144
+
+
+
+
+engine$ ../pvplayer_engine_test -source 176x144xMPEG4_aac_001.mp4 -test 1 1 -logerr
+test ok
+video output ok
+audio output ok
+
+
+
+-source spltrailer1.rmvb -test 1 1 -logerr
+x-pvmf/mux/rm
+video/MP4
+
+
+#ifdef ANDROID
+#define PV_DYNAMIC_LOADING_CONFIG_FILE_PATH "/system/etc"
+#else
+#define PV_DYNAMIC_LOADING_CONFIG_FILE_PATH "./"
+#endif
+
+
+
+2009-12-29 10:01 
+-------------------------------------------------
+omxparser 
+-d will display a/v
+-c will has no sound
+
+rm -rf out/target/product/generic/obj/SHARED_LIBRARIES/libcidana*
+rm out/target/product/generic/system/lib/libcidana*
+rm -r out/target/product/generic/obj/STATIC_LIBRARIES/cidana*
+
+
+
+	//	DEBUG(DEB_LEV_ERR,"-----------error in this line %d error code = %x\n", __LINE__, err);
+
+
 2009-12-28 10:04 
 -------------------------------------------------
 access samba by using \\ip\username
 ~$ git config --global core.excludesfile ~/.gitignore
 ~$ echo '*.swp' >> .gitignore
+
+can't find volume component ?
+<SOLVE>
+omxregister-bellagio -v /usr/local/lib/bellagio/ /usr/local/lib/extern_omxcomp/lib/
+
+src/omxparsertest -vo outfileVideo.yuv -ao outfileAudio.pcm ~/hostshare/media_pmp_sample/009.3gp
+src/omxparsertest -d  ~/hostshare/media_pmp_sample/009.3gp 
 
 
 2009-12-25 10:02 
