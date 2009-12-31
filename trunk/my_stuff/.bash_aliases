@@ -39,6 +39,7 @@ alias cm="./configure && make"
 alias cmi="./configure && make && sudo make install"
 alias mcm='make clean && make'
 alias vial='vi ~/.bash_aliases'
+alias gvi='gvim'
 alias si='wine /home/cidana/.wine/drive_c/Program\ Files/Source\ Insight\ 3/Insight3.exe & '
 
 alias s="sdcv"

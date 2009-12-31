@@ -1,10 +1,16 @@
 *.swp
 *~
+
 *.o
 *.so
 *.lib
 *.dll
+*.class
+*.dex
+*.ap_
+
 .svn/
+
 *.IAB
 *.IAD
 *.IMB
