@@ -1,3 +1,155 @@
+2010-1-11 11:10
+-------------------------------------------------
+TODO:
+release insydesw/acer x86 pmp sdk
+merge xi'an opencore mepg demux
+implement opencore rmdemux
+stick on siano hostlib unstable/transport error problem
+update t20 with new firmware
+
+
+
+/data/smsmdtv/native_load_log.txt
+/data/smsmdtv/native_log.txt
+
+mount -o remount rw /system
+
+LD_LIBRARY_PATH=. ./ss
+
+/data/tal/tt
+/data/tal/tuners/libTalSiano.so
+/system/lib/libnative.so
+
+
+
+elad hi
+
+Sorry for late response, recently we can record some data from tuner.
+But there are many transport error and count errors. 
+If there are 30k packets there will be 10k of them have errors.
+I have put test application and record result on our ftp server.
+
+ftp://partner.siano@ftp.cidana.com/siano_tuner_record_result/
+
+SmsSample.zip - is siano sample code with some modification
+out.zip - is which we record
+
+
+david hi
+
+I have see some trival problem with T20 device.
+Adb connection are not stable, sometimes it just disconnect with host too often.
+and sometimes it can't bootup, LCD moniter has no display.
+
+Do you have some idea about this.
+BTY: I'm running ubuntu 8.04 on vmware, LCD moniter(4:3) for display.
+
+
+
+
+
+2010-1-8 10:00
+-------------------------------------------------
+dragon tech sample code done
+
+unzip cidanaSamplePlayer.zip to $HOME/cidanaSamplePlayer
+
+If your directory layout like this
+$HOME/android src path/
+$HOME/cidanaSamplePlayer
+
+cd $HOME/android src path/
+source build/envsetup.sh
+mmm ../cidanaSamplePlayer
+
+And adb install this apk to T20 board.
+There will be a application named "cidanaSamplePlayer" apear.
+
+Launch it then press the play button to play,  exit button to close .
+
+place CMMB_Demo.mfs to your /sdcard (you can modify file path in java code)
+
+
+
+2010-1-7 10:05 
+-------------------------------------------------
+
+sdk - android version(config, Makefile.rules)
+cp sdk/.a ci/jni
+sdk_jni - android version, clip_size, 
+vr - android version, render_type(nvidia, isurface)
+mmm ci
+
+TODO:
+cmmb sample code
+dvbt demo on G2
+acer x86 pmp sdk/image burn
+rmdemux
+tuner
+omx decoder-render
+
+		if(mSurface.isValid())
+		{
+		            Log.d(TAG, "mSurface Valid");
+		}
+		else
+		{
+		            Log.e(TAG, "mSurface not Valid");
+		}
+2010-1-6 10:00 
+-------------------------------------------------
+dvbt interlace
+
+omx render add keep aspect ratio
+
+android create project -t 1 -k com.cidana -a SamplePlayer -n SamplePlayer -p SamplePlayer
+
+android create project -t 1 -k com.cidana.jplayer -a MediaPlayerActivity -n SamplePlayer -p SamplePlayer
+
+
+2010-1-5 09:59 
+-------------------------------------------------
+
+omxRenderTest$ ./omxRenderTest
+Init the Omx core
+Omx core is initialized 
+GENERAL TEST test_OMX_ComponentNameEnum
+component  0 is OMX.PV.mpeg4dec
+component  1 is OMX.PV.h263dec
+component  2 is OMX.PV.avcdec
+component  3 is OMX.PV.wmvdec
+component  4 is OMX.PV.rvdec
+component  5 is OMX.PV.aacdec
+component  6 is OMX.PV.amrdec
+component  7 is OMX.PV.mp3dec
+component  8 is OMX.PV.wmadec
+component  9 is OMX.PV.radec
+component 10 is OMX.PV.amrencnb
+component 11 is OMX.PV.mpeg4enc
+component 12 is OMX.PV.h263enc
+component 13 is OMX.PV.avcenc
+component 14 is OMX.PV.aacenc
+GENERAL TEST test_OMX_ComponentNameEnum result 8000100e
+
+
+TODO:
+
+independency shared library, load from *.cfg
+how to generate a uuid to rm
+input *.rm file and find file recoganizer/parser
+
+
+cmmb-1.5/1.6-isurface for dragontech
+dvbt-2.0-omx for nvidia
+
+
+
+2010-1-4 10:05 
+-------------------------------------------------
+cxx_personality
+
+<SOLVE> -fno-exceptions
+
 2009-12-31 10:03 
 -------------------------------------------------
 
