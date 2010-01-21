@@ -1,6 +1,7 @@
 ScriptID SourceID Filename
 --------------------------
-2179 1 :AutoInstall: srcexpl.vim
+625 1 :AutoInstall: colorpack.vim
+213 1 :AutoInstall: c.vim
 1338 1 :AutoInstall: tabbar.vim
 1658 1 :AutoInstall: NerdTree.vim
 521 1 :AutoInstall: mru.vim
