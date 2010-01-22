@@ -1,11 +1,146 @@
+2010-1-22 09:59 
+-------------------------------------------------
+acer hardware render
+-ftree-vectorize
+
+
+2010-1-21 11:45 
+-------------------------------------------------
+build/core/version_defaults.mk
+
+
+ifeq "" "$(PLATFORM_VERSION_CODENAME)"
+  # This is the current development code-name, if the build is not a final
+  # release build.  If this is a final release build, it is simply "REL".
+#   PLATFORM_VERSION_CODENAME := Eclair
+  PLATFORM_VERSION_CODENAME := REL
+endif
+
+showmount -e 192.168.0.30
+
+2010-1-20 10:01 
+-------------------------------------------------
+TODO:
+
+indesw acer 
+- replace image
+- how to product xxx.img
+- replace opencore
+
+opencore
+- shared lib
+
+CPPFLAGS += -fno-rtti -fomit-frame-pointer -fno-exceptions
+
+build indesw image
+make -j
+ln: creating symbolic link `out/target/product/eee_701/system/bin/pppd': No such file or directory
+<SOLVE> mkdir -p out/target/product/eee_701/system/bin
+
+
+
+insyde/Firefox/src/com/android/firefox/EventListener.java:48: method does not override a method from its superclass
+    @Override
+     ^
+insyde/Firefox/src/com/android/firefox/EventListener.java:65: method does not override a method from its superclass
+    @Override
+     ^
+insyde/Firefox/src/com/android/firefox/EventListener.java:133: method does not override a method from its superclass
+    @Override
+     ^
+3 errors
+make: *** [out/target/common/obj/APPS/Firefox_intermediates/classes-full-debug.jar] Error 41
+
+Android-1.5$ java -version
+java version "1.5.0_19"
+Java(TM) 2 Runtime Environment, Standard Edition (build 1.5.0_19-b02)
+Java HotSpot(TM) Client VM (build 1.5.0_19-b02, mixed mode, sharing)
+
+
+tar zcvf bionic-headers.tar.gz \
+bionic/libc/arch-x86/include \
+bionic/libc/arch-arm/include \
+bionic/libc/include \
+bionic/libc/kernel/common \
+bionic/libc/kernel/arch-arm \
+bionic/libc/kernel/arch-x86 \
+bionic/libm/include
+
+
+
+2010-1-19 10:11 
+-------------------------------------------------
+
+
+2010-1-18 10:05 
+-------------------------------------------------
+dragontech cmmb sdk update
+
+
+
+2010-1-15 09:41 
+-------------------------------------------------
+commit opencore to svn
+add setVideoDst to jni
+TODO:
+perfermance evaluation
+
+2010-1-14 10:00
+-------------------------------------------------
+merge opencore
+
+use crt one to update t20 firmware, and install zhuorui's usb driver
+TODO:
+test pmp on insydesw
+
+2010-1-13 10:00 
+-------------------------------------------------
+
+
+merge opencore fileformat
+
+
+2010-1-12 01:39 
+-------------------------------------------------
+
+external/opencore
+framework/base
+
+out to dragontech, browser integration
+
+
 2010-1-11 11:10
 -------------------------------------------------
+
+unzip SmsSample.zip to $HOME/SmsSample
+
+If your directory layout like this
+$HOME/android src path/
+$HOME/SmsSample
+
+cd $HOME/android src path/
+source build/envsetup.sh
+mmm ../SmsSample
+
+And there will a command line application named ss (you can modify it in Android.mk)
+adb push ss /data/bin
+adb push libnative.so /data/bin
+
+cd /data/bin
+LD_LIBRARY_PATH=. ./ss
+
+
+
+
 TODO:
 release insydesw/acer x86 pmp sdk
 merge xi'an opencore mepg demux
 implement opencore rmdemux
 stick on siano hostlib unstable/transport error problem
-update t20 with new firmware
+-update t20 with new firmware
+support dragontech cmmb integration
+-see if video surface can dynamic change when video is still playing
+
 
 
 
@@ -1208,8 +1343,9 @@ insmod: init_module './smsmdtv.ko' failed (Exec format error)
 # cat /proc/version
 Linux version 2.6.29-00117-g3a218ab-dirty (@CENT64-C04-33-1) (gcc version 4.4.0 (GCC) ) #1 SMP Mon Nov 23 19:23:08 UTC 2009
 
-liblog libutils libcutils libui libdl libbinder libmedia libandroid_runtime
+liblog libutils libcutils libui libdl libmedia libandroid_runtime
 
+libbinder
 rzhuo@nvidia.com
 
 This trick works, now I can get adb connection established.
@@ -2384,10 +2520,13 @@ bug fix, switch to next media crash
 /home/cidana/arm/mydroid/bionic/libc/kernel/arch-arm
 /home/cidana/arm/mydroid/bionic/libm/include
 
+
+bionic/libc/arch-x86/include
 bionic/libc/arch-arm/include
 bionic/libc/include
 bionic/libc/kernel/common
 bionic/libc/kernel/arch-arm
+bionic/libc/kernel/arch-x86
 bionic/libm/include
 
 undefined stderr ?  use gcc not g++ compile the c source code
