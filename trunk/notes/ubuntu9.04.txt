@@ -328,7 +328,8 @@ vi ~/.bashrc
 sudo apt-get install update
 
 sudo apt-get install \
-subversion rapidsvn vim-full ctags ttf-wqy-zenhei stardict sdcv fcitx
+subversion rapidsvn vim ctags ttf-wqy-zenhei stardict sdcv fcitx \
+amule aria2 axel
 
 http://im.qq.com/qq/linux/download.shtml
 
