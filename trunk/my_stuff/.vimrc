@@ -41,7 +41,7 @@ else
 	if has("gui")
 		set guioptions-=m
 		set guioptions-=T
-		colorscheme desert
+        colorscheme rootwater
 	endif
 endif
 
