@@ -1,3 +1,26 @@
+2010-1-26 10:03 
+-------------------------------------------------
+
+adb shell gdbserver :5039 --attach 264 &
+
+set solib-absolute-prefix out/target/product/generic/symbols
+set solib-search-path out/target/product/generic/symbols/system/lib
+
+xunlei
+leyu
+emule
+movieplayer
+
+bank/alipay/gtja
+dazhihui
+qq-voice
+chinese input method
+
+
+2010-1-25 10:05 
+-------------------------------------------------
+release insydesw pmp demo
+
 2010-1-22 09:59 
 -------------------------------------------------
 acer hardware render
@@ -17,6 +40,7 @@ ifeq "" "$(PLATFORM_VERSION_CODENAME)"
 endif
 
 showmount -e 192.168.0.30
+
 
 2010-1-20 10:01 
 -------------------------------------------------
