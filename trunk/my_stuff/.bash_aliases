@@ -23,6 +23,7 @@ alias ag='sudo apt-get'
 alias acs='apt-cache search'
 alias ac='apt-cache'
 
+alias ls='ls --color -F'
 alias la='ls -A'
 alias ll='ls -l'
 alias le='less'
