@@ -505,3 +505,58 @@ yakuake - damn cool shit,
 		disable above other window
 
 screenlets - desktop widgets
+
+
+
+ubuntu 9.10
+-------------------------------
+http://ubuntu.cn99.com/.help/ubuntu.html
+
+#download my config files to make world familar
+mkdir $HOME/my_stuff
+cd $HOME/my_stuff
+
+#edit sudoers file to bypass input passwd everytime when you sudo
+#http://code.google.com/p/fuddle/source/browse/trunk/mint/makesudo.sh
+sudo vi /etc/sudoers
+#shi ALL=NOPASSWD: ALL
+
+#shell
+wget http://fuddle.googlecode.com/svn/trunk/vim/.bash_aliases 
+
+#ssh
+sudo apt-get install ssh
+
+#generate pub key if you wish to use putty, xmanager don't need this
+ssh-keygen -t rsa
+cp .ssh/id_rsa.pub .ssh/authorized_keys
+
+sudo vi /etc/ssh/sshd_config
+#AuthorizedKeysFile	%h/.ssh/authorized_keys
+
+#vim	
+#http://www.vim.org/scripts/script.php?script_id=1502
+sudo apt-get install vim
+wget http://fuddle.googlecode.com/svn/trunk/vim/GetLatestVimScripts.dat
+wget http://fuddle.googlecode.com/svn/trunk/vim/getscript.vba
+wget http://fuddle.googlecode.com/svn/trunk/vim/vimball.tar.gz
+wget http://fuddle.googlecode.com/svn/trunk/vim/.vimrc
+
+mkdir $HOME/.vim
+tar zxvf vimball.tar.gz -C $HOME/.vim
+
+vi getscript.vba
+:so %
+
+#modify src_id to 1 in everyline
+cp GetLatestVimScripts.dat $HOME/.vim/GetLatest/
+
+#stardict best console dictionary ever
+wget http://downloads.sourceforge.net/project/stardict/stardict-dictionaries-zh_CN/2.4.2/stardict-langdao-ec-gb-2.4.2.tar.bz2?use_mirror=ncu
+wget http://downloads.sourceforge.net/project/stardict/stardict-dictionaries-zh_CN/2.4.2/stardict-langdao-ce-gb-2.4.2.tar.bz2?use_mirror=ncu
+sudo apt-get install stardict sdcv
+sudo tar jxf stardict-langdao-ce-gb-2.4.2.tar.bz2 -C /usr/share/stardict/dic/
+sudo tar jxf stardict-langdao-ec-gb-2.4.2.tar.bz2 -C /usr/share/stardict/dic/
+
+#other
+sudo apt-get install ttf-wqy-zenhei
