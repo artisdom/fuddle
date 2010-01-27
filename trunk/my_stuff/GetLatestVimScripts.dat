@@ -1,14 +1,12 @@
 ScriptID SourceID Filename
 --------------------------
-625 1 :AutoInstall: colorpack.vim
-213 1 :AutoInstall: c.vim
-1338 1 :AutoInstall: tabbar.vim
-1658 1 :AutoInstall: NerdTree.vim
-521 1 :AutoInstall: mru.vim
-1849 1 :AutoInstall: AutoClose.vim
-273 1 :AutoInstall: taglist.vim
 23 1 :AutoInstall: EnhCommentify.vim
-474 1 :AutoInstall: SearchComplete.vim
-1910 1 :AutoInstall: QuickBuf.vim
+213 1 :AutoInstall: c.vim
+273 1 :AutoInstall: taglist.vim
+521 1 :AutoInstall: mru.vim
+625 1 :autoinstall: colorpack.vim
 642 1 :AutoInstall: getscript.vim
+1218 1 :AutoInstall: NerdCommenter.vim
 1502 1 :AutoInstall: vimball.vim
+1658 1 :AutoInstall: NerdTree.vim
+1910 1 :AutoInstall: QuickBuf.vim
