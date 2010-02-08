@@ -1,3 +1,204 @@
+2010-2-5 10:05 
+-------------------------------------------------
+Advanced Programmable Interrupt Controller (APIC)
+oprofile
+http://www.ibm.com/developerworks/cn/linux/l-oprof/index.html
+
+
+opcontrol --setup --ctr0-event=CPU_CLK_UNHALTED --ctr0-count=600000 --vmlinux=/boot/vmlinuz-2.6.24-19-generic
+
+Traceview
+dmtracedump
+
+gprof
+1.CFLAGS= -lm -gstabs -g -pg  $(DEFINES)
+2.make
+3.exec --> gmon.out
+4.gprof/kprof
+
+
+2010-2-4 09:59 
+-------------------------------------------------
+PC
+----------------------------------------gdb ok----------------------------------------
+set solib-absolute-prefix /home/cidana/hostshare/doc/jni/jniexamples/chap6/InstanceMethodCall/
+set solib-search-path /home/cidana/hostshare/doc/jni/jniexamples/chap6/InstanceMethodCall/
+
+file /home/cidana/hostshare/doc/jni/jniexamples/chap6/InstanceMethodCall/libInstanceMethodCall.so 
+A program is being debugged already.
+Are you sure you want to change the file? (y or n) y
+Reading symbols from /mnt/hgfs/hostshare/doc/jni/jniexamples/chap6/InstanceMethodCall/libInstanceMethodCall.so...done.
+----------------------------------------gdb ok----------------------------------------
+
+----------------------------------------gdbserver can list file, but can't break----------------------------------------
+(gdb) b 87
+Breakpoint 1 at 0x875: file InstanceMethodCall.c, line 87.
+(gdb) continue 
+Continuing.
+Warning:
+Cannot insert breakpoint 1.
+Error accessing memory address 0x875: Input/output error.
+----------------------------------------gdbserver can list file, but can't break----------------------------------------
+
+
+EMU
+gdb don't have one
+
+----------------------------------------gdbserver can't even list file----------------------------------------
+gdbserver localhost:1234 --attach 
+
+
+adb forward tcp:1234 tcp:1234
+/home/cidana/android-ndk-1.6_r1/build/prebuilt/linux-x86/arm-eabi-4.2.1/bin/arm-eabi-gdb /home/cidana/arm/mydroid/generic/symbols/system/bin/app_process
+set solib-absolute-prefix /home/cidana/arm/mydroid/generic/symbols/
+set solib-search-path /home/cidana/arm/mydroid/generic/symbols/system/lib
+target remote :1234
+
+
+mydroid$ gdbserver :1234 --attach 29358
+Attached; pid = 29358
+Listening on port 1234
+Remote debugging from host 127.0.0.1
+
+target remote :1234
+
+<?>
+after loaded a lot of libraries
+Current language:  auto; currently asm
+(gdb) list
+145	    mov     r3, r2
+146	    mov     r2, r1
+147	    mov     r1, #FUTEX_WAIT
+148	    ldr     r7, =__NR_futex
+149	    swi     #0
+150	    ldmia   sp!, {r4, r7}
+151	    bx      lr
+152	    .fnend
+153	
+154	__futex_wake:
+(gdb) set language
+The currently understood settings are:
+
+local or auto    Automatic setting based on source file
+ada              Use the Ada language
+c                Use the C language
+c++              Use the C++ language
+asm              Use the Asm language
+minimal          Use the Minimal language
+fortran          Use the Fortran language
+objective-c      Use the Objective-c language
+java             Use the Java language
+modula-2         Use the Modula-2 language
+pascal           Use the Pascal language
+scheme           Use the Scheme language
+(gdb) set language c++
+Warning: the current language does not match this frame.
+(gdb) info threads
+  7 Thread 1945  __ioctl () at bionic/libc/arch-arm/syscalls/__ioctl.S:15
+  6 Thread 1944  __ioctl () at bionic/libc/arch-arm/syscalls/__ioctl.S:15
+  5 Thread 1943  __ioctl () at bionic/libc/arch-arm/syscalls/__ioctl.S:15
+  4 Thread 1942  select () at bionic/libc/arch-arm/syscalls/select.S:17
+  3 Thread 1941  __rt_sigtimedwait ()
+    at bionic/libc/arch-arm/syscalls/__rt_sigtimedwait.S:15
+  2 Thread 1940  __futex_wait ()
+    at bionic/libc/arch-arm/bionic/atomics_arm.S:150
+  1 Thread 1939  __futex_wait ()
+    at bionic/libc/arch-arm/bionic/atomics_arm.S:150
+
+mydroid$ arm-eabi-gdb -x gdbclient.cmds 
+
+mydroid$ cat gdbclient.cmds 
+set solib-absolute-prefix /home/cidana/arm/mydroid/out/target/product/generic/symbols
+set solib-search-path /home/cidana/arm/mydroid/out/target/product/generic/symbols/system/lib
+target remote :1234
+
+----------------------------------------gdbserver can't even list file----------------------------------------
+
+2010-2-3 09:59 
+-------------------------------------------------
+
+
+2010-2-2 09:58 
+-------------------------------------------------
+javac -classpath /home/cidana/android-sdk-linux/platforms/android-1.5/android.jar playerSDK.java -d .
+javah -jni cidana.media.playerSDK
+
+javap -s -p cidana.media.playerSDK
+
+Player.cpp (d:\hostshare\cmmb):        ((LP_UI_PLAYER_CALLBACK_ARRAY)m_pFunctionList)->AppMessageNotify(AM_INITIALIZE_NOTIFY, (void*)nRetCode, (void*)bRealInit);
+Player.cpp (d:\hostshare\cmmb):        ((LP_UI_PLAYER_CALLBACK_ARRAY)m_pFunctionList)->AppMessageNotify(AM_PLAYLIVING_NOTIFY, (void*)nRetCode, (void*)nChannelId);
+Player.cpp (d:\hostshare\cmmb):        ((LP_UI_PLAYER_CALLBACK_ARRAY)m_pFunctionList)->AppMessageNotify(AM_NOTIFY_UPDATE_CH_LIST, NULL, NULL);
+
+
+Player.cpp (d:\hostshare\cmmb):		((LP_UI_PLAYER_CALLBACK_ARRAY)m_pFunctionList)->AppMessageNotify(AM_WRITE_ERROR, (void*)dwErr, (void*)&WriteError);
+Player.cpp (d:\hostshare\cmmb):                        ((LP_UI_PLAYER_CALLBACK_ARRAY)m_pFunctionList)->AppMessageNotify(AM_ERROR_CA_CHANNEL, (void *)&nErrorValue, NULL);
+Player.cpp (d:\hostshare\cmmb):                        ((LP_UI_PLAYER_CALLBACK_ARRAY)m_pFunctionList)->AppMessageNotify(AM_ERROR_CA_CHANNEL, (void *)&nErrorValue, NULL);
+Player.cpp (d:\hostshare\cmmb):                    ((LP_UI_PLAYER_CALLBACK_ARRAY)m_pFunctionList)->AppMessageNotify(AM_RESTORE_CA_CHANNEL, NULL, NULL);
+Player.cpp (d:\hostshare\cmmb):		if(((LP_UI_PLAYER_CALLBACK_ARRAY)m_pFunctionList)->AppMessageNotify)
+Player.cpp (d:\hostshare\cmmb):                ((LP_UI_PLAYER_CALLBACK_ARRAY)m_pFunctionList)->AppMessageNotify(AM_NOTIFY_SIGNAL_CHANGE, (int*)pCurrStatus, NULL);
+
+
+
+
+Player.cpp (d:\hostshare\cmmb):			lRet = ((LP_UI_PLAYER_CALLBACK_ARRAY)m_pFunctionList)->AppMessageNotify(AM_NOTIFY_STATUS_CHANGED, &info, NULL);
+Player.cpp (d:\hostshare\cmmb):		((LP_UI_PLAYER_CALLBACK_ARRAY)m_pFunctionList)->AppMessageNotify(AM_UB_EVENT, (void*)pEvent_data, (void*)nData_len);
+Player.cpp (d:\hostshare\cmmb):        ((LP_UI_PLAYER_CALLBACK_ARRAY)m_pFunctionList)->AppMessageNotify(AM_XPE_NOTIFY, pDataBuf, (void*)&lDataLen);
+
+
+
+2010-2-1 10:04 
+-------------------------------------------------
+leallian
+gavin_wwf
+
+mydroid$ find out/  -name 'libcidana_media_jni_cmmb.so' |xargs ls -l
+-rwxr-xr-x 1 cidana cidana 5128788 2010-02-01 12:23 out/target/product/generic/obj/lib/libcidana_media_jni_cmmb.so
+-rwxr-xr-x 1 cidana cidana 5128788 2010-02-01 12:23 out/target/product/generic/obj/SHARED_LIBRARIES/libcidana_media_jni_cmmb_intermediates/LINKED/libcidana_media_jni_cmmb.so
+-rwxr-xr-x 1 cidana cidana 5128788 2010-02-01 12:23 out/target/product/generic/symbols/system/lib/libcidana_media_jni_cmmb.so
+-rwxr--r-- 1 cidana cidana 5119303 2010-01-06 17:23 out/target/product/generic/system/app/jni/libcidana_media_jni_cmmb.so
+-rwxr-xr-x 1 cidana cidana 5128788 2010-02-01 12:23 out/target/product/generic/system/lib/libcidana_media_jni_cmmb.so
+
+
+2010-1-29 10:01 
+-------------------------------------------------
+sed -i 's/cidana_media_jni/cidana_media_jni_pmp/' src/cidana/media/MediaPlayer.java
+grep -n cidana_media_jni src/cidana/media/MediaPlayer.java
+
+
+sed -i 's/cidana_media_jni/cidana_media_jni_cmmb/' src/cidana/media/MediaPlayer.java
+
+
+alias vr='mmm cidana/gfxAndroidOMX/'
+alias jni='mmm cidana/media_jni/'
+alias app='mmm cidana/CI_Android_Demo/'
+alias rapp='adb install -r out/target/product/eee_701/system/app/CI_Android_pmp.apk'
+
+alias ads='adb shell'
+alias adk='adb kill-server'
+alias add='adb devices'
+alias adu='adb uninstall com.cidana.jplayer'
+alias sadd='sudo /home/cidana/android-sdk-linux/tools/adb devices'
+
+export ADBHOST=192.168.0.84
+
+gdbserver :5039 /data/bin/ort
+
+set solib-absolute-prefix /30g/Android_Source-v37/Android-1.5/out/target/product/eee_701/symbols/
+set solib-search-path /30g/Android_Source-v37/Android-1.5/out/target/product/eee_701/symbols/system/lib
+
+target remote :5039
+
+
+2010-1-28 09:55 
+-------------------------------------------------
+gimmie-0.2.8$ agi python-gtk2-dev libgnome-menu-dev python2.5-dev -y
+Apps > Metacity > General > Compositing Manager
+
+2010-1-27 10:04 
+-------------------------------------------------
+byd cmmb
+yuhua cmmb
+
 2010-1-26 10:03 
 -------------------------------------------------
 
@@ -1367,7 +1568,7 @@ insmod: init_module './smsmdtv.ko' failed (Exec format error)
 # cat /proc/version
 Linux version 2.6.29-00117-g3a218ab-dirty (@CENT64-C04-33-1) (gcc version 4.4.0 (GCC) ) #1 SMP Mon Nov 23 19:23:08 UTC 2009
 
-liblog libutils libcutils libui libdl libmedia libandroid_runtime
+liblog libutils libcutils libui libdl libmedia libandroid_runtime aapt framework_res core ext framework
 
 libbinder
 rzhuo@nvidia.com
