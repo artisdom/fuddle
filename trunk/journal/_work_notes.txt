@@ -1,3 +1,245 @@
+2010-3-8 11:03 
+-------------------------------------------------
+x86-android-sdcard$ cat default.prop 
+#
+# ADDITIONAL_DEFAULT_PROPERTIES
+#
+ro.secure=0
+ro.allow.mock.location=1
+ro.debuggable=1
+persist.service.adb.enable=1
+
+x86-android-sdcard$ grep 'persist.service.adb.enable' init.rc 
+# adbd is controlled by the persist.service.adb.enable system property
+on property:persist.service.adb.enable=1
+on property:persist.service.adb.enable=0
+
+
+-masm=intel
+.intel_syntax noprefix
+
+2010-3-5 10:02 
+-------------------------------------------------
+TODO:
+dell mini 10 android bootup/code/opencore
+
+
+action
+data (both URI and data type)
+category
+
+# disable zygote let system in
+service zygote /system/bin/app_process -Xzygote /system/bin --zygote --start-system-server
+    socket zygote stream 666
+    onrestart write /sys/android_power/request_state wake
+    onrestart write /sys/power/state on
+    disabled
+    oneshot
+
+libhgl.so
+
+/data/system/batterystats.bin
+
+
+setprop ro.sys.fs.power_supply.ac /ACAD
+setprop ro.sys.fs.power_supply.bat /BAT1
+
+symlink /sys/class/power_supply/ACAD /sys/class/power_supply/AC
+symlink /sys/class/power_supply/BAT1 /sys/class/power_supply/BAT0
+
+
+2010-3-4 10:11 
+-------------------------------------------------
+TODO:
+file association (intent ?)
+surface/gpu system
+
+build/core/product_config.mk:261: WARNING: adding test OTA key
+============================================
+TARGET_PRODUCT=eee_701
+TARGET_BUILD_VARIANT=eng
+TARGET_SIMULATOR=
+TARGET_BUILD_TYPE=release
+TARGET_ARCH=x86
+HOST_ARCH=x86
+HOST_OS=linux
+HOST_BUILD_TYPE=release
+BUILD_ID=
+============================================
+
+ttp://blog.sina.com.cn/u/1493290891
+
+ mmm CI_Android_Demo_Stream/jni/cidana_videorender \
+ && mmm CI_Android_Demo_Stream/jni/cidana_media_jni/ \
+ && mmm CI_Android_Demo_Stream \
+ && adu \
+ && adb install out/target/product/eee_701/system/app/CI_Android_pmp.apk
+
+adb pull /data/app/com.cidana.jplayer.apk .
+repo forall -c git checkout android-1.0
+
+
+build/core/package.mk
+
+error LOCAL_MODULE_TAGS
+aidl.cpp
+#include <malloc.h>
+#include <string.h>
+#include <string>
+
+
+2010-3-3 10:01 
+-------------------------------------------------
+
+
+cp external/opencore/oscl/oscl/config/linux/osclconfig.h out/target/product/eee_701/obj/include/libpv/
+
+
+2010-3-2 10:03 
+-------------------------------------------------
+sudo tune2fs -l /dev/sda1 
+export ADBHOST=192.168.0.74
+
+	const int buffersec = 100;
+	m_dwBlockDurationMsec = (DWORD)((LONGLONG)m_dwFramesPerBlock*m_ABI.dwSamplesPerFrame*buffersec/m_ABI.dwSamplesPerSec);
+	m_dwBlocksInBuffer = buffersec/m_dwBlockDurationMsec;  // 1000 ms total buffer size
+
+
+1000 1st seek
+500 2rd seek
+
+
+2010-3-1 10:04 
+-------------------------------------------------
+can't access 192.168.0.54 ?
+
+start windows service, server and workstation
+
+grant all on *.* to 'root'@'%'  identifiied by 'root'
+
+use mysql;
+update user set host = '%' where user = 'root';
+select host, user from user;
+
+sudo vi /etc/mysql/my.cnf
+bind-address = 127.0.0.1
+
+build genrevision
+copy D:\mangos\mangos-mangos-26c6c45\src\shared\SystemConfig.h.in D:\mangos\mangos-mangos-26c6c45\src\shared\SystemConfig.h
+D:\mangos\mangos-mangos-26c6c45\win\VC80\genrevision__Win32_Debug_NoPCH\genrevision.exe
+copy D:\mangos\mangos-mangos-26c6c45\win\VC80\genrevision__Win32_Debug_NoPCH\revision.h D:\mangos\mangos-mangos-26c6c45\dep\include
+build mangos
+output here D:\mangos\mangos-mangos-26c6c45\bin\win32_debug_nopch
+
+put scriptdev2 to D:\mangos\mangos-mangos-26c6c45\src\bindings\scriptdev2
+build scriptdev2
+output here D:\mangos\mangos-mangos-26c6c45\bin\win32_debug
+
+
+2010-2-26 10:27 
+-------------------------------------------------
+TODO:
+opencore node for android-1.6
+setup android env for people
+
+E/        (   31): OsclLibraryList::Populate '/system/etc/my_omx_core.cfg' IN
+E/        (   31): Libraries found = 0
+E/        (   31): OsclLibraryList::Populate '/system/etc/pvplayer.cfg' IN
+E/        (   31): Libraries found = 1
+E/        (   31): OsclLibraryList::Populate '/system/etc/my_omx_core.cfg' IN
+E/        (   31): Libraries found = 2
+E/        (   31): OsclLib::loadlibrary: Error opening library (libmpeg2parser_reg.so): Cannot load library: find_library[1156]:    31 'libmpeg2parser_reg.so' failed to load previously
+E/        (   31): OsclLib::loadlibrary: Error opening library (libm2v_node.so): Cannot load library: find_library[1156]:    31 'libm2v_node.so' failed to load previously
+E/        (   31): OsclLibraryList::Populate '/system/etc/my_omx_core.cfg' IN
+E/        (   31): Libraries found = 1
+E/        (   31): OsclLib::loadlibrary: Error opening library (libmpeg2parser_reg.so): Cannot load library: find_library[1156]:    31 'libmpeg2parser_reg.so' failed to load previously
+E/        (   31): OsclLibraryList::Populate '/system/etc/pvplayer.cfg' IN
+E/        (   31): Libraries found = 3
+E/        (   31): OsclLibraryList::Populate '/system/etc/pvplayer.cfg' IN
+E/        (   31): Libraries found = 1
+
+Gross domestic product
+
+~$ cd eclair/external/opencore/
+opencore$ git log -1
+commit 5109388c810790f08bdf188b16a60c9020254296
+Author: Jean-Baptiste Queru <jbq@google.com>
+Date:   Thu Nov 12 18:45:32 2009 -0800
+
+    eclair snapshot
+
+opencore$ cd /30g/cupcake/external/opencore/
+opencore$ git log -1
+commit 6b31782f62c033186ad890719195f3c04e0a5f25
+Author: Ravi K Yenduri <yenduri@pv.com>
+Date:   Tue Mar 31 10:27:25 2009 -0700
+
+    Enable OpenCORE on master - part 2
+
+repo init -b donut
+repo init -u git://android.git.kernel.org/platform/manifest.git -b donut
+
+repo init -u git://android.git.kernel.org/platform/manifest.git -b android-1.6_r1
+repo init -u git://android.git.kernel.org/platform/manifest.git -b android-1.5
+
+repo forall -c git checkout android-1.6_r1
+repo forall -c git checkout android-1.0
+android-latest$ du -sh *
+1.3M	bootable
+1.4M	hardware
+4.0K	Makefile
+5.4M	vendor
+6.1M	build
+12M	bionic
+16M	system
+
+63M	development
+65M	packages
+81M	dalvik
+165M	frameworks
+559M	external
+
+576M	prebuilt
+1.5G	.repo
+
+switch jdk (not working)
+sudo update-alternatives --config java 
+sudo update-alternatives --config javac 
+
+android-latest$ repo sync vendor/htc/dream-open/
+vendor/htc/dream-open/: discarding 1 commits
+
+
+
+2010-2-25 05:16 
+-------------------------------------------------
+adb remount
+adb push libmpeg2parser.so /system/lib
+adb push libmpeg2parser_reg.so /system/lib
+adb push libm2v_node.so /system/lib
+adb push libcimpg_demux.so /system/lib
+adb push my_omx_core.cfg /system/etc
+
+cp libmpeg2parser.so libmpeg2parser_reg.so libm2v_node.so libcimpg_demux.so
+
+loadso /system/lib/libmpeg2parser.so
+loadso /system/lib/libmpeg2parser_reg.so
+loadso /system/lib/libm2v_node.so
+loadso /system/lib/libcimpg_demux.so
+
+adb shell ls /system/lib/libm*
+
+
+2010-2-10 10:01 
+-------------------------------------------------
+
+
+2010-2-9 03:19 
+-------------------------------------------------
+libgnustep-base-dev
+libfoundation1.0-dev
+
+
 2010-2-5 10:05 
 -------------------------------------------------
 Advanced Programmable Interrupt Controller (APIC)
@@ -1568,8 +1810,17 @@ insmod: init_module './smsmdtv.ko' failed (Exec format error)
 # cat /proc/version
 Linux version 2.6.29-00117-g3a218ab-dirty (@CENT64-C04-33-1) (gcc version 4.4.0 (GCC) ) #1 SMP Mon Nov 23 19:23:08 UTC 2009
 
-liblog libutils libcutils libui libdl libmedia libandroid_runtime aapt framework_res core ext framework
+libc liblog libutils libcutils libui libdl libmedia libandroid_runtime aapt core ext framework
 
+libdrm1 libvorbisidec
+mmm external/opencore/
+mmm external/cimpg_demux
+mmm ~/cidana/mycomponent/
+
+out/target/product/generic/obj/lib/crtbegin_dynamic.o
+out/target/product/generic/obj/lib/crtend_android.o
+
+framework_res (1.6 don't have this)
 libbinder
 rzhuo@nvidia.com
 
