@@ -1,3 +1,156 @@
+2010-3-11 10:03 
+-------------------------------------------------
+
+adb shell am instrument -w -e class \
+com.android.contacts.tests
+ContactsLaunchPerformance
+
+#define RAND48_SEED_0   (0x330e)
+#define RAND48_SEED_1   (0xabcd)
+#define RAND48_SEED_2   (0x1234)
+
+unsigned short __rand48_Seed[3] = {
+        RAND48_SEED_0,
+        RAND48_SEED_1,
+        RAND48_SEED_2
+};
+long
+lrand48(void)
+{
+	__dorand48(__rand48_seed);
+	return ((long) __rand48_seed[2] << 15) + ((long) __rand48_seed[1] >> 1);
+}
+static __inline__ int rand(void) {
+    return (int)lrand48();
+}
+
+
+2010-3-10 10:08 
+-------------------------------------------------
+
+libasfparser libasfparser_reg libm2v_node
+
+
+adb push libasfparser_reg.so  /system/lib
+adb push libasfparser.so    /system/lib
+adb push libm2v_node.so   /system/lib
+adb push my_omx_core.cfg   /system/etc
+
+
+
+
+
+eee_701/system/lib/libm2v_node.so
+eee_701/system/lib/libasfparser_reg.so  
+eee_701/system/lib/libasfparser.so
+
+sudo cp default.prop init* /media/disk-2 -v
+sudo cp boot/vmlinuz /media/disk-2/boot/
+sudo cp boot/grub/menu.lst /media/disk-2/boot/grub/
+
+
+FIXED: no sound ?
+sudo cp system/etc/asound.conf /media/disk-2/system/etc
+sudo cp system/etc/init.usb.sh /media/disk-2/system/etc
+
+
+
+FIXED: can't load keyboard layout ?
+# cd /system/usr/keychars
+# ls
+AT_Translated_Set_2_keyboard.kcm.bin
+qwerty2.kcm.bin
+qwerty.kcm.bin
+# chmod 777 *
+chmod 777 /system/usr/keychars/*
+
+cp -rv .repo bionic    dalvik       frameworks  Makefile         packages  vendor \
+bootable  development  hardware    mkmk_android.sh  prebuilt \
+build     external     kernel                    system ~/myroid-dell
+
+\\fileserver\Builds\Components\VRPresent\Checked\Android\DELL-MINI9\20100310 
+ 
+\\fileserver\Builds\Components\VRPresent\Checked\Android\ACER\20100310 
+
+
+
+sudo cp -rv boot   default.prop  init.eee_701.rc   proc                  sys \
+dev           init.goldfish.rc  sbin                  system \
+ init.rc \
+   init          lib               sqlite_stmt_journals ~/disk-2
+
+cd /media/disk-2 \
+&& sudo rm -rf anr  app-private   data   lost+found     system \
+app  dalvik-cache  local  misc        property
+
+sudo rm -rf system init    lib      sbin  
+
+cd root
+sudo cp -rv   init    lib      sbin  /media/disk-2
+cd ..
+sudo cp -rv   system /media/disk-2
+
+
+2010-3-9 10:03 
+-------------------------------------------------
+ftp://CidanaXiAnUI:cidanaui@xian@221.133.237.51/dell_mini9_android/
+
+TODO:
+android-x86 on inspron 910
+video shift
+no sound
+# pm sh: /system/bin/pm: /bin/sh: No such file or directory
+/system read only
+system.img --> dir ?
+mmm point to arm target ?
+
+D/CIDANA_SDK( 3326): [AudioRender] Run Done!
+I/NotificationService( 2306): enqueueToast pkg=com.cidana.jplayer callback=android.app.ITransientNotification$Stub$Proxy@985eebe0 duration=0
+E/ALSALib ( 2292): external/alsa-lib/src/pcm/pcm.c:2201:(snd_pcm_open_noupdate) Unknown PCM AndroidPlayback_Speaker_normal
+E/ALSALib ( 2292): external/alsa-lib/src/pcm/pcm.c:2201:(snd_pcm_open_noupdate) Unknown PCM AndroidPlayback_Speaker
+E/ALSALib ( 2292): external/alsa-lib/src/pcm/pcm.c:2201:(snd_pcm_open_noupdate) Unknown PCM AndroidPlayback
+I/AudioHardwareALSA( 2292): Initialized ALSA PLAYBACK device default
+
+android-x86\kernel\arch\x86\configs\android-x86_defconfig
+
+init.rc 
+asound.conf
+----------------------------
+
+
+make usb_img TARGET_PRODUCT=eeepc
+repo init -u git://git.android-x86.org/platform/manifest.git -b android-x86-1.6
+repo init -u git://git.android-x86.org/platform/manifest.git -b donut-x86
+
+git clone 
+donut-x86
+
+sudo mkdir -p /flash/android/data
+cp -v ~/menu.lst /flash/boot/grub
+cp -v kernel initrd.img ramdisk.img system.img /flash/android
+
+
+mount -o remount rw /system
+
+FIXED:W/PackageManager( 2306): Install failed: .apk has native code but none for arch x86
+build/core/definitions.mk:$(hide) mkdir -p $(dir $@)lib/armeabi  ->x86
+
+BoardConfig.mk:TARGET_CPU_ABI
+
+make TARGET_PRODUCT=eeepc libcidanavrp libcidana_media_jni_pmp CI_Android_pmp
+make TARGET_PRODUCT=eeepc clean-CI_Android_pmp  CI_Android_pmp
+make TARGET_PRODUCT=eeepc CI_Android_pmp
+
+./mkmk_android.sh libcidana_media_jni_pmp
+./mkmk_android.sh clean-CI_Android \
+&& \
+./mkmk_android.sh  CI_Android
+
+
+FIXED: can't browse /data
+chmod 777 /data
+
+
 2010-3-8 11:03 
 -------------------------------------------------
 x86-android-sdcard$ cat default.prop 
@@ -17,6 +170,26 @@ on property:persist.service.adb.enable=0
 
 -masm=intel
 .intel_syntax noprefix
+
+http://groups.google.com/group/android-porting/browse_thread/thread/5cd2f0a9749f1733
+/dev/pmem
+
+
+kernel/drivers/misc/pmem.c
+
+arch/x86/boot/bzImage
+
+CONFIG_ANDROID_PMEM=y
+  x Symbol: FB_EARLYSUSPEND [=y]                                                                                                
+  x
+  x Prompt: Sysfs interface             
+FIXED:/sys/power/wait_for_fb_(sleep/wake)
+
+/default.prop
+debug.egl.hw=0
+FIXED:libhgl.so
+
+./mkmk_android.sh libsurfaceflinger
 
 2010-3-5 10:02 
 -------------------------------------------------
