@@ -62,4 +62,14 @@ alias emu15='emulator @android-1.5&'
 alias emu16='emulator @android-1.6&'
 alias emu20='emulator @android-2.0&'
 
+alias adp='adb pull /data/app/com.cidana.jplayer.apk .'
+alias ads='adb shell'
+alias adi='adb install'
+alias adk='adb kill-server'
+alias add='adb devices'
+alias adu='adb uninstall com.cidana.jplayer'
+alias sadd='sudo /home/cidana/android-sdk-linux/tools/adb devices'
+alias gitone='git init && git add . && git commit -m "initial commit"'
+
+
 #================end of my .bash_aliases==================#

@@ -42,6 +42,8 @@ else
 		set guioptions-=m
 		set guioptions-=T
         colorscheme rootwater
+"        set guifont=Monospace\ 12
+		set guifont=Envy\ Code\ R\ 12
 	endif
 endif
 
