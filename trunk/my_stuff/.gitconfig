@@ -1,8 +1,0 @@
-[user]
-	name = physaris
-	email = physaris@gmail.com
-[color]
-	branch = auto
-	status = auto
-[core]
-	excludesfile = /home/cidana/.gitignore
