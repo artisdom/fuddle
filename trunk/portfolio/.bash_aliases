@@ -28,6 +28,7 @@ alias la='ls -A'
 alias ll='ls -l'
 alias le='less'
 alias grep='grep --exclude-dir=.git --exclude-dir=.svn'
+alias mydate='date "+%Y-%m-%d %H:%M:%S"'
 
 alias gpmstart='sudo gpm -m /dev/misc/psaus -t ps2'
 
