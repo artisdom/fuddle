@@ -1,7 +1,6 @@
 ScriptID SourceID Filename
 --------------------------
 23 1 :AutoInstall: EnhCommentify.vim
-213 1 :AutoInstall: c.vim
 273 1 :AutoInstall: taglist.vim
 521 1 :AutoInstall: mru.vim
 625 1 :autoinstall: colorpack.vim
