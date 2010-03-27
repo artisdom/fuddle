@@ -1,0 +1,73 @@
+alltray - Dock any program into the system tray
+ascd - CD player and mixer
+asmon - system resource monitor dockapp for Afterstep and WindowMaker
+docker - System tray for KDE3/GNOME2 docklet applications
+fookb-plainx - An Xkb state indicator -- plain X version.
+fookb-wmaker - An Xkb state indicator -- WindowMaker version.
+fspanel - minimalist panel for X
+glashctl - simple applet for controlling the LASH Audio Session Handler
+gnustep-icons - Several free icons for use with GNUstep and others
+gsetroot - a C/Gtk-based front-end for Esetroot
+gtk-imonc - monitor and control 'fli4l' one-diskette routers
+libwings-dev - Window Maker's own widget set
+libwmaker0-dev - Static libraries and headers for Window Maker applications
+mixer.app - Another mixer application designed for WindowMaker
+mountapp - Tool to (un)mount devices, dockable in WM-like window managers
+pypanel - lightweight panel/taskbar for X11 window managers
+qingy - Framebuffer-enabled replacement for getty
+shermans-aquarium - Sherman's aquarium applet for GNOME 2
+wdm - WINGs Display Manager - an xdm replacement with a WindowMaker look
+wmacpi - ACPI battery monitor for WindowMaker
+wmail - WindowMaker docklet watching your inbox
+wmaker - NeXTSTEP-like window manager for X
+wmaker-data - Several free icons for use with WindowMaker and others.
+wmaker-usersguide-ps - Window Maker Users' Guide -- postscript format
+wmakerconf - GTK+ based configuration tool for Window Maker
+wmakerconf-data - Data files for wmakerconf, a configuration tool for Window Maker
+wmauda - remote-control dockapp for Audacious
+wmavgload - small NeXTStep-like system load average monitor
+wmbattery - display laptop battery info, dockable in WindowMaker
+wmbiff - A dockable app that displays information about mailboxes
+wmcalc - dockable calculator application
+wmcalclock - A dock.app which simply tells time and date
+wmcb - dockapp that displays the cut buffer content
+wmcdplay - A CD player based on ascd designed for WindowMaker
+wmcpuload - Dockapp that displays the current CPU usage
+wmdiskmon - dockapp to display disk usage
+wmdonkeymon - Dockapp to show the status of eDonkey downloads in progress
+wmfire - very cool fiery way of showing your CPU usage
+wmfishtime - Dockable clock app for WMaker, BlackBox, E, SawFish etc
+wmforkplop - monitors forking activity and displays top CPU consuming processes
+wmfsm - WindowMaker dock app for monitoring filesystem usage
+wmgrabimage - maintains a small thumbnail image from the WWW
+wmibam - dockapp to monitor the apm status using ibam
+wmifs - WindowMaker dock app for monitoring network traffic
+wmmail - A mail notification program designed for WindowMaker
+wmmaiload - dockapp to monitor mails in one or more mail boxes
+wmmemload - WindowMaker dockapp to monitor memory and swap usage
+wmmixer - mixer application designed for WindowMaker
+wmmoonclock - WindowMaker moon phase dockapp
+wmnd - Dockapp monitoring network interfaces
+wmnd-snmp - Dockapp monitoring network interfaces
+wmnet - network monitor for WindowMaker
+wmnetselect - Enhanced Netscape launch button designed for WindowMaker
+wmnut - WindowMaker dock app that displays UPS statistics from NUT's upsd
+wmpomme - WindowMaker dockapp client for pommed
+wmppp.app - PPP dial control and network load monitor with NeXTStep look
+wmpuzzle - WindowMaker dock app 4x4 puzzle
+wmrack - Combined CD Player + Mixer designed for WindowMaker
+wmsensors - WindowMaker dock applet for lmsensors
+wmspaceweather - WindowMaker dock app that shows the "weather" in space
+wmsysmon - WindowMaker dock-app for monitoring your system
+wmtictactoe - Dockable Tic Tac Toe game
+wmtimer - dockable alarm clock for WindowMaker
+wmtop - Dockapp that displays 3 top memory or CPU using processes
+wmtv - Dockable video4linux TV player for WindowMaker
+wmtz - WindowMaker dock app that displays the time in different zones
+wmweather - WindowMaker dockapp that shows your current weather
+wmweather+ - WindowMaker dock app that shows your current weather
+wmwork - Keep track of time worked on projects
+xbatt - Display battery status
+xfce4-wmdock-plugin - Compatibility layer for running WindowMaker dockapps on the XFCE desktop
+xlassie - Dockable mail notifier w/ message count & POP3/APOP/IMAP support
+wmsun - Dockable WindowMaker SunRise/SunSet App

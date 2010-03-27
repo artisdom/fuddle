@@ -1,0 +1,5 @@
+subversion vim vim-gtk ctags
+git-core curl 
+gnustep gnustep-devel menu wmaker 
+asmon
+tree ttmkfdir
