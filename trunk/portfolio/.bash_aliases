@@ -1,12 +1,12 @@
 #===================start of my .bashrc=====================#
-#if [ -f $HOME/.bash_aliases ]; then
-#    source $HOME/.bash_aliases
+#if [ -f ~/.bash_aliases ]; then
+#    source ~/.bash_aliases
 #fi	
 
 #================start of my .bash_aliases==================#
 
-if [ -d $HOME/bin ]; then
-	export PATH=$HOME/bin:$PATH
+if [ -d ~/bin ]; then
+	export PATH=~/bin:$PATH
 fi
 
 export EDITOR=vi
@@ -27,7 +27,7 @@ alias ls='ls --color -F'
 alias la='ls -A'
 alias ll='ls -l'
 alias le='less'
-alias grep='grep --exclude-dir=.git --exclude-dir=.svn'
+alias grep='grep --color=auto --exclude-dir=.git --exclude-dir=.svn'
 alias mydate='date "+%Y-%m-%d %H:%M:%S"'
 
 alias gpmstart='sudo gpm -m /dev/misc/psaus -t ps2'
@@ -46,15 +46,15 @@ alias si='wine /home/cidana/.wine/drive_c/Program\ Files/Source\ Insight\ 3/Insi
 
 alias s="sdcv"
 
-alias cpgl="cp $HOME/my_stuff/GetLatestVimScripts.dat $HOME/.vim/GetLatest/"
-alias fixqbuf="sed -i 's/F4/F12/' $HOME/.vim/plugin/qbuf.vim"
+alias cpgl="cp ~/my_stuff/GetLatestVimScripts.dat ~/.vim/GetLatest/"
+alias fixqbuf="sed -i 's/F4/F12/' ~/.vim/plugin/qbuf.vim"
 
-ANDROID_SDK_PATH=$HOME/android-sdk-linux
+ANDROID_SDK_PATH=~/android-sdk-linux_86
 if [ -d ${ANDROID_SDK_PATH} ]; then
 	export PATH=${ANDROID_SDK_PATH}/platforms/android-1.5/tools:${ANDROID_SDK_PATH}/tools:$PATH
 fi
 
-# ANDROID_NDK_PATH=$HOME/android-ndk-1.6_r1
+# ANDROID_NDK_PATH=~/android-ndk-1.6_r1
 # if [ -d ${ANDROID_SDK_PATH} ]; then
 #     export PATH=${ANDROID_NDK_PATH}/build/prebuilt/linux-x86/arm-eabi-4.2.1/bin:$PATH
 # fi
@@ -62,5 +62,13 @@ fi
 alias emu15='emulator @android-1.5&'
 alias emu16='emulator @android-1.6&'
 alias emu20='emulator @android-2.0&'
+alias emu201='emulator @android-2.0.1&'
+alias emu21='emulator @android-2.1&'
+
+alias ads='adb shell'
+alias adk='adb kill-server'
+alias add='adb devices'
+alias adl='adb logcat'
+alias adu='adb uninstall com.cidana.jplayer'
 
 #================end of my .bash_aliases==================#

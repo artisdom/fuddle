@@ -1,8 +1,9 @@
-vi -c 'so %' $HOME/my_stuff/getscript.vba
-tar zxvf $HOME/my_stuff/vimball.tar.gz -C $HOME/.vim
-cp $HOME/my_stuff/GetLatestVimScripts.dat $HOME/.vim/GetLatest/
+localpath=`pwd`
+vi -c 'so %' $localpath/getscript.vba
+tar zxvf $localpath/vimball.tar.gz -C ~/.vim
+cp $localpath/GetLatestVimScripts.dat ~/.vim/GetLatest/
 vi
 #input GLVS to get lastest vim scripts
-cp -r $HOME/.vim/EnhancedCommentify-2.3/* $HOME/.vim/
-rm -r $HOME/.vim/EnhancedCommentify-2.3
-sed -i 's/F4/F12/' $HOME/.vim/plugin/qbuf.vim
+cp -r ~/.vim/EnhancedCommentify-2.3/* ~/.vim/
+rm -r ~/.vim/EnhancedCommentify-2.3
+sed -i 's/F4/F12/' ~/.vim/plugin/qbuf.vim
