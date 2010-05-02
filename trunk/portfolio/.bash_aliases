@@ -9,6 +9,10 @@ if [ -d ~/bin ]; then
 	export PATH=~/bin:$PATH
 fi
 
+if [ -d /opt/google/chrome ]; then
+	export PATH=/opt/google/chrome:$PATH
+fi
+
 export EDITOR=vi
 export LESS_TERMCAP_mb=$'\E[01;36m'
 export LESS_TERMCAP_md=$'\E[01;36m'
