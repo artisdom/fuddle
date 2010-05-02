@@ -1,0 +1,10 @@
+tar zxf sensors-applet-2.2.5.tar.gz 
+cd sensors-applet-2.2.5/
+agi intltool
+agi libgtk2.0-dev
+agi libgnome2-dev libgnomeui-dev libpanelappletmm-2.6-dev
+./configure --prefix=/usr && make
+sudo make install
+
+#remove history numbers [3 digitals]
+#%s/\ \ \d\d\d\ \ //g
