@@ -74,5 +74,7 @@ alias adk='adb kill-server'
 alias add='adb devices'
 alias adl='adb logcat'
 alias adu='adb uninstall com.cidana.jplayer'
+alias gvim='LANG="zh_CN.UTF-8" LOCALE="zh_CN.UTF-8" gvim'
+
 
 #================end of my .bash_aliases==================#
